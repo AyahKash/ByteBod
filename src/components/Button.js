@@ -6,8 +6,7 @@ import "./Button.css";
 function Button({ onClick, children, className = "button", ...rest }) {
   return (
     <button onClick={onClick} className={className} {...rest}>
-      {children}
-    </button>
+      {children}</button>
   );
 }
 
