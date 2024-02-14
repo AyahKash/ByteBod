@@ -1,10 +1,10 @@
 .button {
   border: none;
   border-radius: 10px;
-  background-color: rgb(67, 67, 67);
-  color: rgb(255, 255, 255);
-  padding: 10px 20px;
-  font-size: 14pt;
+  background-color: rgb(70, 70, 70);
+  color: white;
+  padding: 5px 10px;
+  font-size: 12pt;
   margin: 10px 10px; /*added this to increase space between multiple buttons*/
 }
 
@@ -13,11 +13,11 @@
   cursor: pointer;
 }
 
-.light {
-  background-color: white;
-  color: black;
+/* class selectors for added specifications 
+note: take precedence */
+.green {
+  background-color: green;
 }
-
-.light:hover {
-  background-color: gray;
+.green:hover {
+  background-color: darkgreen;
 }
