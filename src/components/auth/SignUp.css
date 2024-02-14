@@ -1,0 +1,34 @@
+.Buttons {
+    display: flex; 
+    justify-content: center;
+    flex-direction: column;
+    padding: 0px 650px;
+    gap: 10px;
+}
+
+h1 {
+    font-size: 100px;
+}
+
+h2 {
+    font-size: 60px;
+};
+
+/* SignUp.css */
+
+.sign-up-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; 
+  }
+  .sign-up-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sign-in-container{
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
