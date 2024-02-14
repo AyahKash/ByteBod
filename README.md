@@ -42,7 +42,7 @@ to stage all your changes use:
 or, to stage specific files, you can list them individually:
 ### `git add file1 file2`
 commit the changes, and add a comment for what you did
-### `git commit -m "commit message"
+### `git commit -m "commit message"`
 push changes to remote repository
 ### `git push origin branch-name`
 * branch-name is main when you are pushing to the main branch
