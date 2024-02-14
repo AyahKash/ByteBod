@@ -1,5 +1,2 @@
 # ignore node_modules directory
 node_modules/
-
-# Ignore package.json
-package.json
