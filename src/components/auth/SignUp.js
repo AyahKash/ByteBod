@@ -3,7 +3,7 @@ import {auth} from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Button from "../../components/Button"
 
-const SignUp = () => {
+function SignUp(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     //function for what to happen when sign in:
@@ -23,7 +23,7 @@ const SignUp = () => {
                 <div className="create-account-buttons">
                 <input type = "email" placeholder="Enter your email" value={email}
                 onChange={(e)=>setEmail(e.target.value)}></input>
-                <input type = "password" placeholder="Enter your email" value={password}
+                <input type = "password" placeholder="Enter your password" value={password}
                 onChange={(e)=>setPassword(e.target.value)}></input>
                 </div>
 
