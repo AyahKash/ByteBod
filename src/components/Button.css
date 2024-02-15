@@ -1,16 +1,14 @@
-/* used a type selector as opposed to a class selector
-for these default properties, but not sure if thats the 
-best practice or not */
-button {
+.button {
   border: none;
   border-radius: 10px;
-  background-color: rgb(67, 67, 67);
-  color: rgb(255, 255, 255);
-  padding: 10px 20px;
-  font-size: 14pt;
+  background-color: rgb(70, 70, 70);
+  color: white;
+  padding: 5px 10px;
+  font-size: 12pt;
+  margin: 10px 10px; /*added this to increase space between multiple buttons*/
 }
 
-button:hover {
+.button:hover {
   background-color: rgb(19, 19, 19);
   cursor: pointer;
 }
