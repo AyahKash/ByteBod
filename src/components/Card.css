@@ -1,0 +1,35 @@
+.card {
+  text-align: left;
+  padding: 20px 20px;
+  width: 800px;
+  border-radius: 20px;
+  background-color: rgb(70, 70, 70);
+  color: white;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding-bottom: 5px;
+}
+
+.author {
+  font-size: 14pt;
+  font-weight: bold;
+}
+
+.date {
+  font-size: 12pt;
+  font-style: italic;
+}
+
+.content {
+  font-size: 12pt;
+  padding-bottom: 10px;
+}
+
+.divider {
+  width: 5px;
+  height: auto;
+  display: inline-block;
+}
