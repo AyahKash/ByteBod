@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import {auth} from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import './SignUp.css'
+import { useNavigate } from "react-router-dom";
+
 
 /* Can't figure out how to get the pictures to fit in the input fields (was thinking they could be next to each input) 
 also need to figure out how to connect name (and other information) to users email and password using firebase database*/
 
 
 function SignUp(){
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     //function for what to happen when sign in:
@@ -43,9 +46,9 @@ function SignUp(){
                 </div>
                 <div className="forgot-password">Forget Password? <span>Click Here</span></div>
                 <div className="submit-container">
-                    <div className="submit" type="submit">Sign Up</div>
-                    <div className="submit">Login</div>
+                    <button type="submit" className="submit" >Sign Up</button>
                 </div>
+                <div className="back-button" onClick={() => navigate("/")}> Go Back </div>
             </div>
             </div>
         </form>
@@ -55,16 +58,3 @@ function SignUp(){
 
 export default SignUp;
 
-
-{/* <form onSubmit={signUp}>
-<h3>Create your account</h3>
-<div className="create-account-buttons">
-<input type = "email" placeholder="Enter your email" value={email}
-onChange={(e)=>setEmail(e.target.value)}></input>
-<input type = "password" placeholder="Enter your password" value={password}
-onChange={(e)=>setPassword(e.target.value)}></input>
-</div>
-
-<Button className="loginbuttons" type="submit">Sign In</Button>
-
-</form> */}

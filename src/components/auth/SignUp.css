@@ -102,3 +102,7 @@ cursor: pointer;
   font-weight: 700;
   cursor: pointer;
 }
+.back-button{
+  color: #086495;
+  cursor: pointer;
+  }
