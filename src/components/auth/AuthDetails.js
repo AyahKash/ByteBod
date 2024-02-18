@@ -5,7 +5,7 @@ import Button from "../../components/Button"
 import { useNavigate } from "react-router-dom";
 
 
-function AuthDetails(){
+function AuthDetails(){ 
     const navigate = useNavigate();
     const [authUser, setAuthUser] = useState(null);
     useEffect( () => {
