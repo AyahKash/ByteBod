@@ -14,6 +14,7 @@ function SignIn() {
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{
           console.log(userCredential)
+          navigate("/homepage");
       }).catch((error)=>{
           console.log(error)
       })
