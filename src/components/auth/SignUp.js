@@ -13,6 +13,8 @@ function SignUp(){
     const navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [errorExists, setErrorExists] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     //function for what to happen when sign in:
     const signUp = (e) => {
         e.preventDefault();
@@ -20,6 +22,16 @@ function SignUp(){
             console.log(userCredential)
         }).catch((error)=>{
             console.log(error)
+            console.log("Error message:", error.message);
+            console.log("Error Code:", error.code);
+            setErrorExists(true);
+            if (error.code === "auth/weak-password"){
+                setErrorMessage("Password should be at least 6 characters!");
+            }
+            if (error.code === "auth/email-already-in-use"){
+                setErrorMessage("Email already in use. Please login or use a different email.");
+            }
+            
         })
     }
     return(
@@ -30,20 +42,21 @@ function SignUp(){
                 <div className="underline"></div>
             </div>
             <div className="inputs">
-                <div className="input">
+                <div style={{border: errorExists && '2px solid red'}} className="input">
                  <img src="" alt="" />   
                  <input type="text" placeholder="Enter your name"/>
                 </div>
-                <div className="input">
+                <div style={{border: errorExists && '2px solid red'}} className="input">
                  <img src="" alt="" />   
                  <input type="email" placeholder="Enter your email" value={email}
                  onChange={(e)=>setEmail(e.target.value)}></input>
                 </div>
-                <div className="input">
+                <div style={{border: errorExists && '2px solid red'}} className="input">
                  <img src="" alt="" />   
                  <input type="password" placeholder="Enter your password" value={password}
                  onChange={(e)=>setPassword(e.target.value)}></input>
                 </div>
+                <div>{errorExists && <h3>{errorMessage}</h3>}</div>
                 <div className="forgot-password">Forget Password? <span>Click Here</span></div>
                 <div className="submit-container">
                     <button type="submit" className="submit" >Sign Up</button>
