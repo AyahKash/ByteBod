@@ -10,13 +10,17 @@ function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [errorExists, setErrorExists] = useState(false);
     const signIn = (e) => {
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{
           console.log(userCredential)
           navigate("/homepage");
       }).catch((error)=>{
-          console.log(error)
+          console.log(error);
+          console.log(error.message);
+          console.log("Error Code", error.code);
+          setErrorExists(true);
       })
   }
   return (
@@ -33,6 +37,7 @@ function SignIn() {
         <Button className="loginbuttons" type="submit">Login</Button>
         </form>
         <Button className="signupbutton" onClick={() => navigate("/signup")}> Sign Up </Button>
+        <div>{errorExists && <p>Error: Invalid email or password, or account is not registered.</p>}</div>
         </div>
       </div>
     );
