@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../Button"
-import Logo from "../../images/temp.png"
+import Logo from "../../images/LogoWhiteLetters.png"
 import "./SignIn.css"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../../firebase"
@@ -25,18 +25,19 @@ function SignIn() {
   }
   return (
       <div className="Login">
-        <h1> Welcome To ByteBod </h1>
-        <img src={Logo}/>
+        <h1> Welcome To <img className="Logo" src={Logo}/> </h1>
         <h2> Join our community </h2>
-        <div className="Buttons">
-        <form onSubmit={signIn}>
-        <input type="email" placeholder="Enter your email" value={email}
-        onChange={(e)=>setEmail(e.target.value)}></input>
-        <input type="password" placeholder="Enter your password" value={password}
-        onChange={(e)=>setPassword(e.target.value)}></input>
-        <Button className="loginbuttons" type="submit">Login</Button>
-        </form>
-        <Button className="signupbutton" onClick={() => navigate("/signup")}> Sign Up </Button>
+        <div className="Container">
+          <form onSubmit={signIn}>
+            <input type="email" placeholder="Enter your email" value={email}
+            onChange={(e)=>setEmail(e.target.value)}> 
+            </input>
+            <input type="password" placeholder="Enter your password" value={password}
+            onChange={(e)=>setPassword(e.target.value)}>
+            </input>
+            <Button id="loginbutton" type="submit">Login</Button>
+          </form>
+            <Button id="signupbutton" onClick={() => navigate("/signup")}> Sign Up </Button>
         <div>{errorExists && <p>Error: Invalid email or password, or account is not registered.</p>}</div>
         </div>
       </div>

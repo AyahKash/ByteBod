@@ -1,15 +1,85 @@
-.Buttons {
-    display: flex; 
-    justify-content: center;
-    flex-direction: column;
-    padding: 0px 650px;
-    gap: 10px;
+body {
+	background: linear-gradient(-45deg, #164863, #427D9D, #9BBEC8, #DDF2FD);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+	height: 100vh;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
 h1 {
+    margin-top: 40px;
+    margin-left: 50px;
     font-size: 100px;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 600;
+    color: white;
+}
+
+.Logo {
+    width: 400px;
+    margin-left: -30px;
+    transform: translateY(-8%);
+
 }
 
 h2 {
+    margin-top: -50px;
     font-size: 60px;
+    color: white;
+    font-family: "League Spartan", sans-serif;
+    font-weight: 300;
+}
+
+.Container {
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 0px 650px;
+    gap: 20px;
+}
+
+input {
+    width: 500px;
+    height: 50px;
+    margin: auto;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    border: none;
+    font-family: "Nunito", sans-serif;
+}
+
+#loginbutton {
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    background-color: #164863;
+    font-family: "Nunito", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
+}
+
+#signupbutton {
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+    border: none;
+    background-color: #164863;
+    font-family: "Nunito", sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    color: white;
 };
