@@ -6,7 +6,7 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     // For details on these Bootstrap classes: https://getbootstrap.com/docs/5.3/components/navbar/
-    <nav className="navbar navbar-expand-sm">
+    <nav className="navbar navbar-dark navbar-expand-sm">
       <div className="container-fluid">
         {/* Brand */}
         <div className="navbar-brand"> ByteBod </div>
