@@ -1,24 +1,23 @@
+import React from 'react';
 import './App.css';
-<<<<<<< HEAD
-import Homepage from "./components/Homepage.js"
-=======
 import SignIn from "./components/auth/SignIn"
 import SignUp from "./components/auth/SignUp"
+import AuthDetails from "./components/auth/AuthDetails"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
->>>>>>> db13f3d211f989a243aad018fb0abfb6f5e520af
+import { HomePage } from './components/pages/HomePage';
+import { Settings } from "./components/pages/Settings";
+import { Profile } from "./components/pages/Profile";
 
 function App() {
   return (
     <div className="App">
-<<<<<<< HEAD
-      <Homepage></Homepage>
-=======
       <Routes>
-      <Route path="/" element={<SignIn/>} />
-      <Route path="/signup" element={<SignUp/>} />
+        <Route path="/" element={<SignIn/>}/>
+        <Route path="/signup" element={<SignUp />} />
+        <Route path="/homepage" element={<React.Fragment><HomePage /><AuthDetails /></React.Fragment>} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
->>>>>>> db13f3d211f989a243aad018fb0abfb6f5e520af
     </div>
   );
 }
