@@ -1,4 +1,5 @@
 import React from "react";
+import Logo from "../images/LogoInline.png"
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
@@ -9,7 +10,9 @@ function Navbar() {
     <nav className="navbar navbar-dark navbar-expand-sm">
       <div className="container-fluid">
         {/* Brand */}
-        <div className="navbar-brand"> ByteBod </div>
+        <div className="navbar-brand"> 
+          <img src={Logo} height="30" alt=""/>
+         </div>
         {/* Links */}
         <ul className="navbar-nav">
           <li className="navbar-item">
