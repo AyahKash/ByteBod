@@ -29,13 +29,17 @@ function SignIn() {
         <h2> Join our community </h2>
         <div className="Container">
           <form onSubmit={signIn}>
-            <input type="email" placeholder="Enter your email" value={email}
-            onChange={(e)=>setEmail(e.target.value)}> 
-            </input>
-            <input type="password" placeholder="Enter your password" value={password}
-            onChange={(e)=>setPassword(e.target.value)}>
-            </input>
-            <Button id="loginbutton" type="submit">Login</Button>
+            <div>
+              <input type="email" placeholder="Enter your email" value={email}
+              onChange={(e)=>setEmail(e.target.value)}> 
+              </input>
+            </div>
+            <div>
+              <input type="password" placeholder="Enter your password" value={password}
+              onChange={(e)=>setPassword(e.target.value)}>
+              </input>
+            </div>
+            <div><Button id="loginbutton" type="submit">Login</Button></div>
           </form>
             <Button id="signupbutton" onClick={() => navigate("/signup")}> Sign Up </Button>
         <div>{errorExists && <p>Error: Invalid email or password, or account is not registered.</p>}</div>
