@@ -3,6 +3,8 @@ import {auth} from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import './SignUp.css'
 import { useNavigate } from "react-router-dom";
+import { signInWithEmailAndPassword } from "firebase/auth";
+
 
 
 /* Can't figure out how to get the pictures to fit in the input fields (was thinking they could be next to each input) 
@@ -20,8 +22,14 @@ function SignUp(){
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password).then((userCredential)=>{
             console.log(userCredential)
+            
+            //sign into account when creating new account
+            signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{
+                console.log(userCredential)
+                navigate("/homepage");
+            })
         }).catch((error)=>{
-            console.log(error)
+            console.log(error);
             console.log("Error message:", error.message);
             console.log("Error Code:", error.code);
             setErrorExists(true);
