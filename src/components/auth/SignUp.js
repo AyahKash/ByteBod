@@ -20,6 +20,7 @@ function SignUp(){
         e.preventDefault();
         createUserWithEmailAndPassword(auth, email, password).then((userCredential)=>{
             console.log(userCredential)
+            console.log("Will this print if error is thrown.");
         }).catch((error)=>{
             console.log(error)
             console.log("Error message:", error.message);
@@ -33,6 +34,8 @@ function SignUp(){
             }
             
         })
+
+        
     }
     return(
         <form onSubmit={signUp}>
