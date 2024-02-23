@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import {auth} from "../../firebase";
+import {auth, db} from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import './SignUp.css'
 import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword } from "firebase/auth";
+import { setDoc, doc } from 'firebase/firestore';
 
 
 
@@ -13,22 +14,32 @@ also need to figure out how to connect name (and other information) to users ema
 
 function SignUp(){
     const navigate = useNavigate();
+    const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [errorExists, setErrorExists] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
+
     //function for what to happen when sign in:
-    const signUp = (e) => {
+    const signUp = async (e) => {
         e.preventDefault();
-        createUserWithEmailAndPassword(auth, email, password).then((userCredential)=>{
-            console.log(userCredential)
-            
-            //sign into account when creating new account
-            signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{
-                console.log(userCredential)
-                navigate("/homepage");
-            })
-        }).catch((error)=>{
+    
+        try {
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            console.log(userCredential);
+    
+            // Use setDoc to add user data to the "users" collection
+            await setDoc(doc(db, 'users', userCredential.user.uid), {
+                name: name,
+            }, { merge: true });
+    
+            // Sign into the account after creating a new account
+            const signInCredential = await signInWithEmailAndPassword(auth, email, password);
+            console.log(signInCredential);
+    
+            // Navigate to the homepage
+            navigate("/homepage");
+        } catch (error) {
             console.log(error);
             console.log("Error message:", error.message);
             console.log("Error Code:", error.code);
@@ -40,7 +51,7 @@ function SignUp(){
                 setErrorMessage("Email already in use. Please login or use a different email.");
             }
             
-        })
+        }
     }
     return(
         <form onSubmit={signUp}>
@@ -52,7 +63,8 @@ function SignUp(){
             <div className="inputs">
                 <div style={{border: errorExists && '2px solid red'}} className="input">
                  <img src="" alt="" />   
-                 <input type="text" placeholder="Enter your name"/>
+                 <input type="name" placeholder="Enter your name" value={name}
+                 onChange={(e)=>setName(e.target.value)}></input>
                 </div>
                 <div style={{border: errorExists && '2px solid red'}} className="input">
                  <img src="" alt="" />   
