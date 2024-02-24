@@ -1,6 +1,5 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
 import {getFirestore, collection, getDocs} from "firebase/firestore"
 
@@ -40,5 +39,4 @@ getDocs(colRef)
 
   
 // const analytics = getAnalytics(app);// Initialize Firebase Authentication and get a reference to the service
-export const db = getFirestore(app);
 export const auth = getAuth(app);
