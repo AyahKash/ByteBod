@@ -3,7 +3,6 @@ import { addDoc, collection } from 'firebase/firestore';
 import { db, auth } from '../../firebase';
 import "./CreatePost.css";
 import { useNavigate } from 'react-router-dom';
-import { create } from 'domain';
 
 export const CreatePost = () => {
   const [title, setTitle] = useState("");
