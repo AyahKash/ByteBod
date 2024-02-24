@@ -1,5 +1,5 @@
 import React,  { useEffect, useState } from "react";
-import {auth} from '../../firebase';
+import {auth, db} from '../../firebase';
 import { onAuthStateChanged, signOut} from "firebase/auth";
 import Button from "../../components/Button"
 import { useNavigate } from "react-router-dom";
@@ -17,6 +17,7 @@ function AuthDetails(){
                 setAuthUser(null);
             }
         });
+        console.log(authUser)
         return()=>{
             listen();
         }
