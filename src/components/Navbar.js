@@ -1,5 +1,6 @@
 import React from "react";
-import Logo from "../images/LogoInline.png"
+import Logo from "../images/LogoInline.png";
+import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 
@@ -10,19 +11,19 @@ function Navbar() {
     <nav className="navbar navbar-dark navbar-expand-sm">
       <div className="container-fluid">
         {/* Brand */}
-        <div className="navbar-brand"> 
-          <img src={Logo} height="30" alt=""/>
-         </div>
+        <div className="navbar-brand">
+          <img src={Logo} height="30" alt="" />
+        </div>
         {/* Links */}
         <ul className="navbar-nav">
           <li className="navbar-item">
-            <a className="nav-link" onClick={() => navigate("/homepage")}> Home </a>
+            <Button className="nav-link" onClick={() => navigate("/homepage")}> Home </Button>
           </li>
           <li className="navbar-item">
-            <a className="nav-link" onClick={() => navigate("/profile")}> Profile </a>
+            <Button className="nav-link" onClick={() => navigate("/profile")}> Profile </Button>
           </li>
           <li className="navbar-item">
-            <a className="nav-link" onClick={() => navigate("/settings")}> Settings </a>
+            <Button className="nav-link" onClick={() => navigate("/settings")}> Settings </Button>
           </li>
         </ul>
       </div>
