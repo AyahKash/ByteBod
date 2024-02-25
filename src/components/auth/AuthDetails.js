@@ -12,11 +12,13 @@ function AuthDetails(){
         const listen = onAuthStateChanged(auth, (user)=>{
             if(user){
                 setAuthUser(user);
+                console.log(user)
             }
             else{
                 setAuthUser(null);
             }
         });
+        // console.log(authUser)
         return()=>{
             listen();
         }

@@ -1,5 +1,12 @@
 .navbar {
   background-color: #164863;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+
+  /* keeps navbar "on top" of other content */
+  z-index: 10;
+  position: sticky;
+  top: 0;
+  margin-bottom: 1em;
 }
 .navbar-item:hover {
   cursor: pointer;
