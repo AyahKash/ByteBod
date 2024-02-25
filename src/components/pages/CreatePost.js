@@ -37,14 +37,14 @@ export const CreatePost = (props) => {
         <div className="cpContainer">
         <h1>Log New Workout</h1>
             <div className="input">
-                <label> Title: </label>
+                <label className="label-class"> Title </label>
                 <input placeholder="Title..." onChange={(event) => 
                     {setTitle(event.target.value);
                     }}
                 />
             </div>
             <div className="input">
-                <label> Description </label>
+                <label className="label-class"> Description </label>
                 <textarea placeholder="Describe your workout..." onChange={(event) => 
                     {setPostText(event.target.value);
                     }}
