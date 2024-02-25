@@ -1,35 +1,58 @@
 .card {
+  /* text and color  */
   text-align: left;
-  padding: 20px 20px;
-  width: 800px;
-  border-radius: 20px;
-  background-color: rgb(70, 70, 70);
+  background-color: #164863;
   color: white;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+
+  /* position and shape */
+  width: 80%;
+  left: 50%;
+  transform: translate(-50%, 0%);
+  padding: 1em 1em;
+  border-radius: 20px;
 }
 
-.header {
+.heading {
   display: flex;
   align-items: center;
-  padding-bottom: 5px;
+  padding-bottom: 0.25em;
+  line-height: 1.25;
+}
+
+.title {
+  font-size: 14pt;
+  font-weight: bold;
 }
 
 .author {
-  font-size: 14pt;
+  font-size: 12pt;
   font-weight: bold;
+  filter: brightness(80%);
 }
 
 .date {
   font-size: 12pt;
   font-style: italic;
+  filter: brightness(80%);
+  margin: 0em 0.5em;
 }
 
 .content {
   font-size: 12pt;
-  padding-bottom: 10px;
+  margin: 0.5em 0.5em;
 }
 
-.divider {
-  width: 5px;
-  height: auto;
-  display: inline-block;
+.interaction {
+  margin-top: 0.5em 0em;
+}
+
+.like {
+  font-size: 16pt;
+  background-color: transparent;
+}
+
+.comment {
+  font-size: 16pt;
+  background-color: transparent;
 }
