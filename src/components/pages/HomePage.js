@@ -7,7 +7,7 @@ import Button from "../Button";
 import Card from "../Card";
 import "./HomePage.css"
 
-export const HomePage = () => {
+export const HomePage = (props) => {
   const navigate = useNavigate();
   /* Commenting out firebase syncing until we figure out read issue:
 
@@ -23,32 +23,34 @@ export const HomePage = () => {
   */
 
   /* Using filler data in mean time: */
-  const postList = [
-    {
-      title: "Post One",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "1",
-    },
-    {
-      title: "Post Two",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "2",
-    },
-    {
-      title: "Post Three",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "3",
-    },
-    {
-      title: "Post Four",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "4",
-    },
-  ];
+  const postList = props.postsList;
+  console.log("This is the post list", postList);
+  // const postList = [
+  //   {
+  //     title: "Post One",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "1",
+  //   },
+  //   {
+  //     title: "Post Two",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "2",
+  //   },
+  //   {
+  //     title: "Post Three",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "3",
+  //   },
+  //   {
+  //     title: "Post Four",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "4",
+  //   },
+  // ];
 
   return (
     <div className="homepage">
