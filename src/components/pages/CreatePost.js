@@ -4,6 +4,8 @@ import { db, auth } from '../../firebase';
 import "./CreatePost.css";
 import { useNavigate } from 'react-router-dom';
 
+import './CreatePost.css'; //ADDED THIS
+
 export const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
@@ -21,9 +23,10 @@ export const CreatePost = () => {
 };
 
   return (
+    
     <div className="createPostPage">
         <div className="cpContainer">
-            <h1>Log New Workout</h1>
+        <h1>Log New Workout</h1>
             <div className="input">
                 <label> Title: </label>
                 <input placeholder="Title..." onChange={(event) => 
