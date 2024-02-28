@@ -30,9 +30,9 @@ function SignUp(){
             await updateProfile(user, { displayName: name });
             console.log(userCredential);
             // Use setDoc to add user data to the "users" collection
-            await setDoc(doc(db, 'users', userCredential.user.uid), {
-                name: name,
-            }, { merge: true });
+            // await setDoc(doc(db, 'users', userCredential.user.uid), {
+            //     name: name,
+            // }, { merge: true });
             
             console.log("successfully connected to firebase")
     
@@ -59,7 +59,8 @@ function SignUp(){
             }
             
         }
-    }
+    };
+
     return(
         <form onSubmit={signUp}>
             <div className="sign-in-container">
@@ -84,7 +85,6 @@ function SignUp(){
                  onChange={(e)=>setPassword(e.target.value)}></input>
                 </div>
                 <div>{errorExists && <h3>{errorMessage}</h3>}</div>
-                <div className="forgot-password">Forget Password? <span>Click Here</span></div>
                 <div className="submit-container">
                     <button type="submit" className="submit" >Sign Up</button>
                 </div>
