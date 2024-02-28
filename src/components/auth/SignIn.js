@@ -23,6 +23,9 @@ function SignIn() {
           setErrorExists(true);
       })
   }
+  const handleReset = ()=>{
+    navigate("/reset");
+}
   return (
       <div className="Login">
         <h1> Welcome To <img className="Logo" src={Logo}/> </h1>
@@ -39,9 +42,10 @@ function SignIn() {
               onChange={(e)=>setPassword(e.target.value)}>
               </input>
             </div>
-            <div><Button id="loginbutton" type="submit">Login</Button></div>
-          </form>
+            <div><Button id="loginbutton" type="submit">Login</Button></div> <br/>
             <Button id="signupbutton" onClick={() => navigate("/signup")}> Sign Up </Button>
+            <div className="forgot-password">Forget Password? <span onClick={handleReset}>Click Here</span></div> 
+          </form>
         <div>{errorExists && <p>Error: Invalid email or password, or account is not registered.</p>}</div>
         </div>
       </div>

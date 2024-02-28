@@ -5,6 +5,7 @@ import profilePhoto from "../images/ProfilePhoto.png";
 // assuming post data of form:
 const emptyPost = {
   title: "Post Title",
+  postAuthor: "Post Author",
   postText:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
 };
@@ -21,7 +22,7 @@ function Card({ post = emptyPost }) {
         />
         <div>
           <div className="title">{post.title}</div>
-          <div className="author">Post Author</div>
+          <div className="author">{post.postAuthor}</div>
         </div>
       </div>
       <div className="content">{post.postText}</div>
