@@ -7,11 +7,10 @@ import Button from "../Button";
 import Card from "../Card";
 import "./HomePage.css"
 
-export const HomePage = () => {
+export const HomePage = (props) => {
   const navigate = useNavigate();
   /* added a second argument '[]' to useEffect, should now only be executed on the 
   initial render of this page, should reduce reads to Firestore */
-
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
   useEffect(() => {
@@ -21,36 +20,37 @@ export const HomePage = () => {
     };
     getPosts(); 
   }, []);
-  
 
-  /* Old filler posts:
-  const postList = [
-    {
-      title: "Post One",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "1",
-    },
-    {
-      title: "Post Two",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "2",
-    },
-    {
-      title: "Post Three",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "3",
-    },
-    {
-      title: "Post Four",
-      postText:
-        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-      id: "4",
-    },
-  ];
-  */
+  /* Using filler data in mean time: */
+  //   const postList = props.postsList;
+  //   console.log("This is the post list", postList);
+  // const postList = [
+  //   {
+  //     title: "Post One",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "1",
+  //   },
+  //   {
+  //     title: "Post Two",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "2",
+  //   },
+  //   {
+  //     title: "Post Three",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "3",
+  //   },
+  //   {
+  //     title: "Post Four",
+  //     postText:
+  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  //     id: "4",
+  //   },
+  // ];
+
   return (
     <div className="homepage">
       <Navbar />

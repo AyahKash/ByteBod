@@ -1,0 +1,65 @@
+.createPostPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .cpContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 80%;
+    padding: 20px;
+    /* border: 2px solid #ccc; */
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  }
+ 
+  .cpContainer h1 {
+    margin-bottom: 80px;
+  }
+  
+  .input {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+  }
+  
+  .input label {
+    margin-bottom: 4px;
+  }
+  
+ 
+  .input input, .input textarea {
+    color: black;
+    padding: 10px;
+    font-size: 18px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    width: 100%;
+  }
+
+  .label-class{
+    color: #164863
+  }
+  
+  .input textarea {
+    height: 150px;
+  }
+  
+  button {
+    padding: 10px 20px;
+    background-color: #427D9D;
+    color: #DDF2FD;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #164863;
+  }
+  
+  

@@ -27,18 +27,24 @@ function SignUp(){
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password);
             console.log(userCredential);
-    
+            
             // Use setDoc to add user data to the "users" collection
+
             await setDoc(doc(db, 'users', userCredential.user.uid), {
                 name: name,
             }, { merge: true });
+            console.log("successfully connected to firebase")
     
             // Sign into the account after creating a new account
-            const signInCredential = await signInWithEmailAndPassword(auth, email, password);
-            console.log(signInCredential);
+            const signInCredential = await signInWithEmailAndPassword(auth, email, password); 
+            console.log(signInCredential); 
+            console.log("successfully signed in")
+            console.log("now waiting to navigate to homepage")
     
             // Navigate to the homepage
             navigate("/homepage");
+            console.log("navigated to homepage success")
+
         } catch (error) {
             console.log(error);
             console.log("Error message:", error.message);
