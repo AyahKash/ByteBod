@@ -3,7 +3,7 @@ import {auth, db} from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import './SignUp.css'
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { setDoc, doc } from 'firebase/firestore';
 
 
@@ -23,16 +23,17 @@ function SignUp(){
     //function for what to happen when sign in:
     const signUp = async (e) => {
         e.preventDefault();
-    
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            // Update user profile with name
+            const user = userCredential.user;
+            await updateProfile(user, { displayName: name });
             console.log(userCredential);
-            
             // Use setDoc to add user data to the "users" collection
-
             await setDoc(doc(db, 'users', userCredential.user.uid), {
                 name: name,
             }, { merge: true });
+            
             console.log("successfully connected to firebase")
     
             // Sign into the account after creating a new account

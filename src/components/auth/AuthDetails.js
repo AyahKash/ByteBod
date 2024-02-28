@@ -8,17 +8,18 @@ import { useNavigate } from "react-router-dom";
 function AuthDetails(){ 
     const navigate = useNavigate();
     const [authUser, setAuthUser] = useState(null);
+    const [name, setName] = useState(null);
     useEffect( () => {
-        const listen = onAuthStateChanged(auth, (user)=>{
-            if(user){
-                setAuthUser(user);
-                console.log(user)
+        const listen = onAuthStateChanged(auth, (userCredential)=>{
+            if(userCredential){
+                setAuthUser(userCredential);
+                setName(userCredential.displayName)
+                console.log(userCredential)
             }
             else{
                 setAuthUser(null);
             }
         });
-        // console.log(authUser)
         return()=>{
             listen();
         }
@@ -31,7 +32,7 @@ function AuthDetails(){
     }
     return(
         <div>
-            {authUser ? <><p>{` Signed In as ${authUser.email}`}</p><Button onClick={userSignOut}>Sign Out</Button></>: <p>Signed Out</p>}
+            {authUser ? <><p>{` Signed In as ${name}`}</p><Button onClick={userSignOut}>Sign Out</Button></>: <p>Signed Out</p>}
         </div>
     );
 }
