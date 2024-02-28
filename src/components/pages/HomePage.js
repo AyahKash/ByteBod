@@ -13,13 +13,18 @@ export const HomePage = (props) => {
   initial render of this page, should reduce reads to Firestore */
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
-  useEffect(() => {
+  useEffect(()=>{
     const getPosts = async () => {
-      const data = await getDocs(postsCollectionRef);
-      setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
-    };
-    getPosts(); 
-  }, []);
+    try {
+        const data = await getDocs(postsCollectionRef);
+        setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+      } catch (error) {
+      console.error("Error fetching posts:", error.message);
+    }
+  };
+    getPosts();
+  }, [postsCollectionRef]); //don't need this in dependency array, but error otherwise
+  //the effect only runs when postsCollectionRef changes, and it should never change
 
   /* Using filler data in mean time: */
   //   const postList = props.postsList;
