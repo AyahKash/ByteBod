@@ -61,3 +61,5 @@ export const CreatePost = (props) => {
     </form>
   )
 }
+
+export default CreatePost;
