@@ -9,8 +9,8 @@ import "./HomePage.css"
 
 export const HomePage = (props) => {
   const navigate = useNavigate();
-  /* Commenting out firebase syncing until we figure out read issue:
-
+  /* added a second argument '[]' to useEffect, should now only be executed on the 
+  initial render of this page, should reduce reads to Firestore */
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
   useEffect(() => {
@@ -19,12 +19,11 @@ export const HomePage = (props) => {
       setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     };
     getPosts(); 
-  });
-  */
+  }, []);
 
   /* Using filler data in mean time: */
-  const postList = props.postsList;
-  console.log("This is the post list", postList);
+  //   const postList = props.postsList;
+  //   console.log("This is the post list", postList);
   // const postList = [
   //   {
   //     title: "Post One",
