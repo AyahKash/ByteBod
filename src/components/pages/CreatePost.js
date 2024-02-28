@@ -8,6 +8,7 @@ export const CreatePost = (props) => {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
   
+  
   const postsCollectionRef = collection(db, "posts");
   let navigate = useNavigate();
 
@@ -17,7 +18,8 @@ export const CreatePost = (props) => {
         const newPostData = { 
             title, 
             postText, 
-            author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}}; //trying to display name in post??
+            author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}, 
+        };
         try {
             await addDoc(postsCollectionRef, newPostData)
         } catch (error) {

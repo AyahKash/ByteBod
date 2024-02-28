@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './components/pages/HomePage';
 import { Settings } from "./components/pages/Settings";
 import { Profile } from "./components/pages/Profile";
-import { CreatePost } from "./components/pages/CreatePost"
+import CreatePost from "./components/pages/CreatePost";
 
 
   //   {
