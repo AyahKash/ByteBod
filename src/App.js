@@ -39,7 +39,8 @@ function App() {
       <Routes>
         <Route path="/" element={<SignIn/>}/>
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/homepage" element={<React.Fragment><HomePage postsList={posts}/><AuthDetails /></React.Fragment>} />
+        {/* <Route path="/homepage" element={<React.Fragment><HomePage postsList={posts}/><AuthDetails /></React.Fragment>} /> */}
+        <Route path="/homepage" element={<React.Fragment><HomePage/><AuthDetails /></React.Fragment>} />
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/createpost" element={<CreatePost updatePosts={setPosts}/>}/>      

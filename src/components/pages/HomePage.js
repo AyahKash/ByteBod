@@ -7,9 +7,9 @@ import Button from "../Button";
 import Card from "../Card";
 import "./HomePage.css"
 
-export const HomePage = (props) => {
+export const HomePage = (posts) => {
   const navigate = useNavigate();
-  /* Commenting out firebase syncing until we figure out read issue:
+  /* Commenting out firebase syncing until we figure out read issue: */
 
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
@@ -20,11 +20,11 @@ export const HomePage = (props) => {
     };
     getPosts(); 
   }, [] );
-  */
+  
 
   /* Using filler data in mean time: */
-  const postList = props.postsList;
-  console.log("This is the post list", postList);
+  // const postList = props.postsList;
+  // console.log("This is the post list", postList);
   // const postList = [
   //   {
   //     title: "Post One",
