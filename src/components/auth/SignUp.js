@@ -30,7 +30,8 @@ function SignUp(){
             await updateProfile(user, { displayName: name });
             console.log(userCredential);
             // Use setDoc to add user data to the "users" collection
-            // await setDoc(doc(db, 'users', userCredential.user.uid), {
+            // await setDoc(doc(db, 'users', user.uid), {
+            //     email: user.email,
             //     name: name,
             // }, { merge: true });
             
