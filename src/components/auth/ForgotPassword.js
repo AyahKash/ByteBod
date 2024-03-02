@@ -11,7 +11,7 @@ function ForgotPassword() {
         e.preventDefault()
         const emailVal = e.target.email.value;
         sendPasswordResetEmail(auth, emailVal).then(data=>{
-            alert("Check your email for a reset link")
+            alert("Reset link sent to email if account exists")
         }).catch(err=>{
             alert(err.code)
         })
