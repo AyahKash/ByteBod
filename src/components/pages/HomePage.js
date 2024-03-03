@@ -9,6 +9,12 @@ import "./HomePage.css"
 
 export const HomePage = (props) => {
   const navigate = useNavigate();
+  
+  const setLikes = () =>{
+    //somehow get likes of a certain post from firebase, use a posts id
+    //increment likes
+    //repost likes to firebase
+  }
   /* Commenting out firebase syncing until we figure out read issue:
 
   const [postList, setPostList] = useState([]);
@@ -61,7 +67,7 @@ export const HomePage = (props) => {
       <div className="postlist">
         {postList.map((post) => (
           <div className="Post">
-            <Card key={post.id} post={post} />
+            <Card incrementLikes={setLikes} key={post.id} post={post} />
           </div>
         ))}
       </div>
