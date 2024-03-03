@@ -8,9 +8,16 @@ const emptyPost = {
   postAuthor: "Post Author",
   postText:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
+  postDate: "Post Date",
+
 };
+//for ayah testing
+
 
 function Card({ post = emptyPost, incrementLikes }) {
+  //for ayah testing
+  console.log("Here is the type", typeof(post.createAt))
+  
   return (
     <div className="card">
       <div className="heading">
@@ -26,7 +33,7 @@ function Card({ post = emptyPost, incrementLikes }) {
         </div>
       </div>
       <div className="content">{post.postText}</div>
-      <div className="date">Post Date</div>
+      {typeof(post.createAt) === 'string' && <div className="date">Post Date: {post.createAt}</div>}
       <div className="interaction">
         <Button onClick={incrementLikes} className="button like">&#128077;</Button>
         <Button className="button comment">&#128172;</Button>

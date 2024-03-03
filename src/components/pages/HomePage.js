@@ -19,6 +19,9 @@ export const HomePage = (posts) => {
     getPosts(); 
   }, [] );
   
+  //for Ayah testing purposes:
+  console.log("Here is the postLis", postList);
+
   return (
     <div className="homepage">
       <Navbar />
@@ -28,7 +31,7 @@ export const HomePage = (posts) => {
       <div className="postlist">
         {postList.map((post) => (
           <div className="Post">
-            <Card incrementLikes={setLikes} key={post.id} post={post} />
+            <Card key={post.id} post={post} />
           </div>
         ))}
       </div>
