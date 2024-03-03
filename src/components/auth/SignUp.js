@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import {auth, db} from "../../firebase";
+import {auth} from "../../firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import './SignUp.css'
 import { useNavigate } from "react-router-dom";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { setDoc, doc } from 'firebase/firestore';
+import { signInWithEmailAndPassword} from "firebase/auth";
+import { updateUserProfile } from "./FirebaseUtils";
 
 
 
@@ -23,16 +23,11 @@ function SignUp(){
     //function for what to happen when sign in:
     const signUp = async (e) => {
         e.preventDefault();
-    
         try {
-            const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            const userCredential = await createUserWithEmailAndPassword(auth, email, password)
+            const user = userCredential.user;
             console.log(userCredential);
-            
-            // Use setDoc to add user data to the "users" collection
-
-            await setDoc(doc(db, 'users', userCredential.user.uid), {
-                name: name,
-            }, { merge: true });
+            await updateUserProfile(user, name, email);
             console.log("successfully connected to firebase")
     
             // Sign into the account after creating a new account
@@ -58,7 +53,8 @@ function SignUp(){
             }
             
         }
-    }
+    };
+
     return(
         <form onSubmit={signUp}>
             <div className="sign-in-container">
@@ -83,7 +79,6 @@ function SignUp(){
                  onChange={(e)=>setPassword(e.target.value)}></input>
                 </div>
                 <div>{errorExists && <h3>{errorMessage}</h3>}</div>
-                <div className="forgot-password">Forget Password? <span>Click Here</span></div>
                 <div className="submit-container">
                     <button type="submit" className="submit" >Sign Up</button>
                 </div>

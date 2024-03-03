@@ -7,16 +7,8 @@ import Button from "../Button";
 import Card from "../Card";
 import "./HomePage.css"
 
-export const HomePage = (props) => {
+export const HomePage = (posts) => {
   const navigate = useNavigate();
-  
-  const setLikes = () =>{
-    //somehow get likes of a certain post from firebase, use a posts id
-    //increment likes
-    //repost likes to firebase
-  }
-  /* Commenting out firebase syncing until we figure out read issue:
-
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
   useEffect(() => {
@@ -25,39 +17,8 @@ export const HomePage = (props) => {
       setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     };
     getPosts(); 
-  });
-  */
-
-  /* Using filler data in mean time: */
-  const postList = props.postsList;
-  console.log("This is the post list", postList);
-  // const postList = [
-  //   {
-  //     title: "Post One",
-  //     postText:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-  //     id: "1",
-  //   },
-  //   {
-  //     title: "Post Two",
-  //     postText:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-  //     id: "2",
-  //   },
-  //   {
-  //     title: "Post Three",
-  //     postText:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-  //     id: "3",
-  //   },
-  //   {
-  //     title: "Post Four",
-  //     postText:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-  //     id: "4",
-  //   },
-  // ];
-
+  }, [] );
+  
   return (
     <div className="homepage">
       <Navbar />
@@ -74,3 +35,5 @@ export const HomePage = (props) => {
     </div>
   );
 };
+
+export default HomePage;

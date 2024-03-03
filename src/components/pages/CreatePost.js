@@ -19,13 +19,18 @@ export const CreatePost = (props) => {
             title, 
             postText, 
             author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}, 
+        };
+        try {
+            await addDoc(postsCollectionRef, newPostData)
+        } catch (error) {
+            console.log("Error adding post to database: ", error)
         }
-
+        
         //the functionality for fetching data from firebase will be in HomePage.js
-        props.updatePosts( (prevList) => {
-        //NEED to capture new post that was added to firebase
-        return [...prevList, newPostData];
-        })
+        // props.updatePosts( (prevList) => {
+        // //NEED to capture new post that was added to firebase
+        // return [...prevList, newPostData];
+        // })
 
         navigate("/homepage");
     }; 
@@ -56,3 +61,5 @@ export const CreatePost = (props) => {
     </form>
   )
 }
+
+export default CreatePost;
