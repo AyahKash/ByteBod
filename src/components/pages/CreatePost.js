@@ -25,14 +25,7 @@ export const CreatePost = (props) => {
         } catch (error) {
             console.log("Error adding post to database: ", error)
         }
-        
-        //the functionality for fetching data from firebase will be in HomePage.js
-        // props.updatePosts( (prevList) => {
-        // //NEED to capture new post that was added to firebase
-        // return [...prevList, newPostData];
-        // })
-
-        navigate("/homepage");
+      navigate("/homepage");
     }; 
     
 

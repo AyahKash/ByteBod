@@ -7,16 +7,8 @@ import ForgotPassword from './components/auth/ForgotPassword';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './components/pages/HomePage';
 import { Settings } from "./components/pages/Settings";
-import { Profile } from "./components/pages/Profile";
+import Profile from "./components/pages/Profile";
 import CreatePost from "./components/pages/CreatePost";
-
-
-  //   {
-  //     title: "Post One",
-  //     postText:
-  //       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
-  //     id: "1",
-  //   }
 
 function App() {
   const [posts, setPosts] = useState([]);
