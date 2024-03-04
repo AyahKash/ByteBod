@@ -5,6 +5,7 @@ import AuthDetails from "../auth/AuthDetails";
 import { useState, useEffect} from "react";
 import profilePhoto from "../../images/ProfilePhoto.png";
 import { useAuth, upload, updateUserProfile , deleteProfilePhoto} from "../auth/FirebaseUtils";
+import Button from "../Button";
 
 export const Settings = () => {
 
@@ -14,6 +15,14 @@ export const Settings = () => {
   const [photoURL, setPhotoURL] = useState(profilePhoto); //default photo is profilephoto
   const [photoURLWritten, setPhotoURLWritten] = useState(false)
   const [bio, setBio] = useState(null);
+
+  useEffect(() => {
+    if (currentUser) {
+      const userEmail = currentUser.email;
+      console.log("User email:", userEmail);
+    }
+  }, [currentUser]);
+
 
   function handleChange(e){  //updates state of photo with the file uploaded
     if(e.target.files[0]){
@@ -70,24 +79,30 @@ export const Settings = () => {
   }
 
   return (
+    //main div:
     <div>
-      <Navbar />
-      <div> <AuthDetails/> </div>
-      <div className="container">
-      <h3 className="Header"> Edit Profile </h3>
-      <div className="inputs">
-        <div className="profile_picture">
-          <input type="file" onChange={handleChange}></input>
-          <button disabled={loading||!photo} onClick={handleClick}>Upload</button>
-          <img src={photoURL} alt = "Hello" className = "avatar"/>
-          <button onClick={removeImage}>Remove Profile Photo</button> 
-        </div>
+     <div> <Navbar/> </div> 
+    <div class="flex-container">
+    <div class="profile_box">
+      <img src={photoURL} alt = "Hello" className = "avatar"/>
+      <div class="item"> <AuthDetails/> 
+      Email: {currentUser ? currentUser.email : 'Loading...'}
       </div>
-      <div>        <input type="bio" placeholder="Enter your bio" value={bio}
-                 onChange={(e)=>setBio(e.target.value)}></input>
-          <button onClick={assignBio}>Save Bio</button>
-</div>
+      <input class="item" type="file" onChange={handleChange}></input>
+      <div class="button-container">
+        <button class="upload" disabled={loading || !photo} onClick={handleClick}>Upload</button>
+        <button onClick={null} class="upload">Remove Profile Picture</button>
       </div>
+    </div>
+    <div class="info_box">
+     <div> Personal Information</div> 
+     <div class="bio-section">
+    <div>Bio:</div>
+    <textarea class="input-field larger-input" placeholder="Enter your bio" value={bio} onChange={(e) => setBio(e.target.value)}></textarea>
+    <button onClick={assignBio} class="bottom-left-button">Save Bio</button>
+    </div>
+    </div>
+    </div>
     </div>
   );
 };

@@ -7,12 +7,8 @@ import ForgotPassword from './components/auth/ForgotPassword';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HomePage } from './components/pages/HomePage';
 import { Settings } from "./components/pages/Settings";
-<<<<<<< HEAD
-import Profile from "./components/pages/Profile";
-=======
 import { Profile } from "./components/pages/Profile";
 import { FriendsPage } from "./components/pages/FriendsPage";
->>>>>>> 731407376dc52f1f4a3cd1809f1b3add947f31f9
 import CreatePost from "./components/pages/CreatePost";
 
 function App() {
