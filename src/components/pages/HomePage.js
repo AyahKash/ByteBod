@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { getDocs, collection } from "firebase/firestore";
+import { getDocs, collection, query, orderBy } from "firebase/firestore";
 import { db } from "../../firebase"; 
 import Navbar from "../Navbar";
 import Button from "../Button";
@@ -13,14 +13,14 @@ export const HomePage = (posts) => {
   const postsCollectionRef = collection(db, "posts");
   useEffect(() => {
     const getPosts = async () => {
-      const data = await getDocs(postsCollectionRef);
+      const data = await getDocs(query(postsCollectionRef, orderBy('createAt', 'desc')));
       setPostList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
     };
     getPosts(); 
   }, [] );
   
   //for Ayah testing purposes:
-  console.log("Here is the postLis", postList);
+  console.log("Here is the postList", postList);
 
   return (
     <div className="homepage">
