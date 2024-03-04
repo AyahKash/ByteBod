@@ -7,7 +7,18 @@ import { useNavigate } from 'react-router-dom';
 export const CreatePost = (props) => {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
-  
+  const createDate = new Date();
+
+  const formattedTime = createDate.toLocaleString('en-US', {
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: true // Whether to use 12-hour time (true) or 24-hour time (false)
+  });
+
+  const dateString = formattedTime.toString();
   
   const postsCollectionRef = collection(db, "posts");
   let navigate = useNavigate();
@@ -18,7 +29,8 @@ export const CreatePost = (props) => {
         const newPostData = { 
             title, 
             postText, 
-            author: {name: auth.currentUser.displayName, id: auth.currentUser.uid}, 
+            author: {name: auth.currentUser.displayName, id: auth.currentUser.uid},
+            createAt: dateString,
         };
         try {
             await addDoc(postsCollectionRef, newPostData)

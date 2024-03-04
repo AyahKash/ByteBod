@@ -19,6 +19,9 @@ export const HomePage = (posts) => {
     getPosts(); 
   }, [] );
   
+  //for Ayah testing purposes:
+  console.log("Here is the postLis", postList);
+
   return (
     <div className="homepage">
       <Navbar />
