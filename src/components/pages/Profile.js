@@ -1,23 +1,20 @@
 import React from "react";
 import Navbar from "../Navbar";
+import Button from "../Button";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
 import AuthDetails from "../auth/AuthDetails";
 import { useState } from "react";
 
 export const Profile = () => {
-  const [bio, setBio] = useState("")
+  const navigate = useNavigate();
+
   return (
     <div>
       <Navbar />
       <AuthDetails/>
       <div>Profile Page</div>
-      <div className="inputs">
-        <div className="input">
-          <img src="" alt="" />   
-          <input type="name" placeholder="Enter your bio" value={bio}
-          onChange={(e)=>setBio(e.target.value)}></input>
-        </div>
-    </div>
+      <Button onClick={() => navigate("/profile/friends")}> Friends </Button>
     </div>
   );
 };

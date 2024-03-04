@@ -28,11 +28,11 @@ export const Settings = () => {
   useEffect(()=>{
     if(currentUser && currentUser.photoURL){
       setPhotoURLWritten(true)
-      console.log("Updated photoURL:", currentUser.photoURL);
+      console.log("Updated photoURL in effect:", currentUser.photoURL);
     }
   }, [currentUser]);
 
-  //connects profile picture to firestore database, now can display it from anywhere (with usercredential)
+  //connects profile  to firestore database, now can display it from anywhere (with usercredential)
   useEffect(()=>{
     const assignPhotoURLToProfile = async () => {
       if(photoURLWritten){
@@ -42,7 +42,7 @@ export const Settings = () => {
         try{
           await updateUserProfile(currentUser, currentUser.email, options);
           setPhotoURL(currentUser.photoURL);
-          console.log("Updated photoURL: ", currentUser.photoURL);
+          console.log("Updated photoURL in this effect: ", currentUser.photoURL);
         }
         catch(error){
           console.error("Error updating profile: ", error);
@@ -63,6 +63,11 @@ export const Settings = () => {
       console.log("Trouble updating bio, error: ", error)
     }
   }
+  function removeImage(){
+    setPhotoURLWritten(false);
+    setPhotoURL(profilePhoto);
+    currentUser.photoURL = profilePhoto;
+  }
 
   return (
     <div>
@@ -75,7 +80,7 @@ export const Settings = () => {
           <input type="file" onChange={handleChange}></input>
           <button disabled={loading||!photo} onClick={handleClick}>Upload</button>
           <img src={photoURL} alt = "Hello" className = "avatar"/>
-          <button onClick={null}>Remove Profile Photo</button> 
+          <button onClick={removeImage}>Remove Profile Photo</button> 
         </div>
       </div>
       <div>        <input type="bio" placeholder="Enter your bio" value={bio}

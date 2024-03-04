@@ -72,10 +72,10 @@ export async function upload(file, currentUser, setLoading){
   alert("Uploaded picture!");
 }
 //fix this to generate unique hash for each profile pic (incase of same displayname)
-// export async function deleteProfilePhoto(currentUser){ 
-//   const fileRef = ref(storage, 'profile_photos/'+ currentUser.displayName + '.png');
-//   deleteObject(fileRef).then(() => {
-//     console.log("deleted successfully")
-//   }).catch((error) => {
-//   });
-// }
+export async function deleteProfilePhoto(currentUser){ 
+  const fileRef = ref(storage, 'profile_photos/'+ currentUser.displayName + '.png');
+  deleteObject(fileRef).then(() => {
+    console.log("deleted successfully")
+  }).catch((error) => {
+  });
+}
