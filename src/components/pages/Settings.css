@@ -1,7 +1,11 @@
-.main{
-  color: white;
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* Set the height of the body to the viewport height */
 }
+
 .avatar {
+  padding: 10px;
   position: relative;
   width: 145px;
   height: 145px; /* Adjust the height to maintain a perfect circle */
@@ -13,6 +17,7 @@ margin-top: 15px;
 }
 
 .avatar img {
+  padding: 30px;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -22,41 +27,6 @@ margin-top: 15px;
   width: auto;
   height: auto;
 }
-body {
-  margin: 0;
-  padding: 0;
-  height: 100vh; /* Set the height of the body to the viewport height */
-}
-
-.Header {
-  margin: 0; /* Remove default margin for the heading */
-}
-
-
-.item {
-  width: 100%; /* Set the width to 100% */
-  color: white;
-  padding: 10px;
-  font-size: 14px;
-  align-items: center;
-}
-
-.profile_box {
-  background-color: #164863;
-  overflow: auto;
-  padding: 10px;
-  height: 450px;
-  width: 350px;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  border-radius: 5px;
-  box-shadow: 0 0.5em 1em rgba(0.2, 0.2, 0.2, 0.2);
-}
-
 .flex-container {
   display: flex;
   justify-content: space-around;
@@ -71,10 +41,43 @@ body {
   font-size: 30px;
 }
 
+.profile_box {
+  background-color: #164863;
+  overflow: auto;
+  padding: 40px;
+  height: 500px;
+  width: 350px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 0.5em 1em rgba(0.2, 0.2, 0.2, 0.2);
+}
+
+
+.item {
+  width: 100%; /* Set the width to 100% */
+  color: white;
+  padding: 10px;
+  font-size: 14px;
+  align-items: center;
+}
+
+.item2{
+  font-size: 14px;
+  color: white;
+  margin-left:45px;
+  margin-top:10px;
+}
+
+
 .info_box {
   background-color: #164863;
   padding: 20px;
-  height: 450px;
+  height: 500px;
   width: 800px;
   display: flex;
   flex-direction: column;
@@ -101,6 +104,15 @@ body {
   height: 100px;
 }
 
+.pass-input-field{
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  box-sizing: border-box;
+  color: black; 
+  font-size: 14px; 
+}
+
 .bio-section {
   width: 100%;
   display: flex;
@@ -118,11 +130,27 @@ body {
   margin-left: 0;
   font-size: 14px;
 }
-.upload {
+.buttons {
   flex-direction: row;
   align-self: flex-start;
   margin-top: auto;
   margin-left: 0;
   font-size: 14px;
+  margin: 5px;
 }
 
+.font-header{
+  font-family: "Nunito", sans-serif;
+  font-size: 25px;
+}
+.font{
+  margin-top: 15px;
+  font-family: "Nunito", sans-serif;
+  font-size: 18px;
+}
+
+.ResetPassword {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
