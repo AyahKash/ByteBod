@@ -1,0 +1,58 @@
+h4 {
+  margin: 2%;
+}
+
+.friendspage-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 2%;
+}
+
+.left-side {
+  flex: 1;
+  box-shadow: 0 0.5em 1em rgba(0.2, 0.2, 0.2, 0.2);
+  margin: 2%;
+  border-radius: 20px;
+}
+
+.right-side {
+  flex: 1;
+  box-shadow: 0 0.5em 1em rgba(0.2, 0.2, 0.2, 0.2);
+  margin: 2%;
+  border-radius: 20px;
+}
+
+.friend-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #164863;
+  border-radius: 20px;
+  margin: 2%;
+  padding: 2%;
+}
+
+.text-container {
+  text-align: left;
+}
+
+.button-container {
+  display: flex;
+  margin-right: 2%;
+}
+
+.barrier {
+  margin: 2%;
+}
+
+.hl {
+  border: 1px #164863;
+}
+.request-form {
+  padding: 2%;
+}
+
+.form-group {
+  display: flex;
+  align-items: center;
+}
