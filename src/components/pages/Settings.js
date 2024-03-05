@@ -17,6 +17,7 @@ export const Settings = () => {
   const [bio, setBio] = useState(null);
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [photoChosen, setPhotoChosen] = useState(false); 
 
  //sets user email to display it
   useEffect(() => {
@@ -29,6 +30,7 @@ export const Settings = () => {
   function handleChange(e){  //updates state of photo with the file uploaded
     if(e.target.files[0]){
       setPhoto(e.target.files[0])
+      setPhotoChosen(true)
     }
   }
   function handleClick(){ //calls upload function 
@@ -108,18 +110,23 @@ export const Settings = () => {
         <div class="profile_box">
           <img src={photoURL} alt = "Hello" className = "avatar"/>
           <div class="item"> <AuthDetails/> 
-          Email: {currentUser ? currentUser.email : 'Loading...'}
+            <div className = "user-email"> 
+              Email: {currentUser ? currentUser.email : 'Loading...'}
+            </div>
+            <div className = "user-bio"> 
+              Bio: {currentUser ? bio : 'Loading...'}
+            </div>
           <input class="item2" type="file" onChange={handleChange}></input>
           </div>
           <div class="button-container">
-            <button class="buttons" disabled={loading || !photo} onClick={handleClick}>Upload</button>
+            <button class="buttons" disabled={loading || !photo} onClick={handleClick} style={{backgroundColor: photoChosen === true  ?  "#027148" : "#808080" }}>Upload</button>
             <button onClick={null} class="buttons">Remove Profile Picture</button>
           </div>
         </div>
         <div class="info_box">
           <div class="font-header"> Personal Information</div> 
           <div class="bio-section">
-            <div class="font">Bio:</div>
+            <div class="font">Bio: </div>
             <textarea class="input-field larger-input" placeholder="Enter your bio" value={bio} onChange={(e) => setBio(e.target.value)}></textarea>
             <button onClick={assignBio} class="bottom-left-button">Save Bio</button>
           </div>

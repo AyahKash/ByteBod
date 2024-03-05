@@ -70,6 +70,8 @@ export async function upload(file, currentUser, setLoading){
   await updateProfile(currentUser, {photoURL: photoUrl});
   setLoading(false);
   alert("Uploaded picture!");
+  //reload page so user can see updates
+  window.location.reload(false);
 }
 //fix this to generate unique hash for each profile pic (incase of same displayname)
 export async function deleteProfilePhoto(currentUser){ 

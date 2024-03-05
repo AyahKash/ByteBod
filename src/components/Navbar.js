@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../images/LogoInline.png";
 import Button from "./Button";
+import SearchBar from "./SearchBar";
 import { useNavigate } from "react-router-dom";
 import "./Navbar.css";
 import {signOut} from 'firebase/auth'
@@ -24,6 +25,7 @@ return (
           <img src={Logo} height="30" alt="" />
         </div>
         {/* Links */}
+        <SearchBar></SearchBar>
         <ul className="navbar-nav">
           <li className="navbar-item">
             <Button className="nav-link" onClick={() => navigate("/homepage")}> Home </Button>
