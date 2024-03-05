@@ -9,10 +9,14 @@ import {
   where,
 } from "firebase/firestore";
 import { db, auth } from "../../firebase";
-import { onAuthStateChanged } from "firebase/auth";
 import Navbar from "../Navbar";
 import Button from "../Button";
 import "./FriendsPage.css";
+import profilePhoto from "../../images/ProfilePhoto.png";
+import { useAuth } from "../auth/FirebaseUtils";
+
+
+
 
 /* Implementation Notes:
     - currently you can: 
@@ -29,28 +33,14 @@ import "./FriendsPage.css";
 
 export const FriendsPage = (props) => {
   const usersRef = collection(db, "users");
-  const [targetEmail, setTargetEmail] = useState("");
+  const currentUser = useAuth();
   const [currentUserFriendRequestsRef, setCurrentUserFriendRequestsRef] = useState("");
   const [currentUserFriendsRef, setCurrentUserFriendsRef] = useState("");
+  const [targetEmail, setTargetEmail] = useState("");
   const [requestList, setRequestList] = useState([]);
   const [friendList, setFriendList] = useState([]);
   const [listState, setListState] = useState();
   const [requestSendMessage, setRequestSendMessage] = useState("");
-
-  // Listener to ensure user is logged in to before attempting to access:
-  const [authUser, setAuthUser] = useState(null);
-  useEffect(() => {
-    const listen = onAuthStateChanged(auth, (userCredential) => {
-      if (userCredential) {
-        setAuthUser(userCredential);
-      } else {
-        setAuthUser(null);
-      }
-    });
-    return () => {
-      listen();
-    };
-  }, []);
 
   // Find a user given the email entered:
   const findTargetUserFromEmail = async () => {
@@ -192,7 +182,7 @@ export const FriendsPage = (props) => {
       }
     };
     getCurrentUserRefs();
-  }, [authUser]);
+  }, [currentUser]);
 
   // Fetch pending friend request list from Firestore:
   useEffect(() => {
@@ -260,10 +250,17 @@ export const FriendsPage = (props) => {
           <div className="friends-list">
             {friendList.map((friend) => (
               <div className="friend-card">
-                <div className="text-container"> {friend.name} </div>
+                <div className="text-container">
+                    <img
+                    src={friend.photoURL ? friend.photoURL : profilePhoto}
+                    alt="Profile"
+                    className="avatar-small"
+                    />
+                  <div> {friend.name} </div>
+                </div>
                 <div className="button-container">
                   <Button
-                    className="light"
+                    className="button light"
                     onClick={() => removeFriend(friend.id)}
                   >
                     Remove
@@ -279,17 +276,24 @@ export const FriendsPage = (props) => {
           <div className="request-list">
             {requestList.map((request) => (
               <div className="friend-card">
-                <div className="text-container"> {request.name} </div>
+                <div className="text-container">
+                    <img
+                    src={request.photoURL ? request.photoURL : profilePhoto}
+                    alt="Profile"
+                    className="avatar-small"
+                    />
+                  <div> {request.name} </div>
+                </div>
                 <div className="button-container">
                   <Button
-                    className="light"
+                    className="button light"
                     onClick={() => respondToRequest(request.id, true)}
                   >
                     Accept
                   </Button>
                   <div className="barrier"></div>
                   <Button
-                    className="light"
+                    className="button light"
                     onClick={() => respondToRequest(request.id, false)}
                   >
                     Reject
@@ -298,20 +302,20 @@ export const FriendsPage = (props) => {
               </div>
             ))}
           </div>
-          <hr className="hl"></hr>
+          <div className="divider" />
           <form className="request-form" onSubmit={sendFriendRequest}>
             <h4 className="form-title">Send a Friend Request</h4>
             <div className="form-group">
-              <label> User Email: </label>
               <input
+                className="form-label"
                 placeholder="Email..."
                 type="email"
                 onChange={(event) => {
                   setTargetEmail(event.target.value);
                 }}
               />
+              <Button type="submit" className="button sr">Send Request</Button>
             </div>
-            <Button type="submit">Send Request</Button>
             <div> {requestSendMessage} </div>
           </form>
         </div>
