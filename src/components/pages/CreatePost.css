@@ -14,8 +14,6 @@
     /* border: 2px solid #ccc; */
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-    
-    
   }
  
   /* Title styling */
@@ -26,6 +24,7 @@
   }
   
   .input {
+    color: black;
     display: flex;
     flex-direction: column;
     margin-bottom: 30px;
@@ -35,13 +34,18 @@
     margin-bottom: 10px;
   }
   
-  /* Input field styling */
-.input input, .input textarea {
+ 
+  .input input, .input textarea {
+    color: black;
     padding: 10px;
     font-size: 18px;
     border: 2px solid #ffffff;
     border-radius: 10px;
     width: 100%;
+  }
+
+  .label-class{
+    color: #164863
   }
   
   .input textarea {
