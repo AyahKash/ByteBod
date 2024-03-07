@@ -1,18 +1,20 @@
 import os
 import subprocess
 import requests
-
-
-# update_firebase_api_key.py
+'''
+This script requests the user to input an API key, and if the provided key is valid, the program proceeds to execute the website.
+'''
 
 def update_firebase_api_key(api_key):
-    # Read the content of the firebase_config.js file
+    '''
+    Updates the Firebase configuration file with the provided API key and initializes necessary components.
+    Args:
+        api_key (str): The Firebase API key required to run the website.
+    '''
+
     cwd = os.getcwd()
     firebase_config = os.path.join(cwd, 'src', 'firebase.js')
 
-    # with open(firebase_config, "r") as file:
-    #     content = file.read()
-    
     long_str = r'''
     const firebaseConfig = {
     apiKey: "%s",
@@ -46,29 +48,27 @@ if __name__ == "__main__":
     firebase_config = os.path.join(cwd, 'src', 'firebase.js')
 
     with open(firebase_config, 'r') as file:
-        # Read the entire content of the file
         file_content = file.read()
-        # Check if the target word is present in the file content
+        # If API key is already in firebase.js, run the website 
         if "firebaseConfig" in file_content:
             command = "npm start"
             result = subprocess.run(command, shell=True, capture_output=True, text=True)
 
-
+    # Otherwise prompt to enter API key
     user_api_key = input("Enter your Firebase API key: ")
     update_firebase_api_key(user_api_key)
     
+    # Construct the URL for accessing a Firestore document
     firestore_base_url = "https://firestore.googleapis.com/v1/projects/bytebod-9d1cf/databases/(default)/documents"
     collection_path = "users"
     document_id = "1GzrZkGGXofKao6vrj7FLdy4Ln53"
     api_key = user_api_key
-
-    # Construct the URL for accessing a Firestore document
     firestore_url = f"{firestore_base_url}/{collection_path}/{document_id}?key={api_key}"
 
     # Make a GET request to the Firestore document
     response = requests.get(firestore_url)
 
-    # Check the response status code
+    # Check the response status code to ensure inputted API key is valid
     if response.status_code == 200:
         print("API key is valid.")
         command = "npm start"
