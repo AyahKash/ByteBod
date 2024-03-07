@@ -3,6 +3,8 @@ import Navbar from "../Navbar";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
 import "./Profile.css";
+import AuthDetails from "../auth/AuthDetails";
+import { useState } from "react";
 
 export const Profile = () => {
   const navigate = useNavigate();
@@ -10,8 +12,11 @@ export const Profile = () => {
   return (
     <div>
       <Navbar />
+      <AuthDetails/>
       <div>Profile Page</div>
       <Button onClick={() => navigate("/profile/friends")}> Friends </Button>
     </div>
   );
 };
+
+export default Profile;
