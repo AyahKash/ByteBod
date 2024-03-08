@@ -15,6 +15,8 @@ export const Profile = () => {
       <AuthDetails/>
       <div>Profile Page</div>
       <Button onClick={() => navigate("/profile/friends")}> Friends </Button>
+      <Button onClick={() => navigate("/profile/workoutlog")}> Workout Log </Button>
+
     </div>
   );
 };
