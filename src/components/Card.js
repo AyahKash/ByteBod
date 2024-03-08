@@ -10,6 +10,7 @@ const emptyPost = {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
   postDate: "Post Date",
   photoUrl: profilePhoto,
+  workoutType: "Workout Type"
 
 };
 //for ayah testing
@@ -33,6 +34,7 @@ function Card({ post = emptyPost, incrementLikes }) {
           <div className="author">{post.author.name ? post.author.name : "Author Name"}</div>
         </div>
       </div>
+      <div className="workoutType"> Workout Type: {post.workoutType}</div>
       <div className="content">{post.postText}</div>
       {typeof(post.createAt) === 'string' && <div className="date">Post Date: {post.createAt}</div>}
       <div className="interaction">

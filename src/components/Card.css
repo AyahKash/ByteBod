@@ -38,10 +38,17 @@
   margin: 0em 0.5em;
 }
 
+.workoutType {
+  font-size: 12pt;
+  margin-top: 0.5em;
+}
+
 .content {
   font-size: 12pt;
   margin: 0.5em 0.5em;
 }
+
+
 
 .interaction {
   margin-top: 0.5em 0em;

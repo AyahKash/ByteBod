@@ -8,6 +8,8 @@ export const CreatePost = (props) => {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
   const createDate = new Date();
+  const [workoutType, setWorkoutType] = useState(""); // Added for dropdown
+
 
   const formattedTime = createDate.toLocaleString('en-US', {
     year: 'numeric',
@@ -26,10 +28,12 @@ export const CreatePost = (props) => {
     //first add post to firebase
     const createPost = async (event) => {
         event.preventDefault();
+        
         const newPostData = { 
             title, 
-            postText, 
+            postText,
             author: {name: auth.currentUser.displayName, id: auth.currentUser.uid, photoUrl: auth.currentUser.photoURL},
+            workoutType,
             createAt: dateString,
         };
         try {
@@ -60,6 +64,16 @@ export const CreatePost = (props) => {
                     }}
                 />
             </div>
+            <div className="input">
+              <label className="label-class">Type of Workout</label>
+              <select value={workoutType} onChange={(event) => setWorkoutType(event.target.value)}>
+                <option value="">Select Type of Workout</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Strength Training">Strength Training</option>
+                <option value="Yoga">Yoga</option>
+                <option value="Other">Other</option>
+                </select></div>
+
             <button type="submit">Submit Post</button>
         </div>
     </div>

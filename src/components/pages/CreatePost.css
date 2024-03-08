@@ -76,3 +76,17 @@
  
 }
   
+/* Dropdown styling */
+.input select {
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.input select option {
+  padding: 10px;
+  color: black; 
+  font-family: Arial, sans-serif; 
+}
