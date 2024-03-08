@@ -29,7 +29,7 @@ export const CreatePost = (props) => {
         const newPostData = { 
             title, 
             postText, 
-            author: {name: auth.currentUser.displayName, id: auth.currentUser.uid},
+            author: {name: auth.currentUser.displayName, id: auth.currentUser.uid, photoUrl: auth.currentUser.photoURL},
             createAt: dateString,
         };
         try {
