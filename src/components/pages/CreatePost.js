@@ -11,6 +11,7 @@ export const CreatePost = (props) => {
   const [workoutType, setWorkoutType] = useState(""); // Added for dropdown
 
 
+
   const formattedTime = createDate.toLocaleString('en-US', {
     year: 'numeric',
     month: '2-digit',
@@ -67,10 +68,26 @@ export const CreatePost = (props) => {
             <div className="input">
               <label className="label-class">Type of Workout</label>
               <select value={workoutType} onChange={(event) => setWorkoutType(event.target.value)}>
-                <option value="">Select Type of Workout</option>
+                <option value="Barre">Barre</option>
+                <option value="Bodyweight training">Bodyweight training</option>
+                <option value="Boxing">Boxing</option>
                 <option value="Cardio">Cardio</option>
+                <option value="Cycling">Cycling</option>
+                <option value="Dancing">Dancing</option>
+                <option value="High-Intensity Interval Training">High-Intensity Interval Training</option>
+                <option value="Kayaking">Kayaking</option>
+                <option value="Meditation">Meditation</option>
+                <option value="Pilates">Pilates</option>
+                <option value="Powerbuilding">Powerbuilding</option>
+                <option value="Rock climbing">Rock climbing</option>
+                <option value="Rowing">Rowing</option>
+                <option value="Running">Running</option>
+                <option value="Spinning">Spinning</option>
                 <option value="Strength Training">Strength Training</option>
+                <option value="Swimming">Swimming</option>
+                <option value="Weightlifting">Weightlifting</option>
                 <option value="Yoga">Yoga</option>
+                <option value="Zumba">Zumba</option>
                 <option value="Other">Other</option>
                 </select></div>
 
