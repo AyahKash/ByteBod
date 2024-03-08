@@ -1,9 +1,13 @@
 Github Usernames:
-Anushka Nayak as anushkanayak15
-Ayah Kashkoul as AyahKash
-Shilpa Bojjireddy as shilpa-bo
-Mason Hoppe as masonamp
-Maria Martins as maria-campo-martins
+  Anushka Nayak as anushkanayak15
+  
+  Ayah Kashkoul as AyahKash
+  
+  Shilpa Bojjireddy as shilpa-bo
+  
+  Mason Hoppe as masonamp
+  
+  Maria Martins as maria-campo-martins
 
 
 On terminal, cd to the directory you want to clone the project
