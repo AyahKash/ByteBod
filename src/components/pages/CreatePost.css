@@ -14,13 +14,29 @@
     /* border: 2px solid #ccc; */
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .col {
+    flex: 50%;
   }
  
   /* Title styling */
-.cpContainer h1 {
-    margin-bottom: 60px;
-    
+  .cpContainer h1 {
+    color: #164863;
     text-align: center;
+  }
+
+  .icons {
+    margin-bottom: 40px;
+  }
+
+  .icons img {
+    width: 50px;
   }
   
   .input {
@@ -44,8 +60,10 @@
     width: 100%;
   }
 
-  .label-class{
-    color: #164863
+  .label-class {
+    color: #164863;
+    font-size: 20px;
+    margin-top: 5px;
   }
   
   .input textarea {
@@ -75,8 +93,15 @@
     font-weight: bold; 
  
 }
+
+  #description {
+    height: 200px;
+  }
   
 /* Dropdown styling */
+.workoutType {
+  color: black;
+}
 .input select {
   padding: 10px;
   font-size: 18px;

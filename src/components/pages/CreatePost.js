@@ -3,6 +3,9 @@ import { addDoc, getDoc, collection } from 'firebase/firestore';
 import { db, auth } from '../../firebase';
 import "./CreatePost.css";
 import { useNavigate } from 'react-router-dom';
+import running from "../../images/runningblue.png"
+import yoga from "../../images/yogablue.png"
+import lifting from "../../images/liftingblue.png"
 
 export const CreatePost = (props) => {
   const [title, setTitle] = useState("");
@@ -46,6 +49,13 @@ export const CreatePost = (props) => {
     <div className="createPostPage">
         <div className="cpContainer">
         <h1>Log New Workout</h1>
+        <div className="icons">
+          <img src={running}/>
+          <img src={yoga}/>
+          <img src={lifting}/>
+        </div>
+        <div className="row">
+            <div className="col"> 
             <div className="input">
                 <label className="label-class"> Title </label>
                 <input placeholder="Title..." onChange={(event) => 
@@ -54,11 +64,24 @@ export const CreatePost = (props) => {
                 />
             </div>
             <div className="input">
+              <label className="label-class">Workout Type</label>
+              <select value={workoutType} class="workoutType" onChange={(event) => setWorkoutType(event.target.value)}>
+                <option value="">Select Type of Workout</option>
+                <option value="Cardio">Cardio</option>
+                <option value="Strength Training">Strength Training</option>
+                <option value="Yoga">Yoga</option>
+                <option value="Other">Other</option>
+              </select></div>
+              </div>
+              <div className="col">
+              <div className="input" id="description">
                 <label className="label-class"> Description </label>
                 <textarea placeholder="Describe your workout..." onChange={(event) => 
                     {setPostText(event.target.value);
                     }}
                 />
+            </div>
+            </div>
             </div>
             <button type="submit">Submit Post</button>
         </div>
