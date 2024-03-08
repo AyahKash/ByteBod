@@ -11,8 +11,6 @@ export const CreatePost = (props) => {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");
   const createDate = new Date();
-  const [workoutType, setWorkoutType] = useState(""); // Added for dropdown
-
 
   const formattedTime = createDate.toLocaleString('en-US', {
     year: 'numeric',
@@ -31,12 +29,10 @@ export const CreatePost = (props) => {
     //first add post to firebase
     const createPost = async (event) => {
         event.preventDefault();
-        
         const newPostData = { 
             title, 
-            postText,
+            postText, 
             author: {name: auth.currentUser.displayName, id: auth.currentUser.uid, photoUrl: auth.currentUser.photoURL},
-            workoutType,
             createAt: dateString,
         };
         try {
