@@ -9,6 +9,7 @@ const emptyPost = {
   postText:
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer diam dui, pellentesque a pretium nec, consequat et risus. Aliquam posuere mollis mauris. Sed eget sapien ut quam condimentum luctus...",
   postDate: "Post Date",
+  photoUrl: profilePhoto,
 
 };
 //for ayah testing
@@ -21,8 +22,8 @@ function Card({ post = emptyPost, incrementLikes }) {
   return (
     <div className="card">
       <div className="heading">
-        <img
-          src={profilePhoto}
+        <img className="img"
+          src={post.author.photoUrl || profilePhoto} 
           alt="Profile"
           width="50"
           style={{ marginRight: "0.75em" }}
