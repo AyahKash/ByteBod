@@ -7,7 +7,7 @@ import Button from "../Button";
 import Card from "../Card";
 import "./HomePage.css"
 
-export const HomePage = () => {
+export const HomePage = (posts) => {
   const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
@@ -40,4 +40,3 @@ export const HomePage = () => {
 };
 
 export default HomePage;
-

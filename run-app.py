@@ -46,15 +46,18 @@ def update_firebase_api_key(api_key):
 if __name__ == "__main__":
     cwd = os.getcwd()
     firebase_config = os.path.join(cwd, 'src', 'firebase.js')
+
     with open(firebase_config, 'r') as file:
         file_content = file.read()
         # If API key is already in firebase.js, run the website 
         if "firebaseConfig" in file_content:
             command = "npm start"
             result = subprocess.run(command, shell=True, capture_output=True, text=True)
-            # Otherwise prompt to enter API key
+
+    # Otherwise prompt to enter API key
     user_api_key = input("Enter your Firebase API key: ")
     update_firebase_api_key(user_api_key)
+    
     # Construct the URL for accessing a Firestore document
     firestore_base_url = "https://firestore.googleapis.com/v1/projects/bytebod-9d1cf/databases/(default)/documents"
     collection_path = "users"
@@ -71,5 +74,3 @@ if __name__ == "__main__":
     else:
         print(f"API key verification failed. Status code: {response.status_code}")
         print("Error response:", response.json())
-
-
