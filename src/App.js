@@ -9,6 +9,8 @@ import { HomePage } from './components/pages/HomePage';
 import { Settings } from "./components/pages/Settings";
 import { Profile } from "./components/pages/Profile";
 import { FriendsPage } from "./components/pages/FriendsPage";
+import { WorkoutLog } from "./components/pages/WorkoutLog";
+
 import CreatePost from "./components/pages/CreatePost";
 
 function App() {
@@ -30,8 +32,10 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<FriendsPage />}/>
+        <Route path="/profile/workoutlog" element={<WorkoutLog />}/>
         <Route path="/createpost" element={<CreatePost updatePosts={setPosts}/>}/>      
         <Route path="/reset" element={<ForgotPassword/>}/>
+
         </Routes>
     </div>
   );
