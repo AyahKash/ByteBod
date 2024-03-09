@@ -37,25 +37,6 @@ export const updateUserProfile = async (user, email, options = {}) => {
 };
 
 
-// //adding post on firestore this is not working...
-// export const createPost = async (title, postText, author) => {
-//   const postsCollectionRef = doc(db, 'posts');
-//   const newPostData = { 
-//     title, 
-//     postText, 
-//     author,
-//   };
-
-//   try {
-//     await addDoc(postsCollectionRef, newPostData);
-//     console.log("Added post to database");
-//   } catch (error) {
-//     console.log("Error adding post to database: ", error);
-//     throw error;
-//   }
-// };
-
-
 // Storage Functions (maybe move to a new file?)
 //async <-> API calls
 //uploading files --> await inside async (not instantaneous)

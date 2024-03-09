@@ -30,7 +30,7 @@ export const HomePage = (posts) => {
       </Button>
       <div className="postlist">
         {postList.map((post) => (
-          <div className="Post">
+          <div className="Post" key={post.id}>
             <Card key={post.id} post={post} />
           </div>
         ))}

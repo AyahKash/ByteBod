@@ -17,9 +17,7 @@ const emptyPost = {
 
 
 function Card({ post = emptyPost, incrementLikes }) {
-  //for ayah testing
-  // console.log("Here is the type", typeof(post.createAt))
-  console.log(post.author)
+  console.log("Card", post.author)
   return (
     <div className="card">
       <div className="heading">
