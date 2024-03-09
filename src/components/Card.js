@@ -17,9 +17,7 @@ const emptyPost = {
 
 
 function Card({ post = emptyPost, incrementLikes }) {
-  //for ayah testing
-  // console.log("Here is the type", typeof(post.createAt))
-  console.log(post.author)
+  console.log("Card",post.author)
   return (
     <div className="card">
       <div className="heading">
@@ -35,7 +33,9 @@ function Card({ post = emptyPost, incrementLikes }) {
         </div>
       </div>
       
-      <div className="workoutType"> Workout Type: {post.workoutType}</div>
+      <div className="workoutType"> 
+      Workout Type: <span>{post.workoutType}</span>
+      </div>
       
       <div className="content">{post.postText}</div>
       {typeof(post.createAt) === 'string' && <div className="date">Post Date: {post.createAt}</div>}
