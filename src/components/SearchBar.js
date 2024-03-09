@@ -14,16 +14,10 @@ import React, {useState } from "react";
 export default function SearchBar() {
   const[postList, setPostList] = useState([]);
   const[workout, setWorkout] = useState("");
-  
-const capitalizeFirstLetter = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-  };
-  
+
 const getData = async (event) => {
   event.preventDefault();
-  const capitalizedWorkout = capitalizeFirstLetter(workout.toLowerCase());
-  const q = query(collection(db, "posts"), where("workoutType", "==", capitalizedWorkout));
-  //const q = query(collection(db, "posts"), where("workoutType", "==", workout.toLowerCase()));
+  const q = query(collection(db, "posts"), where("workoutType", "==", workout));
   const querySnapshot = await getDocs(q);
   if (querySnapshot.empty) {
     alert("No workout type found");
@@ -39,11 +33,11 @@ const navigate = useNavigate();
   return (
     <Container className="mt-5" id="searchContainer">
       <Row>
-        <Col sm={6}>
+        <Col sm={8}>
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search for a workout..."
+              placeholder="Search for a workout type..."
               className="me-2"
               aria-label="Search"
               value={workout}
