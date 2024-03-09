@@ -103,7 +103,12 @@ export const CreatePost = (props) => {
             </div>
             </div>
             <button type="submit">Submit Post</button>
+            {/* added this */}
+        <div class="cancel-actions">   
+        <button class="cancel" onClick={() => navigate("/HomePage")}>Cancel</button>
         </div>
+        </div>
+        
     </div>
     </form>
   )

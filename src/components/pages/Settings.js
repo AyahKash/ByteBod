@@ -83,6 +83,12 @@ export const Settings = () => {
       console.log("Trouble updating bio, error: ", error)
     }
   }
+  //this isn't working yet
+  function removeImage(){
+    setPhotoURLWritten(false);
+    setPhotoURL(profilePhoto);
+    currentUser.photoURL = profilePhoto;
+  }
 
   function resetPassword() {
     const user = currentUser;
@@ -116,11 +122,9 @@ export const Settings = () => {
             <div className = "user-email"> 
               Email: {currentUser ? currentUser.email : 'Loading...'}
             </div>
-            {/* added this */}
-        <div class="about_me-actions">
-            
-
+        <div class="about_me-actions">           
           </div>
+          
           <input class="item2" type="file" onChange={handleChange}></input>
           <button class="about_me" onClick={() => navigate("/AboutMe")}>About Me</button>
 
