@@ -75,7 +75,7 @@ export const CreatePost = (props) => {
                 <option value="Cardio">Cardio</option>
                 <option value="Cycling">Cycling</option>
                 <option value="Dancing">Dancing</option>
-                <option value="High-Intensity Interval Training">High-Intensity Interval Training</option>
+                <option value="High-Intensity Interval Training">High intensity interval training</option>
                 <option value="Kayaking">Kayaking</option>
                 <option value="Meditation">Meditation</option>
                 <option value="Pilates">Pilates</option>
@@ -84,7 +84,7 @@ export const CreatePost = (props) => {
                 <option value="Rowing">Rowing</option>
                 <option value="Running">Running</option>
                 <option value="Spinning">Spinning</option>
-                <option value="Strength Training">Strength Training</option>
+                <option value="Strength Training">Strength training</option>
                 <option value="Swimming">Swimming</option>
                 <option value="Weightlifting">Weightlifting</option>
                 <option value="Yoga">Yoga</option>
