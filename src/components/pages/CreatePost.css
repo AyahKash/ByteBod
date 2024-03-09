@@ -80,6 +80,9 @@
     border: 1px solid #ccc;
     border-radius: 7px;
     cursor: pointer;
+    width: 150px;
+    align-items: center;
+   
   }
   
   button:hover {
@@ -96,6 +99,7 @@
 
   #description {
     height: 200px;
+  
   }
   
 /* Dropdown styling */
@@ -115,4 +119,26 @@
   padding: 10px;
   color: black; 
   font-family: Arial, sans-serif; 
+}
+
+
+
+
+
+/* Container for buttons */
+.cancel-actions {
+  display: flex; 
+  /* justify-content: center;  */
+  justify-content: space-between; 
+  margin-top: 20px; 
+}
+
+.cancel-actions button {
+  
+  width: 150px;
+  align-items: center;
+}
+
+.cancel-actions button:hover {
+  background-color: #164863;
 }
