@@ -8,7 +8,6 @@ export const SearchResults = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { postList } = location.state || {};
-  const [display, setDisplay] = useState("");
 
   return (
     <div>

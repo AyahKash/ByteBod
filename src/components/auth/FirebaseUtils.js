@@ -2,9 +2,7 @@ import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, db, storage} from "../../firebase";
 import { setDoc, doc } from 'firebase/firestore';
 import { useEffect, useState } from "react";
-import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage"
-import { addDoc} from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
 
 //DOC WITH ALL THE FIREBASE/FIRESTORE FUNCTIONS?
 

@@ -1,18 +1,14 @@
 import { Col, Container, Form, Row } from "react-bootstrap";
 import "./SearchBar.css"
-import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import {
   getDocs,
-  getDoc,
-  setDoc,
-  doc,
   collection,
   query,
   where,
 } from "firebase/firestore";
-import { db, auth } from "../firebase";
-import React, { useEffect, useState } from "react";
+import { db } from "../firebase";
+import React, {useState } from "react";
 
 
 export default function SearchBar() {
@@ -32,10 +28,6 @@ const getData = async (event) => {
     console.log(updatedPostList)
   }
 };
-
-
-
-
 
 const navigate = useNavigate();
   return (

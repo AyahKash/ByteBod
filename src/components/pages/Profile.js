@@ -1,12 +1,9 @@
-
-
 import React from "react";
 import Navbar from "../Navbar";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/FirebaseUtils";
 import "./Profile.css";
-import AuthDetails from "../auth/AuthDetails";
 import profilePhoto from "../../images/ProfilePhoto.png";
 
 export const Profile = () => {
