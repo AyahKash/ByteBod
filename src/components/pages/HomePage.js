@@ -7,6 +7,7 @@ import Button from "../Button";
 import Card from "../Card";
 import "./HomePage.css"
 
+
 export const HomePage = (posts) => {
   const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
@@ -32,7 +33,7 @@ export const HomePage = (posts) => {
       </Button>
       <div className="postlist">
         {postList.map((post) => (
-          <div className="Post" key={post.id}>
+          <div className="Post">
             <Card key={post.id} post={post} />
           </div>
         ))}

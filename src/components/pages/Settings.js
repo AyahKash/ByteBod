@@ -83,6 +83,12 @@ export const Settings = () => {
       console.log("Trouble updating bio, error: ", error)
     }
   }
+  //this isn't working yet
+  function removeImage(){
+    setPhotoURLWritten(false);
+    setPhotoURL(profilePhoto);
+    currentUser.photoURL = profilePhoto;
+  }
 
   function resetPassword() {
     const user = currentUser;
@@ -116,16 +122,12 @@ export const Settings = () => {
             <div className = "user-email"> 
               Email: {currentUser ? currentUser.email : 'Loading...'}
             </div>
-            <div className = "user-bio"> 
-              Bio: {currentUser ? bio : 'Loading...'}
-            </div>
-            {/* added this */}
-        <div class="about_me-actions">
-            
-        <button class="about_me" onClick={() => navigate("/AboutMe")}>About Me</button>
-
+        <div class="about_me-actions">           
           </div>
+          
           <input class="item2" type="file" onChange={handleChange}></input>
+          <button class="about_me" onClick={() => navigate("/AboutMe")}>About Me</button>
+
           </div>
           <div class="button-container">
             <button class="buttons" disabled={loading || !photo} onClick={handleClick} style={{backgroundColor: photoChosen === true  ?  "#027148" : "#808080" }}>Upload</button>

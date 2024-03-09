@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/FirebaseUtils";
 import "./AboutMe.css"; 
 import profilePhoto from "../../images/ProfilePhoto.png";
+import { addDoc, collection, query, getDocs, updateDoc, doc, where } from 'firebase/firestore';
+import { db, auth } from '../../firebase';
 
 export const AboutMe = () => {
   const navigate = useNavigate();
@@ -20,6 +22,42 @@ export const AboutMe = () => {
   const displayName = currentUser ? currentUser.displayName : 'Guest';
   const email = currentUser ? currentUser.email : 'guest@example.com';
   const bio = currentUser ? currentUser.bio : '';
+
+  const postsCollectionRef = collection(db, "aboutMe");
+
+    //first add user info to firebase
+    const createPost = async (event) => {
+      event.preventDefault();
+  
+      const userId = auth.currentUser.uid;
+      const userPostQuery = query(postsCollectionRef, where("author.id", "==", userId));
+      const userPostQuerySnapshot = await getDocs(userPostQuery);
+  
+      const newPostData = {
+          fitnessJourney,
+          favoriteWorkouts,
+          author: {
+              name: auth.currentUser.displayName,
+              id: userId,
+              photoUrl: auth.currentUser.photoURL
+          },
+          fitnessGoals,
+          dateOfBirth,
+      };
+  
+      try {
+          if (userPostQuerySnapshot.docs.length > 0) {
+              const existingPostId = userPostQuerySnapshot.docs[0].id;
+              await updateDoc(doc(postsCollectionRef, existingPostId), newPostData);
+              console.log("Updated existing post");
+          } else {
+              await addDoc(postsCollectionRef, newPostData);
+              console.log("Added new post");
+          }
+      } catch (error) {
+          console.log("Error updating/adding post to the database: ", error);
+      }
+      }; 
 
   // Function to calculate age based on date of birth
   const calculateAge = () => {
@@ -37,6 +75,7 @@ export const AboutMe = () => {
   return (
     <div>
       <Navbar />
+      <form onSubmit={createPost}>
       <div className="AboutMe-container">
         <div className="AboutMe-box"> {/* Container for profile details */}
           <div className="AboutMe-header">
@@ -94,8 +133,10 @@ export const AboutMe = () => {
               </div>
             </div>
           </div>
+          <button type="submit">Submit Post</button>
         </div>
       </div>
+      </form>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import Button from "./Button";
 import "./Card.css";
 import React, { useState } from 'react';
-import { getDocs, collection} from "firebase/firestore";
+import { getDoc, getDocs, collection, updateDoc, doc} from "firebase/firestore";
 import { db, auth } from '../firebase';
 import profilePhoto from "../images/ProfilePhoto.png";
 
@@ -22,31 +22,22 @@ const emptyPost = {
 function Card({ post = emptyPost, incrementLikes }) {
   //const [title, setTitle] = useState("");
   const [likes, setLikes] = useState(0);
-  const postsCollectionRef = collection(db, "posts", post.id); 
-
+  const [updatedLikes, setUpdatedLikes] = useState(false);
+  const postDocRef = doc(db, "posts", post.id);
+  //const postDocRef = db.collection("posts").doc(post.id); 
+  
+  
   const updateLikes = async () => {
-    try {
-      // Get the reference to the specific post document
-      const postRef = db.collection("posts").doc(post.id);
-
-      // Get the current likes count
-      const doc = await postRef.get();
-      if (doc.exists) {
-        const postLikes = doc.data().likes || 0;
-
-        // Update the likes count
-        await postRef.update({ likes: postLikes + 1 });
-
-        // Update the local state to reflect the updated likes count
-        setLikes(postLikes + 1);
-      } else {
-        console.log("No such document!");
-      }
-    } catch (error) {
-      console.error("Error updating likes:", error);
-    }
+    setUpdatedLikes(true);
+    console.log("you pressed the like button");
+    //first get current number of likes
+    const docSnap = await getDoc(postDocRef);
+    const prevLikes = docSnap.data().likes;
+    console.log("Here are prevLikes:", prevLikes);
+    //update the likes to firebase
+    const update = await updateDoc(postDocRef, {likes: prevLikes + 1});
+    setLikes(prevLikes + 1);
   };
-
 
   // const updateLikes = async () => {
   //   console.log("updating likes!");
@@ -89,7 +80,7 @@ function Card({ post = emptyPost, incrementLikes }) {
       <div className="content">{post.postText}</div>
       {typeof(post.createAt) === 'string' && <div className="date">Post Date: {post.createAt}</div>}
       <div className="interaction">
-        <Button onClick={updateLikes} className="button like">&#128077;</Button>
+        <Button onClick={updateLikes} className="button like">&#128077; {updatedLikes ? likes : post.likes}</Button>
         <Button className="button comment">&#128172;</Button>
       </div>
     </div>
