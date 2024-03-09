@@ -14,10 +14,16 @@ import React, {useState } from "react";
 export default function SearchBar() {
   const[postList, setPostList] = useState([]);
   const[workout, setWorkout] = useState("");
-
+  
+const capitalizeFirstLetter = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+  };
+  
 const getData = async (event) => {
   event.preventDefault();
-  const q = query(collection(db, "posts"), where("workoutType", "==", workout));
+  const capitalizedWorkout = capitalizeFirstLetter(workout.toLowerCase());
+  const q = query(collection(db, "posts"), where("workoutType", "==", capitalizedWorkout));
+  //const q = query(collection(db, "posts"), where("workoutType", "==", workout.toLowerCase()));
   const querySnapshot = await getDocs(q);
   if (querySnapshot.empty) {
     throw new Error("No user found with provided email");
