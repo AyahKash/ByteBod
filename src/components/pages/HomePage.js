@@ -21,6 +21,8 @@ export const HomePage = (posts) => {
   
   //for Ayah testing purposes:
   console.log("Here is the postList", postList);
+  //we must pass a Card a function from the Homepage that allows it to increment 
+  //likes
 
   return (
     <div className="homepage">
