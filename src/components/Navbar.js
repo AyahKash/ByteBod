@@ -26,7 +26,7 @@ return (
       <div className="container-fluid">
         {/* Brand */}
         <div className="navbar-brand">
-          <img src={Logo} height="30" alt="" />
+          <img src={Logo} height="30" alt="" onClick={() => navigate("/homepage")} />
         </div>
         {/* Links */}
         {showSearchBar && <SearchBar />}
