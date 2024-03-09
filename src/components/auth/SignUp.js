@@ -26,7 +26,7 @@ function SignUp(){
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user;
-            console.log(userCredential);
+            console.log("signup" , userCredential);
             const options = {
                 name : name,
             };              

@@ -83,12 +83,6 @@ export const Settings = () => {
       console.log("Trouble updating bio, error: ", error)
     }
   }
-  //this isn't working yet
-  function removeImage(){
-    setPhotoURLWritten(false);
-    setPhotoURL(profilePhoto);
-    currentUser.photoURL = profilePhoto;
-  }
 
   function resetPassword() {
     const user = currentUser;
