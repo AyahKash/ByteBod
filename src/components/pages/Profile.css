@@ -1,0 +1,70 @@
+
+
+  
+  .profile-actions button {
+    padding: 15px 30px;
+    background-color: #427D9D;
+    color: #DDF2FD;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    cursor: pointer;
+    border-radius: 8px; 
+    margin-right: 40px;
+    margin-top: 40px;
+    font-size: 20px; 
+    align-items: center;
+  }
+  
+  
+  .profile-actions button:hover {
+    background-color: #164863;
+  }
+
+ 
+.profile-box {
+    background-color: #164863; 
+    border: 1px solid #ccc; 
+    border-radius: 10px; 
+    padding: 20px; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+
+  .profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .profile-box {
+    text-align: center;
+  }
+  
+  .profile-photo {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h3 {
+    font-size: 60px; /* Larger font size for welcome message */
+    color: #DDF2FD; 
+    margin-bottom: 10px; /* Bottom margin */
+  }
+  
+  .profile-details p {
+    font-size: 16px; /* Font size for email and bio */
+    color: #666; /* Gray text color */
+    margin-bottom: 20px; /* Bottom margin */
+  }
+  
+  
+  .profile-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .profile-actions button {
+    margin: 0 10px;
+  }

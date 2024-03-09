@@ -19,6 +19,8 @@ export const Settings = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [photoChosen, setPhotoChosen] = useState(false); 
 
+
+
  //sets user email to display it
   useEffect(() => {
     if (currentUser) {
@@ -106,7 +108,10 @@ export const Settings = () => {
     //main div:
     <div>
       <div> <Navbar/> </div> 
+      
       <div class="flex-container">
+        
+
         <div class="profile_box">
           <img src={photoURL} alt = "Hello" className = "avatar"/>
           <div class="item"> <AuthDetails/> 
