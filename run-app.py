@@ -64,10 +64,8 @@ if __name__ == "__main__":
     document_id = "1GzrZkGGXofKao6vrj7FLdy4Ln53"
     api_key = user_api_key
     firestore_url = f"{firestore_base_url}/{collection_path}/{document_id}?key={api_key}"
-
     # Make a GET request to the Firestore document
     response = requests.get(firestore_url)
-
     # Check the response status code to ensure inputted API key is valid
     if response.status_code == 200:
         print("API key is valid.")
