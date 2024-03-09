@@ -7,6 +7,8 @@ import profilePhoto from "../../images/ProfilePhoto.png";
 import { useAuth, upload, updateUserProfile , deleteProfilePhoto} from "../auth/FirebaseUtils";
 import { updatePassword } from 'firebase/auth';
 
+import { useNavigate } from "react-router-dom"; // ADDED THIS ANUSHKA
+
 export const Settings = () => {
 
   const currentUser = useAuth();
@@ -18,6 +20,8 @@ export const Settings = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [photoChosen, setPhotoChosen] = useState(false); 
+
+  const navigate = useNavigate(); // ADDED THIS ANUSHKA
 
 
 
@@ -115,6 +119,12 @@ export const Settings = () => {
             <div className = "user-bio"> 
               Bio: {currentUser ? bio : 'Loading...'}
             </div>
+            {/* added this */}
+        <div class="about_me-actions">
+            
+        <button class="about_me" onClick={() => navigate("/AboutMe")}>About Me</button>
+
+          </div>
           <input class="item2" type="file" onChange={handleChange}></input>
           </div>
           <div class="button-container">

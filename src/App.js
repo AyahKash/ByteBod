@@ -14,6 +14,7 @@ import { SearchResults } from "./components/pages/SearchResults";
 
 
 import CreatePost from "./components/pages/CreatePost";
+import { AboutMe } from "./components/pages/AboutMe";
 
 function App() {
   const [posts, setPosts] = useState([]);
@@ -37,8 +38,8 @@ function App() {
         <Route path="/profile/workoutlog" element={<WorkoutLog />}/>
         <Route path="/createpost" element={<CreatePost updatePosts={setPosts}/>}/>      
         <Route path="/reset" element={<ForgotPassword/>}/>
+        <Route path="/aboutme" element={<AboutMe />} />
         <Route path="/searchresults" element={<SearchResults/>}/>
-
         </Routes>
     </div>
   );
