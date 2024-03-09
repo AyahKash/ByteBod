@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/FirebaseUtils";
 import "./Profile.css";
 import profilePhoto from "../../images/ProfilePhoto.png";
-
+import {doc, getDoc} from "firebase/firestore"
 export const Profile = () => {
   const navigate = useNavigate();
   const currentUser = useAuth();
@@ -15,7 +15,7 @@ export const Profile = () => {
   const displayName = currentUser ? currentUser.displayName : 'Guest';
   const email = currentUser ? currentUser.email : 'guest@example.com';
   const bio = currentUser ? currentUser.bio : '';
-
+    
   return (
     <div>
       <Navbar />
@@ -25,7 +25,12 @@ export const Profile = () => {
             <img src={photoURL} alt="Profile" className="profile-photo" />
             <h3>Welcome, {displayName}</h3>
             <p>Email: {email}</p>
+            <p>Age: {bio}</p> 
+            <p>Favorite Type of Workout: {bio}</p> 
+            <p>Goals: {bio}</p> 
             <p>Bio: {bio}</p> 
+            <p>Bio: {bio}</p> 
+
           </div>
         </div>
         {/* <AuthDetails /> */}

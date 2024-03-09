@@ -26,7 +26,7 @@ const getData = async (event) => {
   //const q = query(collection(db, "posts"), where("workoutType", "==", workout.toLowerCase()));
   const querySnapshot = await getDocs(q);
   if (querySnapshot.empty) {
-    throw new Error("No user found with provided email");
+    alert("No workout type found");
   } else {
     const updatedPostList = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     setPostList(updatedPostList)  
