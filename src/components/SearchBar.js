@@ -37,7 +37,7 @@ const navigate = useNavigate();
           <Form className="d-flex">
             <Form.Control
               type="search"
-              placeholder="Search for a workout..."
+              placeholder="Search for a workout type..."
               className="me-2"
               aria-label="Search"
               value={workout}
