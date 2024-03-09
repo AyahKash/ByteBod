@@ -2,19 +2,39 @@ import React from "react";
 import Navbar from "../Navbar";
 import Button from "../Button";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../auth/FirebaseUtils";
 import "./Profile.css";
-import AuthDetails from "../auth/AuthDetails";
-import { useState } from "react";
+import profilePhoto from "../../images/ProfilePhoto.png";
 
 export const Profile = () => {
   const navigate = useNavigate();
+  const currentUser = useAuth();
+
+  // Check if currentUser exists before accessing its properties
+  const photoURL = currentUser ? currentUser.photoURL : profilePhoto;
+  const displayName = currentUser ? currentUser.displayName : 'Guest';
+  const email = currentUser ? currentUser.email : 'guest@example.com';
+  const bio = currentUser ? currentUser.bio : '';
 
   return (
     <div>
       <Navbar />
-      <AuthDetails/>
-      <div>Profile Page</div>
-      <Button onClick={() => navigate("/profile/friends")}> Friends </Button>
+      <div className="profile-container">
+        <div className="profile-box"> {/* Container for profile details */}
+          <div className="profile-header">
+            <img src={photoURL} alt="Profile" className="profile-photo" />
+            <h3>Welcome, {displayName}</h3>
+            <p>Email: {email}</p>
+            <p>Bio: {bio}</p> 
+          </div>
+        </div>
+        {/* <AuthDetails /> */}
+        <div className="profile-actions">
+          <Button onClick={() => navigate("/profile/friends")}> Friends </Button>
+          <Button onClick={() => navigate("/profile/workoutlog")}> Workout Log </Button>
+          
+        </div>
+      </div>
     </div>
   );
 };

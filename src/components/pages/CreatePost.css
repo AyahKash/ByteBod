@@ -14,10 +14,29 @@
     /* border: 2px solid #ccc; */
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+  }
+
+  .row {
+    display: flex;
+  }
+
+  .col {
+    flex: 50%;
   }
  
+  /* Title styling */
   .cpContainer h1 {
-    margin-bottom: 80px;
+    color: #164863;
+    text-align: center;
+  }
+
+  .icons {
+    margin-bottom: 40px;
+  }
+
+  .icons img {
+    width: 50px;
   }
   
   .input {
@@ -28,7 +47,7 @@
   }
   
   .input label {
-    margin-bottom: 4px;
+    margin-bottom: 10px;
   }
   
  
@@ -36,17 +55,22 @@
     color: black;
     padding: 10px;
     font-size: 18px;
-    border: 2px solid #ccc;
+    border: 2px solid #ffffff;
     border-radius: 10px;
     width: 100%;
   }
 
-  .label-class{
-    color: #164863
+  .label-class {
+    color: #164863;
+    font-size: 20px;
+    margin-top: 5px;
   }
   
   .input textarea {
-    height: 150px;
+    height: 300px;
+    padding: 10px;
+    border: 10px;
+   
   }
   
   button {
@@ -62,4 +86,33 @@
     background-color: #164863;
   }
   
+  label {
+    color: black; 
+    font-family: Arial, sans-serif; 
+    font-size: 14px; 
+    font-weight: bold; 
+ 
+}
+
+  #description {
+    height: 200px;
+  }
   
+/* Dropdown styling */
+.workoutType {
+  color: black;
+}
+.input select {
+  padding: 10px;
+  font-size: 18px;
+  color: black; 
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.input select option {
+  padding: 10px;
+  color: black; 
+  font-family: Arial, sans-serif; 
+}

@@ -2,9 +2,7 @@ import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, db, storage} from "../../firebase";
 import { setDoc, doc } from 'firebase/firestore';
 import { useEffect, useState } from "react";
-import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage"
-import { addDoc} from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
 
 //DOC WITH ALL THE FIREBASE/FIRESTORE FUNCTIONS?
 
@@ -37,25 +35,6 @@ export const updateUserProfile = async (user, email, options = {}) => {
 };
 
 
-// //adding post on firestore this is not working...
-// export const createPost = async (title, postText, author) => {
-//   const postsCollectionRef = doc(db, 'posts');
-//   const newPostData = { 
-//     title, 
-//     postText, 
-//     author,
-//   };
-
-//   try {
-//     await addDoc(postsCollectionRef, newPostData);
-//     console.log("Added post to database");
-//   } catch (error) {
-//     console.log("Error adding post to database: ", error);
-//     throw error;
-//   }
-// };
-
-
 // Storage Functions (maybe move to a new file?)
 //async <-> API calls
 //uploading files --> await inside async (not instantaneous)
@@ -72,12 +51,4 @@ export async function upload(file, currentUser, setLoading){
   alert("Uploaded picture!");
   //reload page so user can see updates
   window.location.reload(false);
-}
-//fix this to generate unique hash for each profile pic (incase of same displayname)
-export async function deleteProfilePhoto(currentUser){ 
-  const fileRef = ref(storage, 'profile_photos/'+ currentUser.displayName + '.png');
-  deleteObject(fileRef).then(() => {
-    console.log("deleted successfully")
-  }).catch((error) => {
-  });
 }
