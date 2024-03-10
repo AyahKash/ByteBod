@@ -48,8 +48,6 @@
   margin: 0.5em 0.5em;
 }
 
-
-
 .interaction {
   margin-top: 0.5em 0em;
 }
@@ -60,8 +58,24 @@
 }
 
 .comment {
+  font-size: 12pt;
+  background-color: transparent;
+}
+
+.buttonLike{
   font-size: 16pt;
   background-color: transparent;
+  border-color: transparent;
+  padding: 2px;
+  width: 8%;
+}
+
+.buttonComment{
+  font-size: 16pt;
+  background-color: transparent;
+  border-color: transparent;
+  padding: 2px;
+  width: 5%;
 }
 
 .img{
@@ -78,6 +92,39 @@
   display: inline;
 }
 
+.comments {
+  /* text and color */
+  text-align: left;
+  background-color: rgb(47, 93, 117);
+  color: white;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+
+  /* position and shape */
+  width: 76%;
+  padding: 1em 1em;
+  border-radius: 0 0 20px 20px; /* top-left: 0px, top-right: 0px, bottom-right: 20, bottom-left: 20 */
+  margin: 0 auto; /* Centers the div horizontally */
+}
+
+.textarea {
+  color: black;
+  padding: 10px;
+  font-size: 18px;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  width: 100%;
+
+  height: 300px;
+  padding: 10px;
+  border: 10px;
+}
+
+.input {
+  color: black;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 30px;
+}
 .tag {
   display: inline-block;
   background-color: #508290; 
@@ -88,3 +135,17 @@
   margin-right: 5px; 
   
 }
+
+form button {
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px; 
+}
+
+form button:hover {
+  background-color: #1d5f83; /* Example hover background color */
+}
+
+
+
+
