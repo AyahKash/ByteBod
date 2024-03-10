@@ -21,6 +21,15 @@ export const WorkoutLogs = () => {
         getworkoutLog(); 
         console.log(workoutLogList);
     }, [] );
+
+    const formatDateTime = (timestamp) => {
+      if (timestamp && timestamp.seconds) {
+          const date = new Date(timestamp.seconds * 1000);
+          return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`;
+      }
+      return "";
+  };
+
     return (
     <div>
         
@@ -32,6 +41,7 @@ export const WorkoutLogs = () => {
           </div>
         ))} 
         </div> 
+        
         
     </div>
     );
