@@ -12,6 +12,7 @@ export const HomePage = (posts) => {
   const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
+  console.log(postsCollectionRef);
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(query(postsCollectionRef, orderBy('createAt', 'desc')));
