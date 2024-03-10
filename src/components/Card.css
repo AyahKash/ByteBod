@@ -87,9 +87,7 @@
 .workoutType{
   color: white !important;
 }
-.tag {
-  /* add stuff in here to make this look like a tag?*/
-}
+
 .tag span {
   display: inline;
 }
@@ -126,4 +124,14 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 30px;
+}
+.tag {
+  display: inline-block;
+  background-color: #508290; 
+  color: white;
+  padding: 3px 6px;
+  border-radius: 8px;
+  font-size: 13pt;
+  margin-right: 5px; 
+  
 }

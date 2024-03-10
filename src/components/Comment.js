@@ -11,7 +11,6 @@ const emptyComment = {
 function Comment({commentObj}){
     console.log("Here is the recieved comment object", commentObj);
     console.log("Here is the recieved comment TEXT",commentObj.text);
-    //const { text, author, commentDate } = commentObj;
     return (
     <div className="comment">
         <div className="heading">
