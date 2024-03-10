@@ -29,6 +29,7 @@ export const CreatePost = (props) => {
   let navigate = useNavigate();
 
     //first add post to firebase
+    //when post is first created likes should be 0
     const createPost = async (event) => {
         event.preventDefault();
         const newPostData = { 
@@ -37,13 +38,21 @@ export const CreatePost = (props) => {
             author: {name: auth.currentUser.displayName, id: auth.currentUser.uid, photoUrl: auth.currentUser.photoURL},
             workoutType,
             createAt: dateString,
+            likes: 0,
         };
         try {
             await addDoc(postsCollectionRef, newPostData)
         } catch (error) {
             console.log("Error adding post to database: ", error)
         }
-      navigate("/homepage");
+        
+        //the functionality for fetching data from firebase will be in HomePage.js
+        // props.updatePosts( (prevList) => {
+        // //NEED to capture new post that was added to firebase
+        // return [...prevList, newPostData];
+        // })
+
+        navigate("/homepage");
     }; 
     
 
