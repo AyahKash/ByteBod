@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/FirebaseUtils";
@@ -7,6 +7,7 @@ import "./AboutMe.css";
 import profilePhoto from "../../images/ProfilePhoto.png";
 import { addDoc, collection, query, getDocs, updateDoc, doc, where } from 'firebase/firestore';
 import { db, auth } from '../../firebase';
+
 
 export const AboutMe = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ export const AboutMe = () => {
   const [fitnessGoals, setFitnessGoals] = useState('');
   const [motivation, setMotivation] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
+  const [age, setAge] = useState('');
 
   // Check if currentUser exists before accessing its properties
   const photoURL = currentUser ? currentUser.photoURL : profilePhoto;
@@ -36,28 +38,33 @@ export const AboutMe = () => {
       const newPostData = {
           fitnessJourney,
           favoriteWorkouts,
+          id: userId,
+          email: auth.currentUser.email,
           author: {
               name: auth.currentUser.displayName,
-              id: userId,
               photoUrl: auth.currentUser.photoURL
           },
           fitnessGoals,
           dateOfBirth,
+          age,
       };
   
       try {
-          if (userPostQuerySnapshot.docs.length > 0) {
-              const existingPostId = userPostQuerySnapshot.docs[0].id;
-              await updateDoc(doc(postsCollectionRef, existingPostId), newPostData);
-              console.log("Updated existing post");
-          } else {
-              await addDoc(postsCollectionRef, newPostData);
-              console.log("Added new post");
-          }
-      } catch (error) {
-          console.log("Error updating/adding post to the database: ", error);
-      }
-      }; 
+        if (userPostQuerySnapshot.docs.length > 0) {
+            const existingPostId = userPostQuerySnapshot.docs[0].id;
+            await updateDoc(doc(postsCollectionRef, existingPostId), {
+                ...newPostData,
+                // Add other fields you want to update here
+            }, { merge: true });
+            console.log("Updated existing post");
+        } else {
+            await addDoc(postsCollectionRef, newPostData);
+            console.log("Added new post");
+        }
+    } catch (error) {
+        console.log("Error updating/adding post to the database: ", error);
+    }
+          }; 
 
   // Function to calculate age based on date of birth
   const calculateAge = () => {
@@ -71,6 +78,10 @@ export const AboutMe = () => {
     return age;
   };
 
+  useEffect(() => {
+    setAge(calculateAge());
+  }, [dateOfBirth]);
+
 
   return (
     <div>
@@ -80,17 +91,17 @@ export const AboutMe = () => {
         <div className="AboutMe-box"> {/* Container for profile details */}
           <div className="AboutMe-header">
             <img src={photoURL} alt="Profile" className="profile-photo" />
-            <h3>Welcome, {displayName}</h3>
+            <h3>Customize your profile!</h3>
             <p>Email: {email}</p>
             <p>Bio: {bio}</p> 
-            <label>
+            <p>
               Date of Birth:
               <input
                 type="date"
                 value={dateOfBirth}
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
-            </label>
+            </p>
             <p>Age: {calculateAge()}</p>
        
           </div>
