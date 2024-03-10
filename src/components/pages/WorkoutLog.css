@@ -1,0 +1,119 @@
+.workout.planner {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  
+  h1 {
+    font-size: 50px; /* Adjust size as needed */
+    font-weight: bold;
+    text-align: center; 
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    vertical-align: middle;
+   
+  }
+  
+  
+  
+  td:first-child {
+    font-weight: bold;
+    font-size: larger;
+  }
+  th:nth-child(2), td:nth-child(2),
+  th:nth-child(3), td:nth-child(3) {
+    width: 40%;
+    vertical-align: middle;
+  }
+  
+ 
+  th:nth-child(4), td:nth-child(4) {
+    width: 5%; 
+ 
+  }
+
+  .input-wrapper {
+    display: flex;
+    vertical-align: middle;
+  }
+  
+  .input-wrapper input {
+    width: 100%;
+    padding: 6px;
+    vertical-align: middle;
+  }
+
+  th {
+    background-color: #073a48;
+    text-align: center; 
+    width: 15%;
+    font-weight: bold;
+    font-size: larger;
+  }
+  
+  
+  
+  /* Styles for the first row */
+tr:first-child {
+    background-color: #073a48; /* Background color for the first row */
+    color: white; /* Text color for the first row */
+  }
+  
+  /* Styles for the first column */
+  td:first-child {
+    background-color: #073a48; /* Background color for the first column */
+    color: white; /* Text color for the first column */
+  }
+  
+  /* Styles for the second column of the first row */
+  tr:first-child td:nth-child(2),
+  tr:nth-child(3) td:nth-child(2),
+  tr:nth-child(4) td:nth-child(2),
+  tr:nth-child(5) td:nth-child(2), 
+  tr:nth-child(2) td:nth-child(2),
+  tr:nth-child(6) td:nth-child(2),
+  tr:nth-child(7) td:nth-child(2){
+    background-color: #347d91; 
+  }
+
+  tr:first-child td:nth-child(3),
+  tr:nth-child(3) td:nth-child(3),
+  tr:nth-child(4) td:nth-child(3),
+  tr:nth-child(5) td:nth-child(3), 
+  tr:nth-child(2) td:nth-child(3),
+  tr:nth-child(6) td:nth-child(3),
+  tr:nth-child(7) td:nth-child(3){
+    background-color: #347d91; 
+  }
+
+  tr:first-child td:nth-child(4),
+  tr:nth-child(3) td:nth-child(4),
+  tr:nth-child(4) td:nth-child(4),
+  tr:nth-child(5) td:nth-child(4), 
+  tr:nth-child(2) td:nth-child(4),
+  tr:nth-child(6) td:nth-child(4),
+  tr:nth-child(7) td:nth-child(4){
+    background-color: #347d91; 
+  }
+  .icons img {
+    transform: scale(2.5);
+     margin-top: 33px;
+  }
+ 
+  .header {
+    display: flex; 
+    flex-flow: row wrap;
+    align-items: center; 
+    text-align: center;
+    justify-content: center;
+
+  }
