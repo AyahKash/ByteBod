@@ -100,9 +100,17 @@ function Card({ post = emptyPost, incrementLikes }) {
           <div className="author">{post.author.name ? post.author.name : "Author Name"}</div>
         </div>
       </div>
-      <div className="workoutType"> 
+      
+      {/* <div className="workoutType"> 
       Workout Type: <span>{post.workoutType}</span>
-      </div>
+      </div> */}
+      {/* <div className="workoutType">
+        <span class="tag">Workout Type:</span> <span>{post.workoutType}</span>
+        </div> */}
+        {post.workoutType && (
+        <div className="workoutType">
+        <span class="tag">{post.workoutType}</span>
+        </div>)}
       <div className="content">{post.postText}</div>
       {typeof(post.createAt) === 'string' && <div className="date">Post Date: {post.createAt}</div>}
       <div className="interaction">
