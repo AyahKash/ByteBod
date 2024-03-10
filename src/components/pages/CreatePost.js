@@ -68,11 +68,12 @@ export const CreatePost = (props) => {
                 <input placeholder="Title..." onChange={(event) => 
                     {setTitle(event.target.value);
                     }}
+                    required
                 />
             </div>
             <div className="input">
               <label className="label-class">Type of Workout</label>
-              <select value={workoutType} onChange={(event) => setWorkoutType(event.target.value)}>
+              <select value={workoutType} onChange={(event) => setWorkoutType(event.target.value)} required>
                 <option value="Barre">Barre</option>
                 <option value="Bodyweight training">Bodyweight training</option>
                 <option value="Boxing">Boxing</option>
@@ -102,6 +103,7 @@ export const CreatePost = (props) => {
                 <textarea placeholder="Describe your workout..." onChange={(event) => 
                     {setPostText(event.target.value);
                     }}
+                    required
                 />
             </div>
             </div>

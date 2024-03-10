@@ -178,20 +178,5 @@ margin-top: 15px;
 }
 
 .about_me-actions {
-  margin-top: 20px; /* Adjust margin as needed */
-}
-
-.about_me button {
-  margin-top: 10px;
-  background-color: #427D9D; /* Green color */
-  color: white;
-  padding: 10px 20px; /* Adjust padding as needed */
-  border: 10px;
-  border-color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.about_me button:hover {
-  background-color: #164863; /* Darker shade of green on hover */
+  margin-top: 20px; 
 }
