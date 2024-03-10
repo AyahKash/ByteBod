@@ -6,6 +6,7 @@ import Navbar from "../Navbar";
 import "./CreateWorkoutLog.css";
 import workoutlog2 from "../../images/workoutlog2.png"
 
+
 export const CreateWorkoutLog = () => {
     const workoutLogCollectionRef = collection(db, "workoutLog");
     const navigate = useNavigate();
@@ -32,6 +33,8 @@ export const CreateWorkoutLog = () => {
           }
          navigate("/profile/workoutlogs");
     };
+
+    
     
       const handleInputChange = (index, field, value) => {
         const newWorkouts = [...workouts];
@@ -44,6 +47,18 @@ export const CreateWorkoutLog = () => {
         newWorkouts[index].isGoalMet = !newWorkouts[index].isGoalMet;
         setWorkouts(newWorkouts);
       };
+
+      const handleCancel = () => {
+        setWorkouts([
+            { day: 'Monday', exercise: '', goal: '', isGoalMet: false },
+            { day: 'Tuesday', exercise: '', goal: '', isGoalMet: false },
+            { day: 'Wednesday', exercise: '', goal: '', isGoalMet: false },
+            { day: 'Thursday', exercise: '', goal: '', isGoalMet: false },
+            { day: 'Friday', exercise: '', goal: '', isGoalMet: false },
+            { day: 'Saturday', exercise: '', goal: '', isGoalMet: false },
+            { day: 'Sunday', exercise: '', goal: '', isGoalMet: false },
+        ]);
+    };
     
       return (
         <div className="workout planner">
@@ -97,6 +112,9 @@ export const CreateWorkoutLog = () => {
           </tbody>
         </table>
         <button onClick={createWorkoutLog}>Update</button>
+        <button onClick={handleCancel}>Cancel</button>
+
+
       </div>
     );
   };
