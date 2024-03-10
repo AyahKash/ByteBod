@@ -9,22 +9,14 @@ import { HomePage } from './components/pages/HomePage';
 import { Settings } from "./components/pages/Settings";
 import { Profile } from "./components/pages/Profile";
 import { FriendsPage } from "./components/pages/FriendsPage";
-import { WorkoutLog } from "./components/pages/WorkoutLog";
+import { CreateWorkoutLog } from "./components/pages/CreateWorkoutLog";
+import { WorkoutLogs } from "./components/pages/WorkoutLogs";
 import { SearchResults } from "./components/pages/SearchResults";
-
-
 import CreatePost from "./components/pages/CreatePost";
 import { AboutMe } from "./components/pages/AboutMe";
 
 function App() {
   const [posts, setPosts] = useState([]);
-
-  //<Route path="/homepage" element={<React.Fragment><HomePage/><AuthDetails /></React.Fragment>} />
-//<Route path="/createpost" element={<CreatePost/>}/>
-
-  //        <Route path="/createpost" element={<CreatePost updatePosts={setPosts}/>}/>
-  //        <Route path="/homepage" element={<React.Fragment><HomePage postsList={posts}/><AuthDetails /></React.Fragment>} />
-
   return (
     <div className="App">
       <Routes>
@@ -35,7 +27,8 @@ function App() {
         <Route path="/settings" element={<Settings />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/profile/friends" element={<FriendsPage />}/>
-        <Route path="/profile/workoutlog" element={<WorkoutLog />}/>
+        <Route path="/profile/workoutlogs" element={<WorkoutLogs />}/>
+        <Route path="/profile/createworkoutlog" element={<CreateWorkoutLog/>}/>
         <Route path="/createpost" element={<CreatePost updatePosts={setPosts}/>}/>      
         <Route path="/reset" element={<ForgotPassword/>}/>
         <Route path="/aboutme" element={<AboutMe />} />
