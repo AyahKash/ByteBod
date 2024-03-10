@@ -1,8 +1,14 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+import { addDoc, collection } from 'firebase/firestore';
+import { db, auth } from '../../firebase';
 import Navbar from "../Navbar";
-import "./WorkoutLog.css";
+import "./CreateWorkoutLog.css";
 import workoutlog2 from "../../images/workoutlog2.png"
-export const WorkoutLog = () => {
+
+export const CreateWorkoutLog = () => {
+    const workoutLogCollectionRef = collection(db, "workoutLog");
+    const navigate = useNavigate();
     const [workouts, setWorkouts] = useState([
         { day: 'Monday', exercise: '', goal: '', isGoalMet: false },
         { day: 'Tuesday', exercise: '', goal: '', isGoalMet: false },
@@ -12,6 +18,20 @@ export const WorkoutLog = () => {
         { day: 'Saturday', exercise: '', goal: '', isGoalMet: false },
         { day: 'Sunday', exercise: '', goal: '', isGoalMet: false },
       ]);
+
+    const createWorkoutLog = async (event) => {
+        event.preventDefault();
+        const newWorkoutLogData= { 
+            authorID: auth.currentUser.uid,
+            workouts,
+        };
+        try {
+            await addDoc(workoutLogCollectionRef, newWorkoutLogData)
+        } catch (error) {
+            console.log("Error adding post to database: ", error)
+          }
+         navigate("/profile/workoutlogs");
+    };
     
       const handleInputChange = (index, field, value) => {
         const newWorkouts = [...workouts];
@@ -76,8 +96,8 @@ export const WorkoutLog = () => {
             ))}
           </tbody>
         </table>
-        <button onClick={null}>Update</button>
+        <button onClick={createWorkoutLog}>Update</button>
       </div>
     );
   };
-export default WorkoutLog;
+export default CreateWorkoutLog;
