@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 import { getDoc, getDocs, collection, updateDoc, doc} from "firebase/firestore";
 import { db, auth } from '../firebase';
 import profilePhoto from "../images/ProfilePhoto.png";
+import { useNavigate } from 'react-router-dom';
 
 // assuming post data of form:
 const emptyPost = {
@@ -34,7 +35,16 @@ function Card({ post = emptyPost, incrementLikes }) {
   const [newCommentText, setNewCommentText] = useState("");
   const [clickedToComment, setClickedToComment] = useState(false);
   const [updatedComments, setUpdatedComments] = useState(false);
+ 
+  const navigate = useNavigate();
+
+  const cancelAction = (event) => {
+        event.preventDefault(); // Prevent form submission
+        // closes the comment box
+        setClickedToComment(false);
   
+    };
+
   const postDocRef = doc(db, "posts", post.id); //working with current post, make this to update the post with likes and comments when they are added fresh
 
   console.log("outputting comments state outside", comments);
@@ -121,11 +131,14 @@ function Card({ post = emptyPost, incrementLikes }) {
     {
     clickedToComment && 
     <>
-    <form onSubmit={updateComments}>
+   <form onSubmit={updateComments}>
     <p>Enter Comment Below</p>
     <textarea style={{color: "black", width: "100%"}} placeholder="Type your comment here..."onChange={(event)=>{setNewCommentText(event.target.value)}}></textarea>
     <button type="submit">Enter</button>
-    </form>
+    <button className="cancel"  onClick={cancelAction}>Cancel</button>
+            
+      
+    </form> 
     </>
     }
     </div>

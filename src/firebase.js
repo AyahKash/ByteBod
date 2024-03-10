@@ -5,9 +5,6 @@ import {getFirestore} from "firebase/firestore"
 import {getStorage} from "firebase/storage"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
-
-
-    
     const firebaseConfig = {
     apiKey: "AIzaSyDG3PBDHtIiQfb7mNqAoD6rx1EMN7C8lOI",
     authDomain: "bytebod-9d1cf.firebaseapp.com",

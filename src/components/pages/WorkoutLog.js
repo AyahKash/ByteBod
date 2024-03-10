@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from "../Navbar";
-
+import "./WorkoutLog.css";
+import workoutlog2 from "../../images/workoutlog2.png"
 export const WorkoutLog = () => {
     const [workouts, setWorkouts] = useState([
         { day: 'Monday', exercise: '', goal: '', isGoalMet: false },
@@ -27,13 +28,19 @@ export const WorkoutLog = () => {
       return (
         <div className="workout planner">
         <Navbar />
+        <div class="header">
+          <h1>WORKOUT LOG</h1>
+          <div class="icons">
+          <img src={workoutlog2}/>
+      </div>
+      </div>
         <table>
           <thead>
             <tr>
-              <th>Day</th>
-              <th>Exercise</th>
-              <th>Goal</th>
-              <th>Goal Met</th>
+              <th>DAY</th>
+              <th>EXERCISE</th>
+              <th>GOAL</th>
+              <th>GOAL MET</th>
             </tr>
           </thead>
           <tbody>
@@ -41,18 +48,22 @@ export const WorkoutLog = () => {
               <tr key={index}>
                 <td>{workout.day}</td>
                 <td>
-                  <input
-                    type="text"
-                    value={workout.exercise}
-                    onChange={(e) => handleInputChange(index, 'exercise', e.target.value)}
-                  />
+                  <div className="input-wrapper">
+                    <input
+                      type="text"
+                      value={workout.exercise}
+                      onChange={(e) => handleInputChange(index, 'exercise', e.target.value)}
+                    />
+                  </div>
                 </td>
                 <td>
-                  <input
-                    type="text"
-                    value={workout.goal}
-                    onChange={(e) => handleInputChange(index, 'goal', e.target.value)}
-                  />
+                  <div className="input-wrapper">
+                    <input
+                      type="text"
+                      value={workout.goal}
+                      onChange={(e) => handleInputChange(index, 'goal', e.target.value)}
+                    />
+                  </div>
                 </td>
                 <td>
                   <input
@@ -66,7 +77,7 @@ export const WorkoutLog = () => {
           </tbody>
         </table>
         <button onClick={null}>Update</button>
-        </div>
-      );
-    };
+      </div>
+    );
+  };
 export default WorkoutLog;
