@@ -54,6 +54,7 @@ margin-top: 15px;
   justify-content: center;
   color: white;
   border-radius: 5px;
+ 
   box-shadow: 0 0.5em 1em rgba(0.2, 0.2, 0.2, 0.2);
 }
 
@@ -176,4 +177,6 @@ margin-top: 15px;
   align-items: flex-start;
 }
 
-
+.about_me-actions {
+  margin-top: 20px; 
+}

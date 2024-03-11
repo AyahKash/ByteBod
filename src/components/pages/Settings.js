@@ -7,6 +7,8 @@ import profilePhoto from "../../images/ProfilePhoto.png";
 import { useAuth, upload, updateUserProfile , deleteProfilePhoto} from "../auth/FirebaseUtils";
 import { updatePassword } from 'firebase/auth';
 
+import { useNavigate } from "react-router-dom"; // ADDED THIS ANUSHKA
+
 export const Settings = () => {
 
   const currentUser = useAuth();
@@ -18,6 +20,10 @@ export const Settings = () => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [photoChosen, setPhotoChosen] = useState(false); 
+
+  const navigate = useNavigate(); // ADDED THIS ANUSHKA
+
+
 
  //sets user email to display it
   useEffect(() => {
@@ -77,12 +83,6 @@ export const Settings = () => {
       console.log("Trouble updating bio, error: ", error)
     }
   }
-  //this isn't working yet
-  function removeImage(){
-    setPhotoURLWritten(false);
-    setPhotoURL(profilePhoto);
-    currentUser.photoURL = profilePhoto;
-  }
 
   function resetPassword() {
     const user = currentUser;
@@ -106,21 +106,25 @@ export const Settings = () => {
     //main div:
     <div>
       <div> <Navbar/> </div> 
+      
       <div class="flex-container">
+        
+
         <div class="profile_box">
           <img src={photoURL} alt = "Hello" className = "avatar"/>
           <div class="item"> <AuthDetails/> 
             <div className = "user-email"> 
               Email: {currentUser ? currentUser.email : 'Loading...'}
             </div>
-            <div className = "user-bio"> 
-              Bio: {currentUser ? bio : 'Loading...'}
-            </div>
+        <div class="about_me-actions">           
+          </div>
+          
           <input class="item2" type="file" onChange={handleChange}></input>
+
           </div>
           <div class="button-container">
             <button class="buttons" disabled={loading || !photo} onClick={handleClick} style={{backgroundColor: photoChosen === true  ?  "#027148" : "#808080" }}>Upload</button>
-            <button onClick={null} class="buttons">Remove Profile Picture</button>
+            <button class="buttons" onClick={() => navigate("/AboutMe")}>About Me</button>
           </div>
         </div>
         <div class="info_box">

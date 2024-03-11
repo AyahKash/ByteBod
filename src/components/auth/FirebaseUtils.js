@@ -2,9 +2,7 @@ import { onAuthStateChanged, updateProfile } from "firebase/auth";
 import { auth, db, storage} from "../../firebase";
 import { setDoc, doc } from 'firebase/firestore';
 import { useEffect, useState } from "react";
-import {ref, uploadBytes, getDownloadURL, deleteObject} from "firebase/storage"
-import { addDoc} from 'firebase/firestore';
-import { useNavigate } from 'react-router-dom';
+import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
 
 //DOC WITH ALL THE FIREBASE/FIRESTORE FUNCTIONS?
 
@@ -35,25 +33,6 @@ export const updateUserProfile = async (user, email, options = {}) => {
     console.error("Error updating user profile and writing to the database:", error);
   }
 };
-
-
-// //adding post on firestore this is not working...
-// export const createPost = async (title, postText, author) => {
-//   const postsCollectionRef = doc(db, 'posts');
-//   const newPostData = { 
-//     title, 
-//     postText, 
-//     author,
-//   };
-
-//   try {
-//     await addDoc(postsCollectionRef, newPostData);
-//     console.log("Added post to database");
-//   } catch (error) {
-//     console.log("Error adding post to database: ", error);
-//     throw error;
-//   }
-// };
 
 
 // Storage Functions (maybe move to a new file?)

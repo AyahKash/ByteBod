@@ -25,6 +25,7 @@ def update_firebase_api_key(api_key):
     appId: "1:545880527544:web:9d4e618b4e5f017da09a4d"
     };
     ''' % api_key
+    print("in function")
     
     f = open(firebase_config, "a")
     f.write(long_str)
@@ -64,10 +65,8 @@ if __name__ == "__main__":
     document_id = "1GzrZkGGXofKao6vrj7FLdy4Ln53"
     api_key = user_api_key
     firestore_url = f"{firestore_base_url}/{collection_path}/{document_id}?key={api_key}"
-
     # Make a GET request to the Firestore document
     response = requests.get(firestore_url)
-
     # Check the response status code to ensure inputted API key is valid
     if response.status_code == 200:
         print("API key is valid.")
@@ -76,4 +75,3 @@ if __name__ == "__main__":
     else:
         print(f"API key verification failed. Status code: {response.status_code}")
         print("Error response:", response.json())
-

@@ -1,0 +1,14 @@
+.homepage {
+    margin-top: 20px; /* Add some top margin */
+  }
+  
+  .workoutLog {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px; /* Add some bottom margin */
+  }
+  
+  .workoutLog:last-child {
+    margin-bottom: 0; /* Remove bottom margin from the last workoutLog */
+  }

@@ -1,0 +1,33 @@
+.workoutLog {
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    padding: 10px; /* Decrease padding */
+    
+    font-size: 16px; /* Decrease font size */
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+  
+  .workoutLog div {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-bottom: 3px; /* Decrease margin */
+  }
+  
+  .workoutLog .day {
+    font-weight: bold;
+  }
+  
+  .workoutLog .goal {
+    color: #007bff; /* Blue color for goals */
+  }
+  
+  .workoutLog .isGoalMet {
+    background-color: #28a745; /* Green color for achieved goals */
+  }
+  
+  .workoutLog .exercise {
+    font-style: italic; /* Italicize exercise type */
+  }
+  
+  
