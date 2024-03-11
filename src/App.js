@@ -9,6 +9,7 @@ import { HomePage } from './components/pages/HomePage';
 import { Settings } from "./components/pages/Settings";
 import { Profile } from "./components/pages/Profile";
 import { FriendsPage } from "./components/pages/FriendsPage";
+import { FriendsFeedPage } from './components/pages/FriendsFeedPage';
 import CreatePost from "./components/pages/CreatePost";
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
         <Route path="/profile/friends" element={<FriendsPage />}/>
         <Route path="/createpost" element={<CreatePost updatePosts={setPosts}/>}/>      
         <Route path="/reset" element={<ForgotPassword/>}/>
+        <Route path="/friendsfeed" element={<FriendsFeedPage />}/>
         </Routes>
     </div>
   );
