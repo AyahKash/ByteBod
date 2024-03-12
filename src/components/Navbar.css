@@ -8,6 +8,10 @@
   top: 0;
   margin-bottom: 1em;
 }
+.navbar-item {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
 .navbar-item:hover {
   cursor: pointer;
 }

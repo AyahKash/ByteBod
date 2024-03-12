@@ -12,7 +12,8 @@ export const HomePage = (posts) => {
   const navigate = useNavigate();
   const [postList, setPostList] = useState([]);
   const postsCollectionRef = collection(db, "posts");
-  console.log(postsCollectionRef);
+  
+  // display posts in order of date created when page is rendered
   useEffect(() => {
     const getPosts = async () => {
       const data = await getDocs(query(postsCollectionRef, orderBy('createAt', 'desc')));
@@ -20,12 +21,9 @@ export const HomePage = (posts) => {
     };
     getPosts(); 
   }, [] );
-  
-  //for Ayah testing purposes:
-  console.log("Here is the postList", postList);
 
   return (
-    <div className="homepage">
+    <div className="home-page">
       <Navbar />
       <Button style={{ margin: "1em 1em" }} onClick={() => navigate("/createpost")}>
         Create a Post
