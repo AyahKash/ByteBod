@@ -25,7 +25,7 @@ export const HomePage = (posts) => {
   console.log("Here is the postList", postList);
 
   return (
-    <div className="homepage">
+    <div className="home-page">
       <Navbar />
       <Button style={{ margin: "1em 1em" }} onClick={() => navigate("/createpost")}>
         Create a Post

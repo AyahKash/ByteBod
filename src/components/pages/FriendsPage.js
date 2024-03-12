@@ -9,27 +9,11 @@ import {
   where,
 } from "firebase/firestore";
 import { db, auth } from "../../firebase";
+import { useAuth } from "../auth/FirebaseUtils";
+import profilePhoto from "../../images/ProfilePhoto.png"; 
 import Navbar from "../Navbar";
 import Button from "../Button";
 import "./FriendsPage.css";
-import profilePhoto from "../../images/ProfilePhoto.png";
-import { useAuth } from "../auth/FirebaseUtils";
-
-
-
-
-/* Implementation Notes:
-    - currently you can: 
-        - send a friend request
-        - accept/reject a friend request
-        - remove a friend 
-    - each user gets two subcollections: friends and friendRequests
-    - sending a request adds a document to the sender and target user's friendRequests collection 
-    - accepting a request changes the status of both users' corresponding friendRequests docs AND adds a doc to each user's friends subcollection
-    - rejecting a request changes the status of both users' corresponding friendRequests docs
-    - removing a friend changes the status of both users' corresponding friendRequests docs AND changes the status if  each user's friends subcollection doc
-    - (so with the current implementaiton documents are not removed at all for requests/removals, but we can change that if we want)
-*/
 
 export const FriendsPage = (props) => {
   const usersRef = collection(db, "users");
@@ -42,7 +26,7 @@ export const FriendsPage = (props) => {
   const [listState, setListState] = useState();
   const [requestSendMessage, setRequestSendMessage] = useState("");
 
-  // Find a user given the email entered:
+  // Query to find a user given the email entered
   const findTargetUserFromEmail = async () => {
     const q = query(usersRef, where("email", "==", targetEmail));
     const querySnapshot = await getDocs(q);
@@ -53,11 +37,13 @@ export const FriendsPage = (props) => {
     }
   };
 
-  // Send a friend request:
+  // Send a friend request
   const sendFriendRequest = async (event) => {
+    
+    // Prevent a rerender 
     event.preventDefault();
 
-    // get target user document:
+    // Get target user document from email
     let targetUserId;
     try {
       targetUserId = await findTargetUserFromEmail();
@@ -73,7 +59,7 @@ export const FriendsPage = (props) => {
       "friendRequests"
     );
 
-    // add the docs:
+    // Add the docs for each user
     try {
       await setDoc(doc(currentUserFriendRequestsRef, targetUserId), {
         friendStatus: "requestSent",
@@ -86,20 +72,22 @@ export const FriendsPage = (props) => {
     } catch (error) {
       console.log("Error sending friend request: ", error);
     }
-    // TO DO: Figure out how to clear input field after click
   };
 
-  // Accept or reject a friend request:
+  // Accept or reject a friend request
   const respondToRequest = async (targetUserId, response) => {
     const targetUserFriendRequestsRef = collection(
       usersRef,
       targetUserId,
       "friendRequests"
     );
+    const targetUserFriendsRef = collection(
+      usersRef,
+      targetUserId,
+      "friends"
+    );
 
-    const targetUserFriendsRef = collection(usersRef, targetUserId, "friends");
-
-    // add the docs:
+    // Add the docs for each user
     if (response) {
       try {
         await setDoc(doc(currentUserFriendRequestsRef, targetUserId), {
@@ -114,8 +102,9 @@ export const FriendsPage = (props) => {
         await setDoc(doc(targetUserFriendsRef, auth.currentUser.uid), {
           friendStatus: "requestAccepted",
         });
-        console.log("Request accpeted");
-        setListState(!listState); // only purpose of this is to get the friends lists to rerender
+
+        // Alert the lists to rerender
+        setListState(!listState);
       } catch (error) {
         console.log("Error accepting friend request: ", error);
       }
@@ -127,7 +116,6 @@ export const FriendsPage = (props) => {
         await setDoc(doc(targetUserFriendRequestsRef, auth.currentUser.uid), {
           friendStatus: "requestRejected",
         });
-        console.log("Request rejected");
         setListState(!listState);
       } catch (error) {
         console.log("Error rejecting friend request: ", error);
@@ -135,16 +123,20 @@ export const FriendsPage = (props) => {
     }
   };
 
-  // Remove a friend:
+  // Remove a friend
   const removeFriend = async (targetUserId) => {
     const targetUserFriendRequestsRef = collection(
       usersRef,
       targetUserId,
       "friendRequests"
     );
+    const targetUserFriendsRef = collection(
+      usersRef,
+      targetUserId,
+      "friends"
+    );
 
-    const targetUserFriendsRef = collection(usersRef, targetUserId, "friends");
-
+    // Modify the docs for each user
     try {
       await setDoc(doc(currentUserFriendRequestsRef, targetUserId), {
         friendStatus: "removed",
@@ -158,16 +150,17 @@ export const FriendsPage = (props) => {
       await setDoc(doc(targetUserFriendsRef, auth.currentUser.uid), {
         friendStatus: "removed",
       });
-      console.log("Friend removed");
       setListState(!listState);
     } catch (error) {
       console.log("Error removing friend: ", error);
     }
   };
 
-  // Fetch current user doc reference and set references:
+  // Fetch current user doc reference and set references
   useEffect(() => {
     const getCurrentUserRefs = async () => {
+
+      // Ensure the current user is signed in 
       if (auth.currentUser) {
         try {
           setCurrentUserFriendRequestsRef(
@@ -184,17 +177,25 @@ export const FriendsPage = (props) => {
     getCurrentUserRefs();
   }, [currentUser]);
 
-  // Fetch pending friend request list from Firestore:
+  // Fetch pending friend request list from Firestore
   useEffect(() => {
     const getRequests = async () => {
       const tempRequestList = [];
+
+      // Ensure the friend request reference is set
       if (currentUserFriendRequestsRef) {
         const q = query(
           currentUserFriendRequestsRef,
           where("friendStatus", "==", "requestReceived")
         );
         const querySnapshot = await getDocs(q);
+
+        /* Store just the ID's of the friend request documents as these 
+          correspond to the UID's of the friend documents in the users
+          collection */
         const requestDocumentIds = querySnapshot.docs.map((doc) => doc.id);
+
+        // Now fetch each corresponding user documents
         for (const documentId of requestDocumentIds) {
           const docRef = doc(usersRef, documentId);
           const docSnapshot = await getDoc(docRef);
@@ -212,17 +213,23 @@ export const FriendsPage = (props) => {
     getRequests();
   }, [currentUserFriendRequestsRef, listState]);
 
-  // Fetch friend  list from Firestore:
+  // Fetch friend  list from Firestore
   useEffect(() => {
     const getFriends = async () => {
       const tempFriendsList = [];
+
+      // Ensure the friend reference is set
       if (currentUserFriendsRef) {
         const q = query(
           currentUserFriendsRef,
           where("friendStatus", "==", "requestAccepted")
         );
         const querySnapshot = await getDocs(q);
+
+        // Again, just store the document ID's
         const friendDocumentIds = querySnapshot.docs.map((doc) => doc.id);
+
+        // Fetch the corresponding user documents
         for (const documentId of friendDocumentIds) {
           const docRef = doc(usersRef, documentId);
           const docSnapshot = await getDoc(docRef);
