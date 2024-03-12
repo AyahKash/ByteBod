@@ -15,10 +15,12 @@ export const WorkoutLogs = () => {
     const workoutLogCollectionRef = collection(db, "workoutLog"); 
     const currentUser = useAuth();
     
+    // render old workout logs upon loading page
     useEffect(() => {
         const getworkoutLog = async () => {
           let tempWorkoutLogList = [];
           if (currentUser) {
+          // only display workout logs of user currently signed in. 
           const currentUserUID = currentUser.uid; 
           const q = query(
             workoutLogCollectionRef, 
@@ -32,6 +34,7 @@ export const WorkoutLogs = () => {
         getworkoutLog(); 
     }, [currentUser]);
 
+    //display date and time
     const formatDateTime = (timestamp) => {
       if (timestamp && timestamp.seconds) {
           const date = new Date(timestamp.seconds * 1000);

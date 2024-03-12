@@ -19,7 +19,8 @@ export const CreateWorkoutLog = () => {
         { day: 'Saturday', exercise: '', goal: '', isGoalMet: false },
         { day: 'Sunday', exercise: '', goal: '', isGoalMet: false },
       ]);
-
+    
+    //add workout log to firebase database, passing in current state of workout log and ID of author
     const createWorkoutLog = async (event) => {
         event.preventDefault();
         const newWorkoutLogData= { 
@@ -35,19 +36,21 @@ export const CreateWorkoutLog = () => {
     };
 
     
-    
+    //update value of input box upon change
       const handleInputChange = (index, field, value) => {
         const newWorkouts = [...workouts];
         newWorkouts[index][field] = value;
         setWorkouts(newWorkouts);
       };
     
+      //toggle checkbox when selected
       const handleCheckboxChange = (index) => {
         const newWorkouts = [...workouts];
         newWorkouts[index].isGoalMet = !newWorkouts[index].isGoalMet;
         setWorkouts(newWorkouts);
       };
 
+    //clear workout log when cancel button hit, reset to default value
       const handleCancel = () => {
         setWorkouts([
             { day: 'Monday', exercise: '', goal: '', isGoalMet: false },
