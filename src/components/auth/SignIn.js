@@ -11,6 +11,8 @@ function SignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorExists, setErrorExists] = useState(false);
+  
+  //Sign in user if credentials are correct
     const signIn = (e) => {
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{

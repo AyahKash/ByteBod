@@ -11,7 +11,6 @@ const emptyWorkoutLogCard = {
 };
 
 function WorkoutLogCard({log}) {
-    console.log("Here is the actual workoutLog object", log);
     const formatDateTime = (timestamp) => {
       if (timestamp && timestamp.seconds) {
           const date = new Date(timestamp.seconds * 1000);
