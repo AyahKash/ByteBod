@@ -29,6 +29,7 @@ export const FriendsPage = (props) => {
   // Query to find a user given the email entered
   const findTargetUserFromEmail = async () => {
     const q = query(usersRef, where("email", "==", targetEmail));
+    setTargetEmail("");
     const querySnapshot = await getDocs(q);
     if (querySnapshot.empty) {
       throw new Error("No user found with provided email");
@@ -320,6 +321,7 @@ export const FriendsPage = (props) => {
                 onChange={(event) => {
                   setTargetEmail(event.target.value);
                 }}
+                value={targetEmail}
               />
               <Button type="submit" className="button sr">Send Request</Button>
             </div>
