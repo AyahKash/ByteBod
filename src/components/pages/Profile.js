@@ -36,8 +36,7 @@ export const Profile = () => {
 
   useEffect(() => {
     if (!currentUser) {
-      // User is not logged in, do nothing
-      console.log("User not logged in");
+      console.log("User notttt logged in");
       return;
     }
     console.log("checking reads")

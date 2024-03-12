@@ -4,8 +4,7 @@ import { setDoc, doc } from 'firebase/firestore';
 import { useEffect, useState } from "react";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
 
-//DOC WITH ALL THE FIREBASE/FIRESTORE FUNCTIONS?
-
+//DOC WITH ALL THE FIREBASE/FIRESTORE FUNCTIONS
 
 //returns current user object:
 export function useAuth(){
@@ -35,11 +34,7 @@ export const updateUserProfile = async (user, email, options = {}) => {
 };
 
 
-// Storage Functions (maybe move to a new file?)
-//async <-> API calls
-//uploading files --> await inside async (not instantaneous)
-
-//uploads a file to storage on firebase:
+//uploads an imshr to storage on firebase:
 export async function upload(file, currentUser, setLoading){ 
   const fileRef = ref(storage, 'profile_photos/'+ currentUser.displayName + '.png'); //hardcoding .png currently, can change this //need to create unique hash for photos
   setLoading(true);
@@ -49,6 +44,5 @@ export async function upload(file, currentUser, setLoading){
   await updateProfile(currentUser, {photoURL: photoUrl});
   setLoading(false);
   alert("Uploaded picture!");
-  //reload page so user can see updates
   window.location.reload(false);
 }

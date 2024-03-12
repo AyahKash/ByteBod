@@ -27,7 +27,7 @@
  
   /* Title styling */
   .cpContainer h1 {
-    color: #164863;
+    color: #164863 !important;
     text-align: center;
   }
 
@@ -143,4 +143,8 @@
 
 .cancel-actions button:hover {
   background-color: #164863;
+}
+
+h1{
+  color: black;
 }
