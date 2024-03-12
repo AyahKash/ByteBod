@@ -14,9 +14,10 @@ export const FriendsFeedPage = (posts) => {
   const [friendsUIDList, setFriendsUIDList] = useState([]);
   const [postList, setPostList] = useState([]);
 
-  // get friends ref
+  // Get current user's friend collection reference 
   useEffect(() => {
     const getCurrentUserRefs = async () => {
+      // Ensure the user is signed in with useAuth
       if (currentUser) {
         try {
           setCurrentUserFriendsRef(
@@ -30,7 +31,7 @@ export const FriendsFeedPage = (posts) => {
     getCurrentUserRefs();
   }, [currentUser]);
 
-  // get list of frinds
+  // Query through friend collection to find active friends 
   useEffect(() => {
     const getFriendsUIDList = async () => {
       let tempFriendsUIDList = [];
@@ -47,7 +48,7 @@ export const FriendsFeedPage = (posts) => {
     getFriendsUIDList();
   }, [currentUserFriendsRef]);
 
-  // get the posts
+  // Get posts who's author ID's are in the list of user's friends
   useEffect(() => {
     const getPosts = async () => {
       if (friendsUIDList.length) {

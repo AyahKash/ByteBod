@@ -39,19 +39,19 @@ const getData = async (event) => {
 
 const navigate = useNavigate();
   return (
-    <Container className="mt-5" id="searchContainer">
+    <Container className="my-0 py-0" id="searchContainer">
       <Row>
-        <Col sm={6}>
-          <Form className="d-flex">
+        <Col sm={6} >
+          <Form className="d-flex my-0 py-0">
             <Form.Control
               type="search"
               placeholder="Search for a workout..."
-              className="me-2"
+              className="me-2 my-0 py-0"
               aria-label="Search"
               value={workout}
               onChange={(e) => setWorkout(e.target.value)}
             />
-            <button className="searchButton" onClick={getData} > Search </button>
+            <button className="searchButton my-0 py-0" onClick={getData} > Search </button>
           </Form>
         </Col>
       </Row>
