@@ -22,10 +22,8 @@ const emptyPost = {
 
 
 function Card({ post = emptyPost, incrementLikes }) {
-  console.log("Here is the actual post object", post);
 
   if (post.commentsList){
-  console.log("Here is length of comments list", post.commentsList.length);
   console.log("Here is the first object in the comments list", post.commentsList[0]);
   }
 

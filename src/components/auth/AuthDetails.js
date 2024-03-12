@@ -3,6 +3,7 @@ import {auth} from '../../firebase';
 import { onAuthStateChanged} from "firebase/auth";
 
 
+// Function component to display authentication details
 function AuthDetails(){ 
     const [authUser, setAuthUser] = useState(null);
     const [name, setName] = useState(null);

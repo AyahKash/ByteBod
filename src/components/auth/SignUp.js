@@ -6,12 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { updateUserProfile } from "./FirebaseUtils";
 
-
-
-/* Can't figure out how to get the pictures to fit in the input fields (was thinking they could be next to each input) 
-also need to figure out how to connect name (and other information) to users email and password using firebase database*/
-
-
+//Creates user in firebase, adds user to firestore (name and email) and signs them in
 function SignUp(){
     const navigate = useNavigate();
     const [name, setName] = useState("");
