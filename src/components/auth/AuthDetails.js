@@ -12,7 +12,6 @@ function AuthDetails(){
             if(userCredential){
                 setAuthUser(userCredential);
                 setName(userCredential.displayName)
-                console.log("Auth", userCredential)
             }
             else{
                 setAuthUser(null);

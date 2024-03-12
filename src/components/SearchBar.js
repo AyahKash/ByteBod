@@ -14,40 +14,27 @@ import React, {useState } from "react";
 export default function SearchBar() {
   const[postList, setPostList] = useState([]);
   const[workout, setWorkout] = useState("");
-
+  
+const formatString = (string) => {
+  return string.replace(/\s/g, "").toLowerCase();
+};
+  
 const getData = async (event) => {
   event.preventDefault();
-
-  const keyword = workout.toLowerCase(); 
-
-  if (!keyword) {
-    alert("Please enter an input to search for workouts");
-    return;
-  }
-
-  const q = collection(db, "posts");
-  const querySnapshot = await getDocs(q);
-
-  if (querySnapshot.empty) {
-    alert("No workout type found");
-  } else {
-    const allPosts = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    // Filter posts based on the keyword
-    const matchingPosts = allPosts.filter((post) =>
-      post.workoutType.toLowerCase().includes(keyword)
-    );
-
-    if (matchingPosts.length === 0) {
-      alert("No matching workout type found");
-    } else {
-      setPostList(matchingPosts);
-      navigate("/searchresults", { state: { postList: matchingPosts } });
-      console.log(matchingPosts);
-    }
-  }
-
-
+  const formattedString = formatString(workout);
+  console.log(formattedString); 
   
+  const q = query(collection(db, "posts"), where("formattedWorkoutType", "==", formattedString));
+
+  const querySnapshot = await getDocs(q);
+  if (querySnapshot.empty) {
+    alert("No posts found with workout type: " + workout);
+  } else {
+    const updatedPostList = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    setPostList(updatedPostList)  
+    navigate("/searchresults", { state: { postList: updatedPostList } });
+    console.log(updatedPostList)
+  }
 };
 
 const navigate = useNavigate();

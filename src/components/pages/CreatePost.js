@@ -13,7 +13,7 @@ export const CreatePost = (props) => {
   const createDate = new Date();
   const [workoutType, setWorkoutType] = useState("");
 
-
+  //format current time at post creation
   const formattedTime = createDate.toLocaleString('en-US', {
     year: 'numeric',
     month: '2-digit',
@@ -23,20 +23,26 @@ export const CreatePost = (props) => {
     hour12: true // Whether to use 12-hour time (true) or 24-hour time (false)
   });
 
+  // remove spaces from string and convery to all lowercase. 
+  const formatString = (string) => {
+    return string.replace(/\s/g, "").toLowerCase();
+  };
+
   const dateString = formattedTime.toString();
-  
   const postsCollectionRef = collection(db, "posts");
   let navigate = useNavigate();
 
-    //first add post to firebase
-    //when post is first created likes should be 0
+    //add post to firebase
+    //when post is first created likes should be 0, commentlist empty
     const createPost = async (event) => {
         event.preventDefault();
+        const formattedWorkoutType = formatString(workoutType);
         const newPostData = { 
             title, 
             postText, 
             author: {name: auth.currentUser.displayName, id: auth.currentUser.uid, photoUrl: auth.currentUser.photoURL},
             workoutType,
+            formattedWorkoutType,
             createAt: dateString,
             likes: 0,
             commentsList: [],
@@ -109,8 +115,7 @@ export const CreatePost = (props) => {
             </div>
             </div>
             <button type="submit">Submit Post</button>
-            {/* added this */}
-        <div class="cancel-actions">   
+        <div className="cancel-actions">   
         <button class="cancel" onClick={() => navigate("/HomePage")}>Cancel</button>
         </div>
         </div>

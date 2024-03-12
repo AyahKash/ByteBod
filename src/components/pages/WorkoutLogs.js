@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { getDocs, collection, query, orderBy } from "firebase/firestore";
-import { db } from "../../firebase"; 
+import { getDocs, collection, query, orderBy, where } from "firebase/firestore";
+import { db } from "../../firebase";
+import { useAuth } from "../auth/FirebaseUtils"; 
 import Navbar from "../Navbar";
 import Button from "../Button";
 import WorkoutLogCard from "./WorkoutLogCard";
@@ -12,16 +13,28 @@ export const WorkoutLogs = () => {
     const navigate = useNavigate();
     const [workoutLogList, setworkoutLogList] = useState([]); 
     const workoutLogCollectionRef = collection(db, "workoutLog"); 
-    console.log(workoutLogCollectionRef);
+    const currentUser = useAuth();
+    
+    // render old workout logs upon loading page
     useEffect(() => {
         const getworkoutLog = async () => {
-          const data = await getDocs(workoutLogCollectionRef);
-          setworkoutLogList(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+          let tempWorkoutLogList = [];
+          if (currentUser) {
+          // only display workout logs of user currently signed in. 
+          const currentUserUID = currentUser.uid; 
+          const q = query(
+            workoutLogCollectionRef, 
+            where("authorID", "==", currentUserUID)
+            ); 
+          const data = await getDocs(q);
+          tempWorkoutLogList = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
+          }
+          setworkoutLogList(tempWorkoutLogList);
         };
         getworkoutLog(); 
-        console.log(workoutLogList);
-    }, [] );
+    }, [currentUser]);
 
+    //display date and time
     const formatDateTime = (timestamp) => {
       if (timestamp && timestamp.seconds) {
           const date = new Date(timestamp.seconds * 1000);
