@@ -93,6 +93,10 @@ function Card({ post = emptyPost, incrementLikes }) {
     setLikes(prevLikes + 1);
   };
 
+ 
+  
+  
+
 
   console.log(post.author)
   return (
@@ -135,9 +139,7 @@ function Card({ post = emptyPost, incrementLikes }) {
     <p>Enter Comment Below</p>
     <textarea style={{color: "black", width: "100%"}} placeholder="Type your comment here..."onChange={(event)=>{setNewCommentText(event.target.value)}}></textarea>
     <button type="submit">Enter</button>
-    <button className="cancel"  onClick={cancelAction}>Cancel</button>
-            
-      
+    <button className="cancel"  onClick={cancelAction}>Cancel</button> 
     </form> 
     </>
     }
