@@ -15,20 +15,20 @@ export default function SearchBar() {
   const[postList, setPostList] = useState([]);
   const[workout, setWorkout] = useState("");
   
-const capitalizeFirstLetter = (string) => {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+const formatString = (string) => {
+  return string.replace(/\s/g, "").toLowerCase();
+};
   
 const getData = async (event) => {
   event.preventDefault();
-  const capitalizedWorkout = capitalizeFirstLetter(workout.toLowerCase());
+  const formattedString = formatString(workout);
+  console.log(formattedString); 
   
-  const q = query(collection(db, "posts"), where("workoutType", "==", capitalizedWorkout));
-  //const q = query(collection(db, "posts"), where("workoutType", "==", workout.toLowerCase()));
+  const q = query(collection(db, "posts"), where("formattedWorkoutType", "==", formattedString));
 
   const querySnapshot = await getDocs(q);
   if (querySnapshot.empty) {
-    throw new Error("No user found with provided email");
+    alert("No posts found with workout type: " + workout);
   } else {
     const updatedPostList = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     setPostList(updatedPostList)  
