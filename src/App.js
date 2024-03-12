@@ -9,6 +9,7 @@ import { HomePage } from './components/pages/HomePage';
 import { Settings } from "./components/pages/Settings";
 import { Profile } from "./components/pages/Profile";
 import { FriendsPage } from "./components/pages/FriendsPage";
+import { FriendsFeedPage } from './components/pages/FriendsFeedPage';
 import { CreateWorkoutLog } from "./components/pages/CreateWorkoutLog";
 import { WorkoutLogs } from "./components/pages/WorkoutLogs";
 import { SearchResults } from "./components/pages/SearchResults";
@@ -31,6 +32,7 @@ function App() {
         <Route path="/profile/createworkoutlog" element={<CreateWorkoutLog/>}/>
         <Route path="/createpost" element={<CreatePost updatePosts={setPosts}/>}/>      
         <Route path="/reset" element={<ForgotPassword/>}/>
+        <Route path="/friendsfeed" element={<FriendsFeedPage />}/>
         <Route path="/aboutme" element={<AboutMe />} />
         <Route path="/searchresults" element={<SearchResults/>}/>
         </Routes>

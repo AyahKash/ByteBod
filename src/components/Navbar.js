@@ -35,6 +35,9 @@ return (
             <Button className="nav-link" onClick={() => navigate("/homepage")}> Home </Button>
           </li>
           <li className="navbar-item">
+            <Button className="nav-link" onClick={() => navigate("/friendsfeed")}> Friends Feed </Button>
+          </li>
+          <li className="navbar-item">
             <Button className="nav-link" onClick={() => navigate("/profile")}> Profile </Button>
           </li>
           <li className="navbar-item">
