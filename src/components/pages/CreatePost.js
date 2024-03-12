@@ -23,6 +23,10 @@ export const CreatePost = (props) => {
     hour12: true // Whether to use 12-hour time (true) or 24-hour time (false)
   });
 
+  const formatString = (string) => {
+    return string.replace(/\s/g, "").toLowerCase();
+  };
+
   const dateString = formattedTime.toString();
   
   const postsCollectionRef = collection(db, "posts");
@@ -32,11 +36,13 @@ export const CreatePost = (props) => {
     //when post is first created likes should be 0
     const createPost = async (event) => {
         event.preventDefault();
+        const formattedWorkoutType = formatString(workoutType);
         const newPostData = { 
             title, 
             postText, 
             author: {name: auth.currentUser.displayName, id: auth.currentUser.uid, photoUrl: auth.currentUser.photoURL},
             workoutType,
+            formattedWorkoutType,
             createAt: dateString,
             likes: 0,
             commentsList: [],
