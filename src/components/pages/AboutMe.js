@@ -8,7 +8,10 @@ import profilePhoto from "../../images/ProfilePhoto.png";
 import { addDoc, collection, query, getDocs, updateDoc, doc, where } from 'firebase/firestore';
 import { db, auth } from '../../firebase';
 
-
+/* 
+Page that allows users to add more information to their profile
+Adds data to a firestore database, which is then displayed on the profile page
+*/
 export const AboutMe = () => {
   const navigate = useNavigate();
   const currentUser = useAuth();
@@ -34,17 +37,17 @@ export const AboutMe = () => {
       const userEmail = auth.currentUser.email;
   
       const newPostData = {
-          fitnessJourney, // Assuming this is defined elsewhere in your component
-          favoriteWorkouts, // Assuming this is defined elsewhere in your component
+          fitnessJourney, 
+          favoriteWorkouts,
           id: userId,
           email: userEmail,
           author: {
               name: auth.currentUser.displayName,
               photoUrl: auth.currentUser.photoURL
           },
-          fitnessGoals, // Assuming this is defined elsewhere in your component
-          dateOfBirth, // Assuming this is defined elsewhere in your component
-          age, // Assuming this is defined elsewhere in your component
+          fitnessGoals,
+          dateOfBirth, 
+          age,
       };
       
       // Attempt to find an existing document by userId
@@ -101,7 +104,7 @@ export const AboutMe = () => {
       <Navbar />
       <form onSubmit={createPost}>
       <div className="AboutMe-container">
-        <div className="AboutMe-box"> {/* Container for profile details */}
+        <div className="AboutMe-box"> 
           <div className="AboutMe-header">
             <img src={photoURL} alt="Profile" className="profile-photo" />
             <h3>Customize your profile!</h3>

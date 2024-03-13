@@ -29,7 +29,6 @@ export const Settings = () => {
   useEffect(() => {
     if (currentUser) {
       const userEmail = currentUser.email;
-      console.log("User email:", userEmail);
     }
   }, [currentUser]);
 
@@ -47,7 +46,6 @@ export const Settings = () => {
   useEffect(()=>{
     if(currentUser && currentUser.photoURL){
       setPhotoURLWritten(true)
-      console.log("Updated photoURL in effect:", currentUser.photoURL);
     }
   }, [currentUser]);
 
@@ -61,7 +59,6 @@ export const Settings = () => {
         try{
           await updateUserProfile(currentUser, currentUser.email, options);
           setPhotoURL(currentUser.photoURL);
-          console.log("Updated photoURL in this effect: ", currentUser.photoURL);
         }
         catch(error){
           console.error("Error updating profile: ", error);

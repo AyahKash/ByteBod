@@ -5,7 +5,10 @@ import "./ForgotPassword.css"
 import Button from "../Button"
 import { useNavigate } from "react-router-dom";
 
-// Helps user reset password. Sends a password reset email to the given email address based on current user
+/*
+Function which lets a user reset password. Sends a password reset email to the given email address based on current user
+*/
+
 function ForgotPassword() {
     const navigate = useNavigate();
     const handleSubmit = async(e)=>{

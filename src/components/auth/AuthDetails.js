@@ -2,8 +2,9 @@ import React,  { useEffect, useState } from "react";
 import {auth} from '../../firebase';
 import { onAuthStateChanged} from "firebase/auth";
 
-
-// Function component to display authentication details
+/*
+Function component to display current users authentication details
+*/
 function AuthDetails(){ 
     const [authUser, setAuthUser] = useState(null);
     const [name, setName] = useState(null);

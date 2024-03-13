@@ -11,6 +11,10 @@ import { db } from "../firebase";
 import React, {useState } from "react";
 
 
+/*
+Implements search bar using bootstrap, and allows a user to search through posts based off of workout
+type using query. searches through the post database on firebase
+*/
 export default function SearchBar() {
   const[postList, setPostList] = useState([]);
   const[workout, setWorkout] = useState("");
@@ -22,7 +26,6 @@ const formatString = (string) => {
 const getData = async (event) => {
   event.preventDefault();
   const formattedString = formatString(workout);
-  console.log(formattedString); 
   
   const q = query(collection(db, "posts"), where("formattedWorkoutType", "==", formattedString));
 
@@ -33,7 +36,6 @@ const getData = async (event) => {
     const updatedPostList = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
     setPostList(updatedPostList)  
     navigate("/searchresults", { state: { postList: updatedPostList } });
-    console.log(updatedPostList)
   }
 };
 
@@ -41,7 +43,7 @@ const navigate = useNavigate();
   return (
     <Container className="my-0 py-0" id="searchContainer">
       <Row>
-        <Col sm={6} >
+        <Col sm={10} >
           <Form className="d-flex my-0 py-0">
             <Form.Control
               type="search"

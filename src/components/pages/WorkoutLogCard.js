@@ -9,7 +9,10 @@ const emptyWorkoutLogCard = {
     goal: "goal",
     isGoalMet: "true/false",
 };
-
+/*
+Users can create their own workout log, which displays their workout plans for the week. these logs
+are dynamically added to the workout log page
+*/
 function WorkoutLogCard({log}) {
     const formatDateTime = (timestamp) => {
       if (timestamp && timestamp.seconds) {

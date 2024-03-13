@@ -17,7 +17,6 @@ Firebase is our selected backend and datastore for its organized structure in ma
 
 **SETUP:**
 
-
 On terminal, cd to the directory you want to clone the project
 clone the repository:
 ### `git clone https://github.com/AyahKash/ByteBod.git`
@@ -27,6 +26,11 @@ install dependencies:
 ### `npm install`
 run website (will be prompted to input firebase API key)
 ### `python3 run-app.py`
+
+Alternatively, you can run the bash script that just has all these commands in it
+
+Download the setup.sh file and run 
+### `./setup.sh`
 
 **Contributors:**
   * Anushka Nayak as anushkanayak15
