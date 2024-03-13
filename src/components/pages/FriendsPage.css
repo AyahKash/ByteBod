@@ -1,7 +1,9 @@
+/* Styling for the Friends Page where the user can add frieds, accept and reject friend requests and see a list of their friends */
 h4 {
   margin: 2%;
 }
 
+/*Styling for the container of the friends page */
 .friendspage-container {
   display: flex;
   justify-content: space-between;
@@ -33,12 +35,14 @@ h4 {
   padding: 2%;
 }
 
+/* Styling for the text container */
 .text-container {
   display: flex;
   text-align: left;
   align-items: center;
 }
 
+/* Styling for the button container */
 .button-container {
   display: flex;
   margin-right: 2%;
@@ -52,6 +56,7 @@ h4 {
   border: 1px #164863;
 }
 
+/* Styling for the friend request form */
 .request-form {
   padding: 2%;
 }
@@ -74,6 +79,7 @@ h4 {
   margin-bottom: .5rem;
 }
 
+/* Styling for the divider */
 .divider {
   border-bottom: 2px solid #DDF2FD;
   width: 50%;

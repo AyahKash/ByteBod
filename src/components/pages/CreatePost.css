@@ -1,3 +1,5 @@
+/* Styles for the Create Post Page */
+
 .createPostPage {
     display: flex;
     justify-content: center;
@@ -5,22 +7,24 @@
     height: 100vh;
   }
   
+  /* Styling the container for the Create Post Page content */
   .cpContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 80%;
     padding: 20px;
-    /* border: 2px solid #ccc; */
     border-radius: 20px;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
     background-color: white;
   }
 
+  /* Styling for rows */
   .row {
     display: flex;
   }
 
+  /* Styling for columns */
   .col {
     flex: 50%;
   }
@@ -31,6 +35,7 @@
     text-align: center;
   }
 
+  /* Styling for images  */
   .icons {
     margin-bottom: 40px;
   }
@@ -41,6 +46,7 @@
     margin-right: 20px;
   }
   
+  /* Styling for input fields */
   .input {
     color: black;
     display: flex;
@@ -62,6 +68,7 @@
     width: 100%;
   }
 
+  /* Styling for labels */
   .label-class {
     color: #164863;
     font-size: 20px;
@@ -75,6 +82,7 @@
    
   }
   
+  /* Styling for buttons */
   button {
     padding: 10px 20px;
     background-color: #427D9D;
@@ -104,6 +112,7 @@
   
   }
   
+
 /* Dropdown styling */
 .workoutType {
   color: black;
@@ -125,12 +134,9 @@
 
 
 
-
-
-/* Container for buttons */
+/* Styling for Container for buttons */
 .cancel-actions {
   display: flex; 
-  /* justify-content: center;  */
   justify-content: space-between; 
   margin-top: 20px; 
 }

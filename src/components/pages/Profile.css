@@ -1,6 +1,6 @@
+/* Styling for the Profile Page where information about the user is displayed*/
 
-
-  
+  /* Styling for profile action buttons */
   .profile-actions button {
     padding: 15px 30px;
     background-color: #427D9D;
@@ -29,6 +29,7 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
 
+  /* Styling for profile container */
   .profile-container {
     max-width: 800px;
     margin: 0 auto;
@@ -39,6 +40,7 @@
     text-align: center;
   }
   
+  /* Styling for profile photo */
   .profile-photo {
     width: 200px;
     height: 200px;
@@ -47,18 +49,19 @@
   }
   
   .profile-header h3 {
-    font-size: 60px; /* Larger font size for welcome message */
+    font-size: 60px; 
     color: #DDF2FD; 
-    margin-bottom: 10px; /* Bottom margin */
+    margin-bottom: 10px; 
   }
   
+  /* Styling for profile details */
   .profile-details p {
-    font-size: 16px; /* Font size for email and bio */
-    color: #666; /* Gray text color */
-    margin-bottom: 20px; /* Bottom margin */
+    font-size: 16px; 
+    color: #666; 
+    margin-bottom: 20px; 
   }
   
-  
+  /* Styling for profile actions container */
   .profile-actions {
     display: flex;
     justify-content: center;

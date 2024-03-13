@@ -1,33 +1,40 @@
+/* Styling for the workout log cards */
+
+/* Styling for the container of the workout log */
 .workoutLog {
     border: 2px solid #ccc;
     border-radius: 10px;
-    padding: 10px; /* Decrease padding */
-    
-    font-size: 16px; /* Decrease font size */
+    padding: 10px; 
+    font-size: 16px; 
     margin-left: 200px;
     margin-right: 200px;
   }
   
+  /* Styling for div elements inside the workout log */
   .workoutLog div {
     margin-left: 100px;
     margin-right: 100px;
-    margin-bottom: 3px; /* Decrease margin */
+    margin-bottom: 3px; 
   }
   
+  /* Styling for the day label within the workout log */
   .workoutLog .day {
     font-weight: bold;
   }
   
+  /* Styling for goal-related elements within the workout log */
+
   .workoutLog .goal {
     color: #007bff; /* Blue color for goals */
   }
   
   .workoutLog .isGoalMet {
-    background-color: #28a745; /* Green color for achieved goals */
+    background-color: #28a745; 
   }
   
+  /* Styling for exercise names within the workout log */
   .workoutLog .exercise {
-    font-style: italic; /* Italicize exercise type */
+    font-style: italic; 
   }
   
   
