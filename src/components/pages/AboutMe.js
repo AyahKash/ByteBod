@@ -24,7 +24,6 @@ export const AboutMe = () => {
   const displayName = currentUser ? currentUser.displayName : 'Guest';
   const email = currentUser ? currentUser.email : 'guest@example.com';
   const bio = currentUser ? currentUser.bio : '';
-
   const postsCollectionRef = collection(db, "aboutMe");
 
     //first add user info to firebase
@@ -32,40 +31,54 @@ export const AboutMe = () => {
       event.preventDefault();
   
       const userId = auth.currentUser.uid;
-      const userPostQuery = query(postsCollectionRef, where("author.id", "==", userId));
-      const userPostQuerySnapshot = await getDocs(userPostQuery);
+      const userEmail = auth.currentUser.email;
   
       const newPostData = {
-          fitnessJourney,
-          favoriteWorkouts,
+          fitnessJourney, // Assuming this is defined elsewhere in your component
+          favoriteWorkouts, // Assuming this is defined elsewhere in your component
           id: userId,
-          email: auth.currentUser.email,
+          email: userEmail,
           author: {
               name: auth.currentUser.displayName,
               photoUrl: auth.currentUser.photoURL
           },
-          fitnessGoals,
-          dateOfBirth,
-          age,
+          fitnessGoals, // Assuming this is defined elsewhere in your component
+          dateOfBirth, // Assuming this is defined elsewhere in your component
+          age, // Assuming this is defined elsewhere in your component
       };
+      
+      // Attempt to find an existing document by userId
+      const userPostQuery = query(postsCollectionRef, where("author.id", "==", userId));
+      let userPostQuerySnapshot = await getDocs(userPostQuery);
   
       try {
-        if (userPostQuerySnapshot.docs.length > 0) {
-            const existingPostId = userPostQuerySnapshot.docs[0].id;
-            await updateDoc(doc(postsCollectionRef, existingPostId), {
-                ...newPostData,
-                // Add other fields you want to update here
-            }, { merge: true });
-            console.log("Updated existing post");
-        } else {
-            await addDoc(postsCollectionRef, newPostData);
-            console.log("Added new post");
-        }
-    } catch (error) {
-        console.log("Error updating/adding post to the database: ", error);
-    }
-          }; 
-
+          console.log("in this statement");
+          let documentRef;
+          if (userPostQuerySnapshot.docs.length > 0) {
+              // Found by userId
+              documentRef = userPostQuerySnapshot.docs[0].ref;
+          } else {
+              // If not found by userId, attempt to find by email
+              const emailQuery = query(postsCollectionRef, where("email", "==", userEmail));
+              userPostQuerySnapshot = await getDocs(emailQuery);
+              if (userPostQuerySnapshot.docs.length > 0) {
+                  documentRef = userPostQuerySnapshot.docs[0].ref;
+              }
+          }
+  
+          if (documentRef) {
+              // Document found by userId or email, update it
+              await updateDoc(documentRef, newPostData, { merge: true });
+              console.log("Updated existing post");
+          } else {
+              await addDoc(postsCollectionRef, newPostData);
+              console.log("Added new post");
+          }
+      } catch (error) {
+          console.log("Error updating/adding post to the database: ", error);
+      }
+  };
+  
   // Function to calculate age based on date of birth
   const calculateAge = () => {
     const today = new Date();

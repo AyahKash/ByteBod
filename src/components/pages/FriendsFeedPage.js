@@ -71,11 +71,15 @@ export const FriendsFeedPage = (posts) => {
     <div className="friendsfeedpage">
       <Navbar />
       <div className="postlist">
-        {postList.map((post) => (
-          <div className="Post">
-            <Card key={post.id} post={post} />
+      {postList.length > 0 ? (
+        postList.map((post) => (
+          <div className="Post" key={post.id}> {/* Move the key to the first element inside map */}
+            <Card post={post} />
           </div>
-        ))}
+        ))
+      ) : (
+        <p>No posts to display</p> // This is displayed if postList is empty
+      )}
       </div>
     </div>
   );

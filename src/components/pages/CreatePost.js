@@ -115,7 +115,7 @@ export const CreatePost = (props) => {
             </div>
             </div>
             <button type="submit">Submit Post</button>
-        <div class="cancel-actions">   
+        <div className="cancel-actions">   
         <button class="cancel" onClick={() => navigate("/HomePage")}>Cancel</button>
         </div>
         </div>

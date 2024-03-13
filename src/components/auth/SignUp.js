@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { updateUserProfile } from "./FirebaseUtils";
 
+//Creates user in firebase, adds user to firestore (name and email) and signs them in
 function SignUp(){
     const navigate = useNavigate();
     const [name, setName] = useState("");
