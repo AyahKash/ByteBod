@@ -41,7 +41,7 @@ const navigate = useNavigate();
   return (
     <Container className="my-0 py-0" id="searchContainer">
       <Row>
-        <Col sm={6} >
+        <Col sm={10} >
           <Form className="d-flex my-0 py-0">
             <Form.Control
               type="search"
