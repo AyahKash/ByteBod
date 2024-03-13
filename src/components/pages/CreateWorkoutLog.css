@@ -1,14 +1,18 @@
+/* Styling for the create workout log page that allows user to create a weekly workout log*/
+
 .workout.planner {
     font-family: Arial, sans-serif;
     margin: 20px;
   }
   
+  /* Styling for the main heading */
   h1 {
     font-size: 50px;
     font-weight: bold;
     text-align: center; 
   }
 
+  /* Styling for the table */
   table {
     width: 100%;
     border-collapse: collapse;
@@ -22,8 +26,6 @@
     vertical-align: middle;
    
   }
-  
-  
   
   td:first-child {
     font-weight: bold;
@@ -46,12 +48,14 @@
     vertical-align: middle;
   }
   
+  /* Styling for input fields within input wrappers */
   .input-wrapper input {
     width: 100%;
     padding: 6px;
     vertical-align: middle;
   }
 
+  /* Styling for table headers */
   th {
     background-color: #073a48;
     text-align: center; 
@@ -61,13 +65,13 @@
   }
   
   
-  
+  /* Styling for the first row */
 tr:first-child {
     background-color: #073a48; 
     color: white; 
   }
   
- 
+ /* Styling for specific cells in the first row */
   td:first-child {
     background-color: #073a48; 
     color: white; 
@@ -102,11 +106,13 @@ tr:first-child {
   tr:nth-child(7) td:nth-child(4){
     background-color: #347d91; 
   }
+  /* Styling for icons */
   .icons img {
     transform: scale(2.5);
      margin-top: 33px;
   }
  
+  /* Styling for the header */
   .header {
     display: flex; 
     flex-flow: row wrap;

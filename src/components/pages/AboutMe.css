@@ -1,11 +1,13 @@
 /* AboutMe.css */
 
+/* Setting font family and size for the entire body */
 body {
   font-family: "Nunito", sans-serif;
   font-size: 16px;
-  color: whitesmoke !important; /* Default text color */
+  color: whitesmoke !important; 
 }
 
+/* Styling headings (h1 - h6) */
 h1, h2, h3, h4, h5, h6 {
   font-family: "Nunito", sans-serif;
   color: whitesmoke !important;
@@ -38,16 +40,19 @@ h1, h2, h3, h4, h5, h6 {
     object-fit: cover;
     margin-bottom: 20px;
   }
-    
+   
+  /* sections within the AboutMe component */
   .AboutMe-section {
     display: flex;
   }
   
+  /*the info boxes within the AboutMe component */
   .AboutMeinfo-box {
     flex: 1;
     margin-right: 20px; 
   }
   
+  /*  textareas within the AboutMe component */
   .fitness-journey,
   .favorite-workouts,
   .fitness-goals,
