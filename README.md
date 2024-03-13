@@ -28,6 +28,7 @@ run website (will be prompted to input firebase API key)
 ### `python3 run-app.py`
 
 Alternatively, you can run the bash script that just has all these commands in it
+
 Download the setup.sh file and run 
 ### `./setup.sh`
 
