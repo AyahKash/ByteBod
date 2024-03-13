@@ -20,11 +20,12 @@ const emptyPost = {
   commentsList: [],
 };
 
-
+/*
+Base card which is used to style each post on the homapage feed
+*/
 function Card({ post = emptyPost, incrementLikes }) {
 
   if (post.commentsList){
-  console.log("Here is the first object in the comments list", post.commentsList[0]);
   }
 
   const [likes, setLikes] = useState(0);
@@ -45,7 +46,6 @@ function Card({ post = emptyPost, incrementLikes }) {
 
   const postDocRef = doc(db, "posts", post.id); //working with current post, make this to update the post with likes and comments when they are added fresh
 
-  console.log("outputting comments state outside", comments);
   //when user clicks comment button, a text box should generate for them to write a comment
   const updateComments = async (e) => {
     e.preventDefault();
@@ -53,7 +53,6 @@ function Card({ post = emptyPost, incrementLikes }) {
     //first get current comments on post
     const docSnap = await getDoc(postDocRef);
     const prevComments = docSnap.data().commentsList;
-    console.log("outputting prevComments", prevComments);
     //create new comment
     //setup date
     const createDate = new Date();
@@ -74,7 +73,6 @@ function Card({ post = emptyPost, incrementLikes }) {
     }
     const update = await updateDoc(postDocRef, {commentsList: [...prevComments, newComment]});
     setComments([...prevComments, newComment]);
-    console.log("outputting comments state", comments);
     setUpdatedComments(true);
     setClickedToComment(false);
   }
@@ -85,19 +83,12 @@ function Card({ post = emptyPost, incrementLikes }) {
     //first get current number of likes
     const docSnap = await getDoc(postDocRef);
     const prevLikes = docSnap.data().likes;
-    console.log("Here are prevLikes:", prevLikes);
     //update the likes to firebase
     const update = await updateDoc(postDocRef, {likes: prevLikes + 1});
     setLikes(prevLikes + 1);
   };
 
- 
-  
-  
-
-
-  console.log(post.author)
-  return (
+   return (
     <>
     <div className="card">
       <div className="heading">
@@ -112,16 +103,9 @@ function Card({ post = emptyPost, incrementLikes }) {
           <div className="author">{post.author.name ? post.author.name : "Author Name"}</div>
         </div>
       </div>
-      
-      {/* <div className="workoutType"> 
-      Workout Type: <span>{post.workoutType}</span>
-      </div> */}
-      {/* <div className="workoutType">
-        <span class="tag">Workout Type:</span> <span>{post.workoutType}</span>
-        </div> */}
         {post.workoutType && (
         <div className="workoutType">
-        <span class="tag">{post.workoutType}</span>
+        <span className="tag">{post.workoutType}</span>
         </div>)}
       
       <div className="content">{post.postText}</div>

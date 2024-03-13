@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/FirebaseUtils";
 import "./Profile.css";
 import profilePhoto from "../../images/ProfilePhoto.png";
-import {doc, getDoc} from "firebase/firestore"
 import {
   getDocs,
   collection,
@@ -18,7 +17,10 @@ import { db } from "../../firebase";
 const retryDelay = 1000; // 1 second delay between retries
 const maxRetries = 5; // Maximum number of retries
 
-
+/* 
+Profile page that displays users information 
+Also can see users friends and workout log from this page
+*/
 export const Profile = () => {
   const navigate = useNavigate();
 
@@ -36,15 +38,14 @@ export const Profile = () => {
 
   useEffect(() => {
     if (!currentUser) {
-      console.log("User notttt logged in");
       return;
     }
-    console.log("checking reads")
     setRetryCount(0); // Reset retry count when the component mounts
     getData(); // Trigger getData when the component mounts
     getBio();
-  }, [email]); // Dependency array includes currentUser
+  }, [email]);
 
+  //queries database for current users email, then displays their respective information on the page
   async function getData() {
     try {
       const q = query(collection(db, "aboutMe"), where("email", "==", currentUser.email));
@@ -97,7 +98,7 @@ export const Profile = () => {
     <div>
       <Navbar />
       <div className="profile-container">
-        <div className="profile-box"> {/* Container for profile details */}
+        <div className="profile-box"> 
           <div className="profile-header">
             <img src={photoURL} alt="Profile" className="profile-photo" />
             <h3>Welcome, {displayName}</h3>
@@ -109,7 +110,6 @@ export const Profile = () => {
 
           </div>
         </div>
-        {/* <AuthDetails /> */}
         <div className="profile-actions">
           <Button onClick={() => navigate("/profile/friends")}> Friends </Button>
           <Button onClick={() => navigate("/profile/workoutlogs")}> Workout Log </Button>

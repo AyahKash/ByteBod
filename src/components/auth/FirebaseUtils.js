@@ -4,9 +4,7 @@ import { setDoc, doc } from 'firebase/firestore';
 import { useEffect, useState } from "react";
 import {ref, uploadBytes, getDownloadURL} from "firebase/storage"
 
-//DOC WITH ALL THE FIREBASE/FIRESTORE FUNCTIONS
-
-//returns current user object:
+//function that returns the current user object:
 export function useAuth(){
   const [currentUser, setCurrentUser] = useState();
   useEffect(()=> {
@@ -16,7 +14,7 @@ export function useAuth(){
   return currentUser;
 }
 
-//function to update user data on firestore 
+//function  that updates user data on firestore 
 export const updateUserProfile = async (user, email, options = {}) => {
   try {
     // Update user profile with name
@@ -34,13 +32,12 @@ export const updateUserProfile = async (user, email, options = {}) => {
 };
 
 
-//uploads an imshr to storage on firebase:
+//function that uploads an image to storage on firebase:
 export async function upload(file, currentUser, setLoading){ 
   const fileRef = ref(storage, 'profile_photos/'+ currentUser.displayName + '.png'); //hardcoding .png currently, can change this //need to create unique hash for photos
   setLoading(true);
   await uploadBytes(fileRef, file);
   const photoUrl = await getDownloadURL(fileRef);
-  console.log("photoURL" , photoUrl)
   await updateProfile(currentUser, {photoURL: photoUrl});
   setLoading(false);
   alert("Uploaded picture!");

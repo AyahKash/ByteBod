@@ -4,6 +4,9 @@ import Navbar from "../Navbar";
 import Button from "../Button";
 import Card from "../Card";
 
+/*
+displays the search results based which are queried based off of workout type
+*/
 export const SearchResults = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -12,9 +15,9 @@ export const SearchResults = () => {
   return (
     <div>
       <Navbar />
-      <div className="postlist">
+      <div className="search-results">
         {postList.map((post) => (
-          <div className="Post" key={post.id}>
+          <div className="SearchResults" key={post.id}>
             <Card key={post.id} post={post} />
           </div>
         ))}

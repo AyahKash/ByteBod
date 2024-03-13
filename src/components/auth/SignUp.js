@@ -6,7 +6,9 @@ import { useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, updateProfile} from "firebase/auth";
 import { updateUserProfile } from "./FirebaseUtils";
 
-//Creates user in firebase, adds user to firestore (name and email) and signs them in
+/*
+Creates user in firebase authentication, adds user to firestore (name and email) and signs them in
+*/
 function SignUp(){
     const navigate = useNavigate();
     const [name, setName] = useState("");
@@ -21,7 +23,6 @@ function SignUp(){
         try {
             const userCredential = await createUserWithEmailAndPassword(auth, email, password)
             const user = userCredential.user;
-            console.log("signup" , userCredential);
             const options = {
                 name : name,
             };              
@@ -31,7 +32,6 @@ function SignUp(){
     
             // Sign into the account after creating a new account
             const signInCredential = await signInWithEmailAndPassword(auth, email, password); 
-            console.log(signInCredential); 
             console.log("successfully signed in")
             console.log("now waiting to navigate to homepage")
     
