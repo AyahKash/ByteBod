@@ -30,6 +30,9 @@ run website (will be prompted to input firebase API key)
 Alternatively, you can run the bash script that just has all these commands in it
 
 Download the setup.sh file and run 
+
+Note that for this you have to run 
+### `chmod +x setup.sh`
 ### `./setup.sh`
 
 **Contributors:**
