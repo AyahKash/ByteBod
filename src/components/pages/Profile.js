@@ -13,6 +13,15 @@ import {
 } from "firebase/firestore";
 import { db } from "../../firebase";
 
+/**
+ * The page that is displayed when the user clicks on the Profile tab in the nav bar.
+ * Shows user information such as profile photo, name, email, age, bio, etc.
+ * 
+ * Has buttons to view Friends and Workout Logs pages.
+ * 
+ * @return returns the profile page
+ */
+
 //timeout incase there is trouble fetching data from database
 const retryDelay = 1000; // 1 second delay between retries
 const maxRetries = 5; // Maximum number of retries

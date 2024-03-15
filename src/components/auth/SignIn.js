@@ -6,9 +6,11 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../../firebase"
 import { useNavigate } from "react-router-dom";
 
-/*
-Function that lets a user sign in with email and password utilizing firebase authentication 
-*/
+/**
+ * The Welcome to ByteBod page. The page shown to a user before logging in.
+ * Function that lets a user sign in with email and password utilizing firebase authentication 
+ */
+
 function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");

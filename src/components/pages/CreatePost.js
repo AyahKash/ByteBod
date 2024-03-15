@@ -7,6 +7,15 @@ import running from "../../images/runningblue.png"
 import yoga from "../../images/yogablue.png"
 import lifting from "../../images/liftingblue.png"
 
+/**
+ * Renders the create post form that is generated when the user clicks on "Create a Post"
+ * button in the user home page (where all the posts are displayed). 
+ * 
+ * This generates a form where a user can enter their post content. A post object is created
+ * and added to Firestore, including the time that this post was created and the user that created 
+ * the post. 
+ */
+
 export const CreatePost = (props) => {
   const [title, setTitle] = useState("");
   const [postText, setPostText] = useState("");

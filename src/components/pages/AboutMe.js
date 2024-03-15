@@ -8,9 +8,9 @@ import profilePhoto from "../../images/ProfilePhoto.png";
 import { addDoc, collection, query, getDocs, updateDoc, doc, where } from 'firebase/firestore';
 import { db, auth } from '../../firebase';
 
-/* 
-Page that allows users to add more information to their profile
-Adds data to a firestore database, which is then displayed on the profile page
+/**  
+* Page that allows users to add more information to their profile
+* Adds data to a firestore database, which is then displayed on the profile page
 */
 export const AboutMe = () => {
   const navigate = useNavigate();

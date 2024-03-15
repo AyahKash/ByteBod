@@ -6,6 +6,11 @@ import Navbar from "../Navbar";
 import "./CreateWorkoutLog.css";
 import workoutlog2 from "../../images/workoutlog2.png"
 
+/**
+ * A form where a user can enter their weekly workout log details. 
+ * The workout log is later rendered as a WorkoutLogCard.
+
+ */
 
 export const CreateWorkoutLog = () => {
     const workoutLogCollectionRef = collection(db, "workoutLog");

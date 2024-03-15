@@ -2,16 +2,23 @@ import React from "react";
 import "./Comment.css";
 import profilePhoto from "../images/ProfilePhoto.png";
 
+//below is an emptyComment as a default if one is passed incorrectly
 const emptyComment = {
     text: "comment text",
     author: "comment author",
     commentDate: "commentDate",
 };
 
-/* 
-function that allows users to comment on others/their own posts
-interacts with database to save the comments
+/**
+ * The Comment component renders a stylish comment that is attached to a specific post.
+ * This component is rendered in Card.js. Using the commentObj passed to it which contains 
+ * text, author, and commentDate objects which are created in Card.js, the user can see 
+ * the profile picture, name, comment text, and comment date of any comment attached to a post.
+ * 
+ * @param commentObj the comment object itself which is passed from a list of comment objects in Card.js
+ * @return Renders a comment JSX component that is attached to a post
  */
+
 function Comment({commentObj}){
     return (
     <div className="comment">

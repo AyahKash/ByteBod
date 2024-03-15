@@ -1,6 +1,11 @@
 **BYTEBOD**
 **35L Project Winter 2024**
 
+Here is our video presentation about ByteBod: https://youtu.be/Aufq1OeBchI?feature=shared
+
+[![Watch the video](https://img.youtube.com/vi/Aufq1OeBchI/0.jpg)](https://www.youtube.com/watch?v=Aufq1OeBchI)
+
+
 ByteBod: A Fitness App to track your workouts and connect with fellow fitness enjoyers.  
 
 **Features:**
@@ -30,6 +35,9 @@ run website (will be prompted to input firebase API key)
 Alternatively, you can run the bash script that just has all these commands in it
 
 Download the setup.sh file and run 
+
+Note that for this you have to run 
+### `chmod +x setup.sh`
 ### `./setup.sh`
 
 **Contributors:**
@@ -38,3 +46,20 @@ Download the setup.sh file and run
   * Shilpa Bojjireddy as shilpa-bo
   * Mason Hoppe as masonamp
   * Maria Martins as maria-campo-martins
+
+**App Behavior:**
+Login Screen:
+
+<img width="400" alt="image" src="https://github.com/AyahKash/ByteBod/assets/131549352/1540f0a5-ee76-443c-b683-0285f1520625">
+
+Home Page (once you are logged in):
+In this page, you can navigate through the different pages of the navigation bar to explore what the app can do
+
+<img width="1000" alt="image" src="https://github.com/AyahKash/ByteBod/assets/131549352/e7559b98-0b87-4d15-9068-ffddd41ff569">
+
+
+
+
+
+
+

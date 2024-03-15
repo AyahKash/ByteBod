@@ -9,6 +9,13 @@ import { updatePassword } from 'firebase/auth';
 
 import { useNavigate } from "react-router-dom"; // ADDED THIS ANUSHKA
 
+/**
+ * The page that is displayed when the user clicks on the Settings tab in the nav bar.
+ * A user can change their profile picture, bio, email, and reset their password.
+ * 
+ * @return returns the settings page
+ */
+
 export const Settings = () => {
 
   const currentUser = useAuth();
