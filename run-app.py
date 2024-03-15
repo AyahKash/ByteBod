@@ -25,7 +25,6 @@ def update_firebase_api_key(api_key):
     appId: "1:545880527544:web:9d4e618b4e5f017da09a4d"
     };
     ''' % api_key
-    print("in function")
     
     f = open(firebase_config, "a")
     f.write(long_str)
