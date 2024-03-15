@@ -53,7 +53,19 @@ function Card({ post = emptyPost}) {
 
   const postDocRef = doc(db, "posts", post.id); //working with current post, make this to update the post with likes and comments when they are added fresh
 
-  //when user clicks comment button, a text box should generate for them to write a comment
+    /**
+     * The updateComments function updates the commentsList based on the specific post
+     * which we reference with postDocRef above from Firestore. When the user clicks the enter button to 
+     * submit their comment that they typed in the textarea, this updateComments function is called
+     * and we update the commentsList attached to this specific post to have the new comment the user
+     * just submitted. To do this, we must load the original commentsList for this post from Firestore then append
+     * a new comment object to this list and load it back to Firestore. We also set numerous state variables to save 
+     * the updated commentsList to this post and a boolean to denote that comments have been updated. This will be 
+     * important later in the return of the comments below.
+     * 
+     * @param e since this function was called to be the onSubmit function in the form below, we recieve an event by React
+     * where we can do e.preventDefault() to prevent the site from reloading upon submission of the comment.
+     */
   const updateComments = async (e) => {
     e.preventDefault();
     console.log("Comment button clicked");
@@ -83,6 +95,17 @@ function Card({ post = emptyPost}) {
     setUpdatedComments(true);
     setClickedToComment(false);
   }
+
+      /**
+     * The updateLikes function updates the likes attribute attached to this specific post
+     * which we reference with postDocRef defined above. This involves retrieving this post
+     * from Firestore then accessing its original likes attribute. We then incrememnt this like count
+     * and load it back into Firestore. We also save a state variable with this new like count
+     * which will be important below in the return of the Card component.
+     * 
+     * @param e since this function was called to be the onSubmit function in the form below, we recieve an event by React
+     * where we can do e.preventDefault() to prevent the site from reloading upon submission of the comment.
+     */
   
   const updateLikes = async () => {
     setUpdatedLikes(true);
@@ -94,6 +117,13 @@ function Card({ post = emptyPost}) {
     const update = await updateDoc(postDocRef, {likes: prevLikes + 1});
     setLikes(prevLikes + 1);
   };
+
+    /**
+     * Note: when returning a post with updated comments and/or likes, we check the state variables to see 
+     * if they have been recently updated. If so, we display the state variable to the user. Otherwise, 
+     * we use the data that was loaded from Firestore. This is important so that a user does not have to reload the page
+     * to see comments or updated likes. 
+     */
 
    return (
     <>
