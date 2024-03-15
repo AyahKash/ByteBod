@@ -3,6 +3,9 @@
 
 Here is our video presentation about ByteBod: https://youtu.be/Aufq1OeBchI?feature=shared
 
+[![Alt text](https://img.youtube.com/vi/Aufq1OeBchI/0.jpg)](https://www.youtube.com/watch?v=YAufq1OeBchI)
+
+
 ByteBod: A Fitness App to track your workouts and connect with fellow fitness enjoyers.  
 
 **Features:**
