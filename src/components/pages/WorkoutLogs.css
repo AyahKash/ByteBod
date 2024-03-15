@@ -1,0 +1,18 @@
+
+/* Styling for the workout log section */
+
+.homepage {
+    margin-top: 20px;
+  }
+  
+  /* Styling for the container of the workout log */
+  .workoutLog {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 20px; 
+  }
+  
+  .workoutLog:last-child {
+    margin-bottom: 0; 
+  }

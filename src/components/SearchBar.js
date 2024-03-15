@@ -11,60 +11,50 @@ import { db } from "../firebase";
 import React, {useState } from "react";
 
 
+/*
+Implements search bar using bootstrap, and allows a user to search through posts based off of workout
+type using query. searches through the post database on firebase
+*/
 export default function SearchBar() {
   const[postList, setPostList] = useState([]);
   const[workout, setWorkout] = useState("");
-
+  
+const formatString = (string) => {
+  return string.replace(/\s/g, "").toLowerCase();
+};
+  
 const getData = async (event) => {
   event.preventDefault();
+  const formattedString = formatString(workout);
+  
+  const q = query(collection(db, "posts"), where("formattedWorkoutType", "==", formattedString));
 
-  const keyword = workout.toLowerCase(); 
-
-  if (!keyword) {
-    alert("Please enter an input to search for workouts");
-    return;
-  }
-
-  const q = collection(db, "posts");
   const querySnapshot = await getDocs(q);
 
   if (querySnapshot.empty) {
-    alert("No workout type found");
+    alert("No posts found with workout type: " + workout);
   } else {
-    const allPosts = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    // Filter posts based on the keyword
-    const matchingPosts = allPosts.filter((post) =>
-      post.workoutType.toLowerCase().includes(keyword)
-    );
-
-    if (matchingPosts.length === 0) {
-      alert("No matching workout type found");
-    } else {
-      setPostList(matchingPosts);
-      navigate("/searchresults", { state: { postList: matchingPosts } });
-      console.log(matchingPosts);
-    }
+    const updatedPostList = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+    setPostList(updatedPostList)  
+    navigate("/searchresults", { state: { postList: updatedPostList } });
   }
-
-
-  
 };
 
 const navigate = useNavigate();
   return (
-    <Container className="mt-5" id="searchContainer">
+    <Container className="my-0 py-0" id="searchContainer">
       <Row>
-        <Col sm={8}>
-          <Form className="d-flex">
+        <Col sm={10} >
+          <Form className="d-flex my-0 py-0">
             <Form.Control
               type="search"
-              placeholder="Search for a workout type..."
-              className="me-2"
+              placeholder="Search for a workout..."
+              className="me-2 my-0 py-0"
               aria-label="Search"
               value={workout}
               onChange={(e) => setWorkout(e.target.value)}
             />
-            <button className="searchButton" onClick={getData} > Search </button>
+            <button className="searchButton my-0 py-0" onClick={getData} > Search </button>
           </Form>
         </Col>
       </Row>

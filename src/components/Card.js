@@ -5,7 +5,9 @@ import React, { useState } from 'react';
 import { getDoc, getDocs, collection, updateDoc, doc} from "firebase/firestore";
 import { db, auth } from '../firebase';
 import profilePhoto from "../images/ProfilePhoto.png";
+import { useNavigate } from 'react-router-dom';
 
+//This emptyPost will be used as a default in cause the post is not properly passed to the Card component below.
 // assuming post data of form:
 const emptyPost = {
   title: "Post Title",
@@ -19,13 +21,18 @@ const emptyPost = {
   commentsList: [],
 };
 
-
-function Card({ post = emptyPost, incrementLikes }) {
-  console.log("Here is the actual post object", post);
+    /**
+     * The Card component renders the post object for a user post. A post comes with the following attributes as shown in the emptyPost:
+     * title, postAuthor, postText (content), postDate (generated with newDate()), photoURL (for user profile photo), 
+     * workoutType (mandatory for each post), like count, and commentList
+     * Each post with these attributes is saved in backend Firestore
+     * 
+     * @param param1 the post object itself which is passed from a list of post objects in CreatPost.js
+     * @return Renders a post JSX component (along with comments if there are comments on this post) that will later be rendered in HomePage.js in pages folder
+     */
+function Card({ post = emptyPost}) {
 
   if (post.commentsList){
-  console.log("Here is length of comments list", post.commentsList.length);
-  console.log("Here is the first object in the comments list", post.commentsList[0]);
   }
 
   const [likes, setLikes] = useState(0);
@@ -34,10 +41,18 @@ function Card({ post = emptyPost, incrementLikes }) {
   const [newCommentText, setNewCommentText] = useState("");
   const [clickedToComment, setClickedToComment] = useState(false);
   const [updatedComments, setUpdatedComments] = useState(false);
+ 
+  const navigate = useNavigate();
+
+  const cancelAction = (event) => {
+        event.preventDefault(); // Prevent form submission
+        // closes the comment box
+        setClickedToComment(false);
   
+    };
+
   const postDocRef = doc(db, "posts", post.id); //working with current post, make this to update the post with likes and comments when they are added fresh
 
-  console.log("outputting comments state outside", comments);
   //when user clicks comment button, a text box should generate for them to write a comment
   const updateComments = async (e) => {
     e.preventDefault();
@@ -45,7 +60,6 @@ function Card({ post = emptyPost, incrementLikes }) {
     //first get current comments on post
     const docSnap = await getDoc(postDocRef);
     const prevComments = docSnap.data().commentsList;
-    console.log("outputting prevComments", prevComments);
     //create new comment
     //setup date
     const createDate = new Date();
@@ -66,7 +80,6 @@ function Card({ post = emptyPost, incrementLikes }) {
     }
     const update = await updateDoc(postDocRef, {commentsList: [...prevComments, newComment]});
     setComments([...prevComments, newComment]);
-    console.log("outputting comments state", comments);
     setUpdatedComments(true);
     setClickedToComment(false);
   }
@@ -77,15 +90,12 @@ function Card({ post = emptyPost, incrementLikes }) {
     //first get current number of likes
     const docSnap = await getDoc(postDocRef);
     const prevLikes = docSnap.data().likes;
-    console.log("Here are prevLikes:", prevLikes);
     //update the likes to firebase
     const update = await updateDoc(postDocRef, {likes: prevLikes + 1});
     setLikes(prevLikes + 1);
   };
 
-
-  console.log(post.author)
-  return (
+   return (
     <>
     <div className="card">
       <div className="heading">
@@ -100,17 +110,11 @@ function Card({ post = emptyPost, incrementLikes }) {
           <div className="author">{post.author.name ? post.author.name : "Author Name"}</div>
         </div>
       </div>
-      
-      {/* <div className="workoutType"> 
-      Workout Type: <span>{post.workoutType}</span>
-      </div> */}
-      {/* <div className="workoutType">
-        <span class="tag">Workout Type:</span> <span>{post.workoutType}</span>
-        </div> */}
         {post.workoutType && (
         <div className="workoutType">
-        <span class="tag">{post.workoutType}</span>
+        <span className="tag">{post.workoutType}</span>
         </div>)}
+      
       <div className="content">{post.postText}</div>
       {typeof(post.createAt) === 'string' && <div className="date">Post Date: {post.createAt}</div>}
       <div className="interaction">
@@ -120,11 +124,12 @@ function Card({ post = emptyPost, incrementLikes }) {
     {
     clickedToComment && 
     <>
-    <form onSubmit={updateComments}>
+   <form onSubmit={updateComments}>
     <p>Enter Comment Below</p>
     <textarea style={{color: "black", width: "100%"}} placeholder="Type your comment here..."onChange={(event)=>{setNewCommentText(event.target.value)}}></textarea>
     <button type="submit">Enter</button>
-    </form>
+    <button className="cancel"  onClick={cancelAction}>Cancel</button> 
+    </form> 
     </>
     }
     </div>

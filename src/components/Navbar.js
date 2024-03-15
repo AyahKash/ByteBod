@@ -7,10 +7,15 @@ import "./Navbar.css";
 import {signOut} from 'firebase/auth'
 import {auth} from "../firebase";
 
+
+/*
+Navigation bar that is implemented utilizing bootstrap
+*/
 function Navbar() {
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Manage user sign out 
   const userSignOut = () => {
     signOut(auth).then(()=>{
         navigate('/')
@@ -18,21 +23,24 @@ function Navbar() {
     }).catch(error=>console.log(error))
   }
 
+  // Ensure search bar appears only on homepage 
   const showSearchBar = location.pathname === "/homepage";
 
-return (
-    // For details on these Bootstrap classes: https://getbootstrap.com/docs/5.3/components/navbar/
-    <nav className="navbar navbar-dark navbar-expand-sm">
+  return (
+    <nav className="navbar navbar-dark navbar-expand-sm py-2">
       <div className="container-fluid">
         {/* Brand */}
         <div className="navbar-brand">
-          <img src={Logo} height="30" alt="" onClick={() => navigate("/homepage")} />
+          <img src={Logo} height="30" alt="" onClick={() => navigate("/homepage")} /> 
         </div>
         {/* Links */}
-        {showSearchBar && <SearchBar />}
+        {showSearchBar && <SearchBar/>}
         <ul className="navbar-nav">
           <li className="navbar-item">
             <Button className="nav-link" onClick={() => navigate("/homepage")}> Home </Button>
+          </li>
+          <li className="navbar-item">
+            <Button className="nav-link" onClick={() => navigate("/friendsfeed")}> Friends Feed </Button>
           </li>
           <li className="navbar-item">
             <Button className="nav-link" onClick={() => navigate("/profile")}> Profile </Button>

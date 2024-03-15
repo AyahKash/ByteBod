@@ -1,5 +1,18 @@
 /* AboutMe.css */
 
+/* Setting font family and size for the entire body */
+body {
+  font-family: "Nunito", sans-serif;
+  font-size: 16px;
+  color: whitesmoke !important; 
+}
+
+/* Styling headings (h1 - h6) */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Nunito", sans-serif;
+  color: whitesmoke !important;
+}
+
 /* Container for the AboutMe component */
 .AboutMe-container {
     display: flex;
@@ -10,7 +23,7 @@
   
   /* Box containing the profile details */
   .AboutMe-box {
-    background-color: #f9f9f9;
+    background-color: #164863;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -27,32 +40,19 @@
     object-fit: cover;
     margin-bottom: 20px;
   }
-  
-  /* Welcome message */
-  .AboutMe-header h3 {
-    font-size: 40px;
-    margin-bottom: 10px;
-    color: #333;
-    font-weight: bold; 
-  }
-  
-  /* Email and Bio */
-  .AboutMe-header p {
-    font-size: 16px;
-    color: #666;
-    margin-bottom: 5px;
-  }
-  
-  
+   
+  /* sections within the AboutMe component */
   .AboutMe-section {
     display: flex;
   }
   
+  /*the info boxes within the AboutMe component */
   .AboutMeinfo-box {
     flex: 1;
     margin-right: 20px; 
   }
   
+  /*  textareas within the AboutMe component */
   .fitness-journey,
   .favorite-workouts,
   .fitness-goals,
@@ -70,11 +70,11 @@
   border: 1px solid #ccc;
   border-radius: 5px; 
   resize: vertical; 
-  color: black
+  color: black;
 }
 
   .AboutMeinfo-box h6 {
-    color: black;
+    color: white;
     margin-bottom: 10px; 
     margin-top: 20px;
   }

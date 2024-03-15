@@ -1,0 +1,7 @@
+/* Styling for the Friends feed page that displays the posts of only the friends of the user */
+.postlist {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+  }
+  

@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import Navbar from "../Navbar";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../auth/FirebaseUtils";
@@ -8,6 +8,10 @@ import profilePhoto from "../../images/ProfilePhoto.png";
 import { addDoc, collection, query, getDocs, updateDoc, doc, where } from 'firebase/firestore';
 import { db, auth } from '../../firebase';
 
+/* 
+Page that allows users to add more information to their profile
+Adds data to a firestore database, which is then displayed on the profile page
+*/
 export const AboutMe = () => {
   const navigate = useNavigate();
   const currentUser = useAuth();
@@ -16,13 +20,13 @@ export const AboutMe = () => {
   const [fitnessGoals, setFitnessGoals] = useState('');
   const [motivation, setMotivation] = useState('');
   const [dateOfBirth, setDateOfBirth] = useState('');
+  const [age, setAge] = useState('');
 
   // Check if currentUser exists before accessing its properties
   const photoURL = currentUser ? currentUser.photoURL : profilePhoto;
   const displayName = currentUser ? currentUser.displayName : 'Guest';
   const email = currentUser ? currentUser.email : 'guest@example.com';
   const bio = currentUser ? currentUser.bio : '';
-
   const postsCollectionRef = collection(db, "aboutMe");
 
     //first add user info to firebase
@@ -30,25 +34,44 @@ export const AboutMe = () => {
       event.preventDefault();
   
       const userId = auth.currentUser.uid;
-      const userPostQuery = query(postsCollectionRef, where("author.id", "==", userId));
-      const userPostQuerySnapshot = await getDocs(userPostQuery);
+      const userEmail = auth.currentUser.email;
   
       const newPostData = {
-          fitnessJourney,
+          fitnessJourney, 
           favoriteWorkouts,
+          id: userId,
+          email: userEmail,
           author: {
               name: auth.currentUser.displayName,
-              id: userId,
               photoUrl: auth.currentUser.photoURL
           },
           fitnessGoals,
-          dateOfBirth,
+          dateOfBirth, 
+          age,
       };
+      
+      // Attempt to find an existing document by userId
+      const userPostQuery = query(postsCollectionRef, where("author.id", "==", userId));
+      let userPostQuerySnapshot = await getDocs(userPostQuery);
   
       try {
+          console.log("in this statement");
+          let documentRef;
           if (userPostQuerySnapshot.docs.length > 0) {
-              const existingPostId = userPostQuerySnapshot.docs[0].id;
-              await updateDoc(doc(postsCollectionRef, existingPostId), newPostData);
+              // Found by userId
+              documentRef = userPostQuerySnapshot.docs[0].ref;
+          } else {
+              // If not found by userId, attempt to find by email
+              const emailQuery = query(postsCollectionRef, where("email", "==", userEmail));
+              userPostQuerySnapshot = await getDocs(emailQuery);
+              if (userPostQuerySnapshot.docs.length > 0) {
+                  documentRef = userPostQuerySnapshot.docs[0].ref;
+              }
+          }
+  
+          if (documentRef) {
+              // Document found by userId or email, update it
+              await updateDoc(documentRef, newPostData, { merge: true });
               console.log("Updated existing post");
           } else {
               await addDoc(postsCollectionRef, newPostData);
@@ -57,8 +80,8 @@ export const AboutMe = () => {
       } catch (error) {
           console.log("Error updating/adding post to the database: ", error);
       }
-      }; 
-
+  };
+  
   // Function to calculate age based on date of birth
   const calculateAge = () => {
     const today = new Date();
@@ -71,26 +94,30 @@ export const AboutMe = () => {
     return age;
   };
 
+  useEffect(() => {
+    setAge(calculateAge());
+  }, [dateOfBirth]);
+
 
   return (
     <div>
       <Navbar />
       <form onSubmit={createPost}>
       <div className="AboutMe-container">
-        <div className="AboutMe-box"> {/* Container for profile details */}
+        <div className="AboutMe-box"> 
           <div className="AboutMe-header">
             <img src={photoURL} alt="Profile" className="profile-photo" />
-            <h3>Welcome, {displayName}</h3>
+            <h3>Customize your profile!</h3>
             <p>Email: {email}</p>
             <p>Bio: {bio}</p> 
-            <label>
+            <p>
               Date of Birth:
               <input
                 type="date"
                 value={dateOfBirth}
                 onChange={(e) => setDateOfBirth(e.target.value)}
               />
-            </label>
+            </p>
             <p>Age: {calculateAge()}</p>
        
           </div>

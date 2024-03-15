@@ -25,6 +25,7 @@ def update_firebase_api_key(api_key):
     appId: "1:545880527544:web:9d4e618b4e5f017da09a4d"
     };
     ''' % api_key
+    print("in function")
     
     f = open(firebase_config, "a")
     f.write(long_str)
@@ -61,7 +62,7 @@ if __name__ == "__main__":
     # Construct the URL for accessing a Firestore document
     firestore_base_url = "https://firestore.googleapis.com/v1/projects/bytebod-9d1cf/databases/(default)/documents"
     collection_path = "users"
-    document_id = "1GzrZkGGXofKao6vrj7FLdy4Ln53"
+    document_id = "A49oS1kKAYc7aVPxTkWtUUk2Ss83"
     api_key = user_api_key
     firestore_url = f"{firestore_base_url}/{collection_path}/{document_id}?key={api_key}"
     # Make a GET request to the Firestore document

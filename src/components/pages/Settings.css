@@ -1,3 +1,6 @@
+/* Styling for the settings page where the user can reset their password, upload their profile photo, add a bio and navigate to the about me page */
+
+/* Resetting default margin and padding for the body */
 body {
   margin: 0;
   padding: 0;
@@ -16,6 +19,7 @@ body {
 margin-top: 15px;
 }
 
+/* Styling for the image inside the avatar container */
 .avatar img {
   padding: 30px;
   position: absolute;
@@ -27,6 +31,7 @@ margin-top: 15px;
   width: auto;
   height: auto;
 }
+
 .flex-container {
   display: flex;
   justify-content: space-around;
@@ -40,7 +45,7 @@ margin-top: 15px;
   padding: 20px;
   font-size: 30px;
 }
-
+/* Styling for the profile box that displays all the information */
 .profile_box {
   background-color: #164863;
   overflow: auto;
@@ -54,7 +59,7 @@ margin-top: 15px;
   justify-content: center;
   color: white;
   border-radius: 5px;
-  position: relative;
+ 
   box-shadow: 0 0.5em 1em rgba(0.2, 0.2, 0.2, 0.2);
 }
 
@@ -88,6 +93,7 @@ margin-top: 15px;
   border-radius: 4%;
 }
 
+
 .item2{
   font-size: 14px;
   color: white;
@@ -109,6 +115,7 @@ margin-top: 15px;
   box-shadow: 0 0.5em 1em rgba(0.2, 0.2, 0.2, 0.2);
 }
 
+/* Styling for profile info box */
 .info_box h4 {
   margin-bottom: 20px;
 }
@@ -126,6 +133,7 @@ margin-top: 15px;
   height: 100px;
 }
 
+/* Styling for password input field */
 .pass-input-field{
   width: 100%;
   padding: 10px;
@@ -135,6 +143,7 @@ margin-top: 15px;
   font-size: 14px; 
 }
 
+/* Styling for bio section */
 .bio-section {
   width: 100%;
   display: flex;
@@ -152,6 +161,8 @@ margin-top: 15px;
   margin-left: 0;
   font-size: 14px;
 }
+
+/* Styling for buttons */
 .buttons {
   flex-direction: row;
   align-self: flex-start;
@@ -171,6 +182,7 @@ margin-top: 15px;
   font-size: 18px;
 }
 
+/* Styling for the reset password section */
 .ResetPassword {
   display: flex;
   flex-direction: column;
@@ -178,20 +190,5 @@ margin-top: 15px;
 }
 
 .about_me-actions {
-  margin-top: 20px; /* Adjust margin as needed */
-}
-
-.about_me button {
-  margin-top: 10px;
-  background-color: #427D9D; /* Green color */
-  color: white;
-  padding: 10px 20px; /* Adjust padding as needed */
-  border: 10px;
-  border-color: white;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.about_me button:hover {
-  background-color: #164863; /* Darker shade of green on hover */
+  margin-top: 20px; 
 }

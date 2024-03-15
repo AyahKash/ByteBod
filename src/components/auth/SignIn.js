@@ -6,19 +6,21 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import {auth} from "../../firebase"
 import { useNavigate } from "react-router-dom";
 
+/*
+Function that lets a user sign in with email and password utilizing firebase authentication 
+*/
 function SignIn() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorExists, setErrorExists] = useState(false);
+  
+  //Sign in user if credentials are correct
     const signIn = (e) => {
       e.preventDefault();
       signInWithEmailAndPassword(auth, email, password).then((userCredential)=>{
-          console.log("signin", userCredential)
           navigate("/homepage");
       }).catch((error)=>{
-          console.log(error);
-          console.log(error.message);
           console.log("Error Code", error.code);
           setErrorExists(true);
       })
