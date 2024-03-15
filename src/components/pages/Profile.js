@@ -26,9 +26,9 @@ import { db } from "../../firebase";
 const retryDelay = 1000; // 1 second delay between retries
 const maxRetries = 5; // Maximum number of retries
 
-/* 
-Profile page that displays users information 
-Also can see users friends and workout log from this page
+/**
+ * Profile page that displays users information 
+ * Also can see users friends and workout log from this page
 */
 export const Profile = () => {
   const navigate = useNavigate();
@@ -54,7 +54,9 @@ export const Profile = () => {
     getBio();
   }, [email]);
 
-  //queries database for current users email, then displays their respective information on the page
+/**
+  * queries database for current users email, then displays their respective information on the page
+*/
   async function getData() {
     try {
       const q = query(collection(db, "aboutMe"), where("email", "==", currentUser.email));
