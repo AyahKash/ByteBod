@@ -7,6 +7,7 @@ import { db, auth } from '../firebase';
 import profilePhoto from "../images/ProfilePhoto.png";
 import { useNavigate } from 'react-router-dom';
 
+//This emptyPost will be used as a default in cause the post is not properly passed to the Card component below.
 // assuming post data of form:
 const emptyPost = {
   title: "Post Title",
@@ -20,10 +21,16 @@ const emptyPost = {
   commentsList: [],
 };
 
-/*
-Base card which is used to style each post on the homapage feed
-*/
-function Card({ post = emptyPost, incrementLikes }) {
+    /**
+     * The Card component renders the post object for a user post. A post comes with the following attributes as shown in the emptyPost:
+     * title, postAuthor, postText (content), postDate (generated with newDate()), photoURL (for user profile photo), 
+     * workoutType (mandatory for each post), like count, and commentList
+     * Each post with these attributes is saved in backend Firestore
+     * 
+     * @param param1 the post object itself which is passed from a list of post objects in CreatPost.js
+     * @return Renders a post JSX component (along with comments if there are comments on this post) that will later be rendered in HomePage.js in pages folder
+     */
+function Card({ post = emptyPost}) {
 
   if (post.commentsList){
   }
