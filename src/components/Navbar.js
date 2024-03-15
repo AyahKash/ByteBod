@@ -7,9 +7,8 @@ import "./Navbar.css";
 import {signOut} from 'firebase/auth'
 import {auth} from "../firebase";
 
-
-/*
-Navigation bar that is implemented utilizing bootstrap
+/** 
+*Navigation bar that is implemented utilizing bootstrap
 */
 function Navbar() {
   const navigate = useNavigate();

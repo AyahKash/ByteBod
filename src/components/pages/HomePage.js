@@ -7,6 +7,10 @@ import Button from "../Button";
 import Card from "../Card";
 import "./HomePage.css"
 
+/**
+ * The first page shown to the user when they log in. This page displays public
+ * post information. This is the user's home page/feed.
+ */
 
 export const HomePage = (posts) => {
   const navigate = useNavigate();

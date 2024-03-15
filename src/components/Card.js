@@ -21,16 +21,17 @@ const emptyPost = {
   commentsList: [],
 };
 
-    /**
-     * The Card component renders the post object for a user post. A post comes with the following attributes as shown in the emptyPost:
-     * title, postAuthor, postText (content), postDate (generated with newDate()), photoURL (for user profile photo), 
-     * workoutType (mandatory for each post), like count, and commentList
-     * Each post with these attributes is saved in backend Firestore
-     * 
-     * @param post the post object itself which is passed from a list of post objects in HomePage.js inside the pages folder.
-     * The comment objects are initially generated in CreatePost.js from user input.
-     * @return Renders a post JSX component (along with comments if there are comments on this post) that will later be rendered in HomePage.js in pages folder
-     */
+  /**
+   * The Card component renders the post object for a user post. A post comes with the following attributes as shown in the emptyPost:
+   * title, postAuthor, postText (content), postDate (generated with newDate()), photoURL (for user profile photo), 
+   * workoutType (mandatory for each post), like count, and commentList
+   * Each post with these attributes is saved in backend Firestore
+   * 
+   * @param post the post object itself which is passed from a list of post objects in HomePage.js inside the pages folder.
+   * The comment objects are initially generated in CreatePost.js from user input.
+   * @return Renders a post JSX component (along with comments if there are comments on this post) that will later be rendered in HomePage.js in pages folder
+   */
+  
 function Card({ post = emptyPost}) {
 
   if (post.commentsList){
