@@ -1,6 +1,8 @@
 **BYTEBOD**
 **35L Project Winter 2024**
 
+Here is our video presentation about ByteBod: https://youtu.be/Aufq1OeBchI?feature=shared
+
 ByteBod: A Fitness App to track your workouts and connect with fellow fitness enjoyers.  
 
 **Features:**
@@ -51,6 +53,10 @@ Home Page (once you are logged in):
 In this page, you can navigate through the different pages of the navigation bar to explore what the app can do
 
 <img width="1000" alt="image" src="https://github.com/AyahKash/ByteBod/assets/131549352/e7559b98-0b87-4d15-9068-ffddd41ff569">
+
+
+
+
 
 
 
