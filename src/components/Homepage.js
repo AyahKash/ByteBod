@@ -1,10 +1,14 @@
 import Button from './Button.js'
 import Logo from "../images/temp.png"
 import "./Homepage.css"
-/*
-homepage that users see before they are logged in. 
-From this page, a user can either create an account, sign in with their existing account or reset their password
-*/
+
+/**
+ * The homepage that users see before they are logged in. The "Welcome To ByteBod" page.
+ * From this page, a user can either create an account, sign in with their existing account or reset their password
+ * 
+* @return Renders the homepage.
+ */
+
 function Login() {
     return (
       <div className="Login">
