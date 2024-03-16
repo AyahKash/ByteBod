@@ -15,6 +15,13 @@ import Navbar from "../Navbar";
 import Button from "../Button";
 import "./FriendsPage.css";
 
+/**
+ * A page that lists the user's friends, pending incoming friend requests, and
+ * allows users to send friend requests. Users can additionally accept or
+ * reject request and remove friends.
+ * 
+ * @return The friend page
+ */
 export const FriendsPage = (props) => {
   const usersRef = collection(db, "users");
   const currentUser = useAuth();
@@ -26,7 +33,12 @@ export const FriendsPage = (props) => {
   const [listState, setListState] = useState();
   const [requestSendMessage, setRequestSendMessage] = useState("");
 
-  // Query to find a user given the email entered
+  /**
+ * Find a user in the users database collection from their email. Accesses
+ * the email stored in targetEmail piece of state.
+ * 
+ * @return the document ID of the user
+ */
   const findTargetUserFromEmail = async () => {
     const q = query(usersRef, where("email", "==", targetEmail));
     setTargetEmail("");
@@ -38,7 +50,11 @@ export const FriendsPage = (props) => {
     }
   };
 
-  // Send a friend request
+  /**
+   * Send a firend request to the user with email targetEmail.
+   * 
+   * @param event the submission event
+   */
   const sendFriendRequest = async (event) => {
     
     // Prevent a rerender 
@@ -75,7 +91,12 @@ export const FriendsPage = (props) => {
     }
   };
 
-  // Accept or reject a friend request
+  /**
+   * Responds to a friend request with either a rejection or an acceptance. 
+   * 
+   * @param targetUserId the UID of the user to respond to
+   * @param response true to accept; false to reject
+   */
   const respondToRequest = async (targetUserId, response) => {
     const targetUserFriendRequestsRef = collection(
       usersRef,
@@ -124,7 +145,12 @@ export const FriendsPage = (props) => {
     }
   };
 
-  // Remove a friend
+  /**
+   * Removes a friend by updating friendship documents for both the current
+   * user and the user to be removed. 
+   * 
+   * @param targetUserId the user to remove 
+   */
   const removeFriend = async (targetUserId) => {
     const targetUserFriendRequestsRef = collection(
       usersRef,
@@ -157,8 +183,10 @@ export const FriendsPage = (props) => {
     }
   };
 
-  // Fetch current user doc reference and set references
   useEffect(() => {
+    /**
+     * Set the friendRequests and friends references for the current user. 
+     */
     const getCurrentUserRefs = async () => {
 
       // Ensure the current user is signed in 
@@ -178,8 +206,11 @@ export const FriendsPage = (props) => {
     getCurrentUserRefs();
   }, [currentUser]);
 
-  // Fetch pending friend request list from Firestore
+
   useEffect(() => {
+    /**
+     * Fetch the current user's pending friend request list from Firestore.
+     */
     const getRequests = async () => {
       const tempRequestList = [];
 
@@ -214,8 +245,10 @@ export const FriendsPage = (props) => {
     getRequests();
   }, [currentUserFriendRequestsRef, listState]);
 
-  // Fetch friend  list from Firestore
   useEffect(() => {
+    /**
+     * Fetch the current user's friend list from Firestore.
+     */
     const getFriends = async () => {
       const tempFriendsList = [];
 
