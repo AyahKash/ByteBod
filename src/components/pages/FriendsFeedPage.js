@@ -37,7 +37,6 @@ export const FriendsFeedPage = (posts) => {
   }, [currentUser]);
 
   useEffect(() => {
-    useEffect(() => {
     /**
      * Fetch the current user's friend list from Firestore.
      */
