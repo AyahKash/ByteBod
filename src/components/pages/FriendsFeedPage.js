@@ -6,6 +6,9 @@ import Navbar from "../Navbar";
 import Card from "../Card";
 import "./FriendsFeedPage.css";
 
+/**
+ * A feed page that displays posts made by the current user's friends. 
+ */
 export const FriendsFeedPage = (posts) => {
   const currentUser = useAuth();
   const usersRef = collection(db, "users");
@@ -14,8 +17,10 @@ export const FriendsFeedPage = (posts) => {
   const [friendsUIDList, setFriendsUIDList] = useState([]);
   const [postList, setPostList] = useState([]);
 
-  // Get current user's friend collection reference 
   useEffect(() => {
+    /**
+     * Gets a reference to the current user's friends collection.
+     */
     const getCurrentUserRefs = async () => {
       // Ensure the user is signed in with useAuth
       if (currentUser) {
@@ -31,8 +36,11 @@ export const FriendsFeedPage = (posts) => {
     getCurrentUserRefs();
   }, [currentUser]);
 
-  // Query through friend collection to find active friends 
   useEffect(() => {
+    useEffect(() => {
+    /**
+     * Fetch the current user's friend list from Firestore.
+     */
     const getFriendsUIDList = async () => {
       let tempFriendsUIDList = [];
       if (currentUserFriendsRef) {
@@ -48,8 +56,10 @@ export const FriendsFeedPage = (posts) => {
     getFriendsUIDList();
   }, [currentUserFriendsRef]);
 
-  // Get posts who's author ID's are in the list of user's friends
   useEffect(() => {
+    /**
+     * Gets posts who's author ID's are in the list of user's friends.
+     */
     const getPosts = async () => {
       if (friendsUIDList.length) {
         const q = query(
